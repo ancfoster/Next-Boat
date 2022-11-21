@@ -1,12 +1,33 @@
 from django.db import models
+from django.contrib.auth.models import User
+from django.core.validators import MaxValueValidator, MinValueValidator
 
 # Create your models here.
-class Listing(models.Model):
-    make = models.CharField(choices = boat_models)
+class Listings(models.Model):
+    listing_status = models.CharField(choices=LISTING_STATUS_CHOICES, max_length=1)
+    created_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name='boat_listing')
+    make = models.CharField(choices=BOAT_MODELS_LIST, max_length=5)
+    model = models.CharField(max_length=25)
+    price = models.PositiveIntegerField()
+    tax_paid = models.CharField(choices=TAX_PAID_CHOICES, max_length=1, default='Y')
+    condition = models.CharField(choices=CONDITION_CHOICES, max_length=1)
+    year_construction = models.SmallPositiveIntegerField(validators=[MinValueValidator(1900), MaxValueValidator(2024)])
+    length = models.DecimalField(decimal_places=2, validators=[MinValueValidator(2.00), MaxValueValidator(50.00)])
+    beam = models.DecimalField(decimal_places=2, validators=[MinValueValidator(2.00), MaxValueValidator(15.00)])
+    draft = models.DecimalField(decimal_places=2, validators=[MinValueValidator(0.20), MaxValueValidator(5.00)])
+    weight = models.PositiveIntegerField(validators=[MinValueValidator(25), MaxValueValidator(500000)])
+    type = models.CharField(choices=BOAT_TYPE, max_length=1)
+    hull_material = models.CharField(choices=HULL_MATERIAL, max_length=1)
 
 
 #Choice lists
-boat_models = [
+LISTING_STATUS_CHOICES = [('A', 'Available'), ('P', 'Pending Sale'), ('N', 'Not Published')]
+TAX_PAID_CHOICES = [('Y', 'Yes'), ('N', 'No')]
+CONDITION_CHOICES = [('N', 'New'), ('U', 'Used')]
+BOAT_TYPE = [('P', 'Power'), ('S', 'Sail')]
+HULL_MATERIAL = [('F', 'Fibreglass/GRP'), ('S', 'Steel'), ('W', 'Wood'), ('A', 'Aluminium')]
+
+BOAT_MODELS_LIST = [
     ('M1', 'AB Inflatables'),
     ('M2', 'ACM'),
     ('M3', 'ATX Surf Boats'),
