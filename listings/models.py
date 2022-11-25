@@ -7,10 +7,11 @@ class Listings(models.Model):
 
     #Choice lists
     LISTING_STATUS_CHOICES = [('A', 'Available'), ('P', 'Pending Sale'), ('N', 'Not Published')]
-    TAX_PAID_CHOICES = [('Y', 'Yes'), ('N', 'No')]
+    TAX_PAID_CHOICES = [('Y', 'Tax Paid'), ('N', 'Tax Unpaid')]
     CONDITION_CHOICES = [('N', 'New'), ('U', 'Used')]
     BOAT_TYPE = [('P', 'Power'), ('S', 'Sail')]
     HULL_MATERIAL = [('F', 'Fibreglass/GRP'), ('S', 'Steel'), ('W', 'Wood'), ('A', 'Aluminium')]
+    FUEL = [('D', 'Diesel' ), ('P', 'Petrol'), ('E', 'Electric'), ('N', 'None')]
 
     BOAT_MODELS_LIST = [
         ('M1', 'AB Inflatables'),
@@ -599,20 +600,35 @@ class Listings(models.Model):
         ('M584', 'Zodiac')
     ]
 
-    listing_status = models.CharField(choices=LISTING_STATUS_CHOICES, max_length=1)
+    listing_status = models.CharField(choices=LISTING_STATUS_CHOICES, max_length=1, verbose_name="Listing Status")
     created_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name='boat_listing')
-    make = models.CharField(choices=BOAT_MODELS_LIST, max_length=5)
-    model = models.CharField(max_length=25)
-    price = models.PositiveIntegerField()
-    tax_paid = models.CharField(choices=TAX_PAID_CHOICES, max_length=1, default='Y')
-    condition = models.CharField(choices=CONDITION_CHOICES, max_length=1)
-    year_construction = models.PositiveSmallIntegerField(validators=[MinValueValidator(1900), MaxValueValidator(2024)])
-    length = models.DecimalField(decimal_places=2, max_digits=4, validators=[MinValueValidator(2.00), MaxValueValidator(50.00)])
-    beam = models.DecimalField(decimal_places=2, max_digits=4, validators=[MinValueValidator(2.00), MaxValueValidator(15.00)])
-    draft = models.DecimalField(decimal_places=2, max_digits=4, validators=[MinValueValidator(0.20), MaxValueValidator(5.00)])
-    weight = models.PositiveIntegerField(validators=[MinValueValidator(25), MaxValueValidator(500000)])
-    type = models.CharField(choices=BOAT_TYPE, max_length=1)
-    hull_material = models.CharField(choices=HULL_MATERIAL, max_length=1)
+    created_on = models.DateTimeField(auto_now_add=True)
+    make = models.CharField(choices=BOAT_MODELS_LIST, max_length=5, verbose_name="Boat Make")
+    model = models.CharField(max_length=25, verbose_name="Boat Model")
+    price = models.PositiveIntegerField(verbose_name="Price")
+    tax_paid = models.CharField(choices=TAX_PAID_CHOICES, max_length=1, default='Y', verbose_name="Tax Status")
+    condition = models.CharField(choices=CONDITION_CHOICES, max_length=1, verbose_name="Condition")
+    year_construction = models.PositiveSmallIntegerField(verbose_name="Year of Construction", validators=[MinValueValidator(1900), MaxValueValidator(2024)])
+    length = models.DecimalField(decimal_places=2, max_digits=4, validators=[MinValueValidator(2.00), MaxValueValidator(50.00)], verbose_name="Length")
+    beam = models.DecimalField(decimal_places=2, max_digits=4, validators=[MinValueValidator(2.00), MaxValueValidator(15.00)], verbose_name="Beam")
+    draft = models.DecimalField(decimal_places=2, max_digits=4, validators=[MinValueValidator(0.20), MaxValueValidator(5.00)], verbose_name="Draft")
+    weight = models.PositiveIntegerField(validators=[MinValueValidator(25), MaxValueValidator(500000)], verbose_name="Weight")
+    type = models.CharField(choices=BOAT_TYPE, max_length=1, verbose_name="Type")
+    hull_material = models.CharField(choices=HULL_MATERIAL, max_length=1, verbose_name="Hull Material")
+    fuel = models.CharField(choices=FUEL, max_length=1, verbose_name='Fuel Type')
+    number_of_engines = models.PositiveSmallIntegerField(verbose_name="Number of main engines or motors", validators=[MinValueValidator(0), MaxValueValidator(20)], null=True)
+    maximum_speed = models.PositiveSmallIntegerField(verbose_name="Maximum Speed", validators=[MaxValueValidator(99)])
+    cruising_speed = models.PositiveSmallIntegerField(verbose_name="Cruising Speed", validators=[MaxValueValidator(99)])
+    range = models.PositiveSmallIntegerField(verbose_name="Range", validators=[MaxValueValidator(6000)])
+    cabins = models.PositiveSmallIntegerField(verbose_name="Cabins", validators=[MinValueValidator(0), MaxValueValidator(20)])
+    berths = models.PositiveSmallIntegerField(verbose_name="Berths", validators=[MinValueValidator(0), MaxValueValidator(40)])
+    heads = models.PositiveSmallIntegerField(verbose_name="Heads", validators=[MinValueValidator(0), MaxValueValidator(20)])
+    cabin_headroom = models.PositiveSmallIntegerField(verbose_name="Cabin Headroom", validators=[MinValueValidator(1), MaxValueValidator(20)], null=True)
+    listing_excerpt = models.CharField(max_length=66, verbose_name="Short Description")
+    listing_description = models.CharField(max_length=2500, verbose_name="Boat Description")
+    boat_feature_list = models.CharField(null=True, max_length=7000)
+
+
 
 
 
