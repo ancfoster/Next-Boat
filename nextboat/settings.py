@@ -128,14 +128,9 @@ AWS_S3_OBJECT_PARAMETERS = {
 AWS_MEDIA_BUCKET_NAME = 'nextboat-ci-media'
 AWS_S3_MEDIA_DOMAIN = '%s.s3.eu-west-2.amazonaws.com' % AWS_MEDIA_BUCKET_NAME
 
-# s3 static settings
 STATIC_LOCATION = 'static'
-STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, STATIC_LOCATION)
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'nextboat/static'),
-]
-STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-
+STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATIC_LOCATION}/'
+STATICFILES_STORAGE = 'nextboat.storage_backends.StaticStorage'
 # s3 public media settings
 PUBLIC_MEDIA_LOCATION = 'media'
 MEDIA_URL = f'https://{AWS_S3_MEDIA_DOMAIN}/{PUBLIC_MEDIA_LOCATION}/'
