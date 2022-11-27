@@ -6,7 +6,7 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 class Listings(models.Model):
 
     #Choice lists
-    LISTING_STATUS_CHOICES = [('A', 'Available'), ('P', 'Pending Sale'), ('N', 'Not Published')]
+    LISTING_STATUS_CHOICES = [('A', 'Available'), ('P', 'Pending Sale'), ('S', 'Sold'), ('N', 'Not Listed')]
     TAX_PAID_CHOICES = [('Y', 'Tax Paid'), ('N', 'Tax Unpaid')]
     CONDITION_CHOICES = [('N', 'New'), ('U', 'Used')]
     BOAT_TYPE = [('P', 'Power'), ('S', 'Sail')]
@@ -603,6 +603,7 @@ class Listings(models.Model):
     listing_status = models.CharField(choices=LISTING_STATUS_CHOICES, max_length=1, verbose_name="Listing Status")
     created_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name='boat_listing')
     created_on = models.DateTimeField(auto_now_add=True)
+    last_modified = models.DateTimeField(auto_now=True)
     make = models.CharField(choices=BOAT_MODELS_LIST, max_length=5, verbose_name="Boat Make")
     model = models.CharField(max_length=25, verbose_name="Boat Model")
     price = models.PositiveIntegerField(verbose_name="Price")
@@ -614,6 +615,7 @@ class Listings(models.Model):
     draft = models.DecimalField(decimal_places=2, max_digits=4, validators=[MinValueValidator(0.20), MaxValueValidator(5.00)], verbose_name="Draft")
     weight = models.PositiveIntegerField(validators=[MinValueValidator(25), MaxValueValidator(500000)], verbose_name="Weight")
     type = models.CharField(choices=BOAT_TYPE, max_length=1, verbose_name="Type")
+    category = models.CharField(max_length=30, verbose_name="Category", default="Cruiser")
     hull_material = models.CharField(choices=HULL_MATERIAL, max_length=1, verbose_name="Hull Material")
     fuel = models.CharField(choices=FUEL, max_length=1, verbose_name='Fuel Type')
     number_of_engines = models.PositiveSmallIntegerField(verbose_name="Number of main engines or motors", validators=[MinValueValidator(0), MaxValueValidator(20)], null=True)
@@ -628,7 +630,15 @@ class Listings(models.Model):
     listing_description = models.CharField(max_length=2500, verbose_name="Boat Description")
     boat_feature_list = models.CharField(null=True, max_length=7000)
 
+    def __str__(self):
+        return f"{self.make} {self.model}"
 
+class ListingMedia(models.Model):
+    listing = models.ForeignKey(Listings,on_delete=models.CASCADE)
+    models.ForeignKey(User, on_delete=models.CASCADE, related_name='listing_media')
+    image = models.ImageField()
 
+class Meta:
+    ordering = ['-created_on']
 
 
