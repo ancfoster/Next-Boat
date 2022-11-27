@@ -6,4 +6,5 @@ class StaticStorage(S3Boto3Storage):
 
 class PublicMediaStorage(S3Boto3Storage):
     location = 'media'
+    AWS_STORAGE_BUCKET_NAME = 'nextboat-ci-static'
     file_overwrite = False
