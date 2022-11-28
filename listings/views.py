@@ -9,3 +9,6 @@ class ListingsList(generic.ListView):
     template_name = "listings/listings.html"
 
 
+def home(request):
+    return render(request, 'listings/index.html')
+
