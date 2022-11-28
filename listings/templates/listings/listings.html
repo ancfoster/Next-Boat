@@ -1,0 +1,9 @@
+{% extends 'listings/base.html' %}
+{% block content %}
+Listings Template
+    {% for listing in listings_list %}
+        {{ listing.make }}
+        {{ listing.model }}
+    {% endfor %}
+
+{% endblock %}
