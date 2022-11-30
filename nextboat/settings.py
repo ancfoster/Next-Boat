@@ -32,6 +32,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['localhost', 'https://nextboat-ci.herokuapp.com', 'nextboat-ci.herokuapp.com', 'https://8000-ancfoster-nextboat-it0l4y6a3r7.ws-eu77.gitpod.io']
 
+CSRF_TRUSTED_ORIGINS = ['https://8000-ancfoster-nextboat-it0l4y6a3r7.ws-eu77.gitpod.io']
+
 
 # Application definition
 
@@ -42,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.humanize',
     'storages',
     'listings',
 ]
