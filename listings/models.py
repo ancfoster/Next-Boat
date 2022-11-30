@@ -609,6 +609,8 @@ class Listings(models.Model):
     price = models.PositiveIntegerField(verbose_name="Price")
     tax_paid = models.CharField(choices=TAX_PAID_CHOICES, max_length=1, default='Y', verbose_name="Tax Status")
     condition = models.CharField(choices=CONDITION_CHOICES, max_length=1, verbose_name="Condition")
+    country = models.CharField(max_length=30, default="United Kingdom", verbose_name="Country")
+    location = models.CharField(max_length=50, default="", blank=True)
     year_construction = models.PositiveSmallIntegerField(verbose_name="Year of Construction", validators=[MinValueValidator(1900), MaxValueValidator(2024)])
     length = models.DecimalField(decimal_places=2, max_digits=4, validators=[MinValueValidator(2.00), MaxValueValidator(50.00)], verbose_name="Length")
     beam = models.DecimalField(decimal_places=2, max_digits=4, validators=[MinValueValidator(2.00), MaxValueValidator(15.00)], verbose_name="Beam")
@@ -618,27 +620,26 @@ class Listings(models.Model):
     category = models.CharField(max_length=30, verbose_name="Category", default="Cruiser")
     hull_material = models.CharField(choices=HULL_MATERIAL, max_length=1, verbose_name="Hull Material")
     fuel = models.CharField(choices=FUEL, max_length=1, verbose_name='Fuel Type')
-    number_of_engines = models.PositiveSmallIntegerField(verbose_name="Number of main engines or motors", validators=[MinValueValidator(0), MaxValueValidator(20)], null=True)
+    number_of_engines = models.PositiveSmallIntegerField(verbose_name="Number of main engines or motors", validators=[MinValueValidator(0), MaxValueValidator(9)], default=0)
     maximum_speed = models.PositiveSmallIntegerField(verbose_name="Maximum Speed", validators=[MaxValueValidator(99)])
     cruising_speed = models.PositiveSmallIntegerField(verbose_name="Cruising Speed", validators=[MaxValueValidator(99)])
     range = models.PositiveSmallIntegerField(verbose_name="Range", validators=[MaxValueValidator(6000)])
     cabins = models.PositiveSmallIntegerField(verbose_name="Cabins", validators=[MinValueValidator(0), MaxValueValidator(20)])
     berths = models.PositiveSmallIntegerField(verbose_name="Berths", validators=[MinValueValidator(0), MaxValueValidator(40)])
     heads = models.PositiveSmallIntegerField(verbose_name="Heads", validators=[MinValueValidator(0), MaxValueValidator(20)])
-    cabin_headroom = models.PositiveSmallIntegerField(verbose_name="Cabin Headroom", validators=[MinValueValidator(1), MaxValueValidator(20)], null=True)
+    cabin_headroom = models.PositiveSmallIntegerField(verbose_name="Cabin Headroom", validators=[MinValueValidator(0), MaxValueValidator(20)], blank=True, null=True)
     listing_excerpt = models.CharField(max_length=66, verbose_name="Short Description")
     listing_description = models.CharField(max_length=2500, verbose_name="Boat Description")
-    boat_feature_list = models.CharField(null=True, max_length=7000)
+    boat_feature_list = models.CharField(blank=True, max_length=7000, default='')
 
     def __str__(self):
         return f"{self.make} {self.model}"
+    
+    class Meta:
+        verbose_name = "Listing"
+        verbose_name_plural = "Listings"
 
 class ListingMedia(models.Model):
     listing = models.ForeignKey(Listings,on_delete=models.CASCADE)
     models.ForeignKey(User, on_delete=models.CASCADE, related_name='listing_media')
     image = models.ImageField()
-
-class Meta:
-    ordering = ['-created_on']
-
-
