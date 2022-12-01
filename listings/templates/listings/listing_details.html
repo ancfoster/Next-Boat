@@ -1,0 +1,17 @@
+{% extends 'listings/base.html' %}
+{% load humanize %}
+{% block content %}
+<h1>
+    {{ listing.make }} {{ listing.model }}
+</h1>
+<div>
+    {{ listing.listing_description }}
+</div>
+<div>
+    {% for image in images %}
+
+    <img src=" {{ image.image.url }}" height="auto" width="auto"/>
+
+    {% endfor %}
+</div>
+{% endblock %}
