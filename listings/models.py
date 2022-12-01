@@ -640,6 +640,5 @@ class Listings(models.Model):
         verbose_name_plural = "Listings"
 
 class ListingMedia(models.Model):
-    listing = models.ForeignKey(Listings,on_delete=models.CASCADE)
-    models.ForeignKey(User, on_delete=models.CASCADE, related_name='listing_media')
+    listing = models.ForeignKey(Listings,on_delete=models.CASCADE, related_name='listing_media')
     image = models.ImageField()
