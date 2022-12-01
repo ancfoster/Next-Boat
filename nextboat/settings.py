@@ -134,6 +134,9 @@ STATICFILES_STORAGE = 'nextboat.storage_backends.StaticStorage'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'nextboat/static'),
 ]
+PUBLIC_MEDIA_LOCATION = 'media'
+MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{PUBLIC_MEDIA_LOCATION}/'
+DEFAULT_FILE_STORAGE = 'nextboat.storage_backends.PublicMediaStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field

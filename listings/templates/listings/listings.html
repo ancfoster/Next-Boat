@@ -1,9 +1,69 @@
 {% extends 'listings/base.html' %}
+{% load humanize %}
 {% block content %}
+<h1>
+    Boats for Sale
+</h1>
 Listings Template
     {% for listing in listings_list %}
-        {{ listing.make }}
-        {{ listing.model }}
+        <table>
+            <tr>
+                <th>
+                    Description
+                </th>
+                <th>
+                    Value
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    Make + Model
+                </td>
+                <td>
+                    {{ listing.make }} {{ listing.model }}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Short description
+                </td>
+                <td>
+                    {{ listing.listing_excerpt }}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Country
+                </td>
+                <td>
+                    {{ listing.country }}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Listing Year
+                </td>
+                <td>
+                    {{ listing.year }}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Price
+                </td>
+                <td>
+                    {{ listing.price|intcomma }}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    View listing
+                </td>
+                <td>
+                    Click here to view
+                </td>
+            </tr>
+        </table>
     {% endfor %}
 
 {% endblock %}
