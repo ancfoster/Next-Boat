@@ -600,7 +600,7 @@ class Listings(models.Model):
         ('M584', 'Zodiac')
     ]
 
-    listing_status = models.CharField(choices=LISTING_STATUS_CHOICES, max_length=1, verbose_name="Listing Status")
+    listing_status = models.CharField(choices=LISTING_STATUS_CHOICES, max_length=1, verbose_name="Listing Status", default='A')
     created_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name='boat_listing')
     created_on = models.DateTimeField(auto_now_add=True)
     last_modified = models.DateTimeField(auto_now=True)
@@ -638,6 +638,9 @@ class Listings(models.Model):
     class Meta:
         verbose_name = "Listing"
         verbose_name_plural = "Listings"
+
+    def get_absolute_url(self):
+        return render(request, 'listings/index.html')
 
 class ListingMedia(models.Model):
     listing = models.ForeignKey(Listings,on_delete=models.CASCADE, related_name='listing_media')
