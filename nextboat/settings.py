@@ -132,7 +132,7 @@ STATIC_LOCATION = 'static'
 STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATIC_LOCATION}/'
 STATICFILES_STORAGE = 'nextboat.storage_backends.StaticStorage'
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'nextboat/static'),
+    os.path.join(BASE_DIR, 'static'),
 ]
 PUBLIC_MEDIA_LOCATION = 'media'
 MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{PUBLIC_MEDIA_LOCATION}/'

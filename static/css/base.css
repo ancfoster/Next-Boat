@@ -1,0 +1,137 @@
+/* Variables */
+:root {
+    /* Colours */
+    --accent-colour: #33CCCC;
+    --white: #ffffff;
+    --light-bg-grey: #fafafa;
+    --light-mid-bg-grey: #EBEBEB;
+    --light-text-grey: #666666;
+    --medium-grey: #484848;
+    --off-black: #333333;
+}
+  
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--light-bg-grey);
+    font-family: proxima-nova, sans-serif, Arial;
+    font-weight: 400;
+    box-sizing: border-box;
+}
+/* Navigation bar styles */
+#nav-bar-container {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #ffffff;
+    border-bottom: 1px solid var(--light-mid-bg-grey);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#nav-bar {
+    width: 100%;
+    max-width: 960px;
+    height: 48px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 4px;
+    box-sizing: border-box;
+}
+#buy-sell-nav {
+    font-size: 16px;
+    display: flex;
+    flex-direction: row;
+}
+#buy-sell-nav a {
+    color: var(--medium-grey);
+    text-decoration: none;
+    padding: 0 8px;
+}
+#buy-sell-nav a:hover {
+    color: var(--accent-colour);
+    text-decoration: none;
+}
+#nav-divider {
+    width: 1px;
+    height: 24px;
+    background-color: #D0D0D0;
+    margin: 2px 4px 0 4px;
+}
+#buy-nav::before {
+    content: url('..');
+}
+#logo-nav {
+    text-decoration: none;
+}
+#nav-logo {
+    height: 24px;
+    width: auto;
+    margin-top: 4px;
+    margin-right: 12px;
+}
+#logo-nav:hover {
+    text-decoration: none;
+    cursor: pointer;
+}
+#burger-profile-icon {
+    width: 72px;
+    height: 32px;
+    background-color: var(--light-mid-bg-grey);
+    border-radius: 16px;
+}
+
+/* Nav bar responsive styles */
+
+
+/* Listing Detail View Styles */
+#listing-detail-main {
+    width: 100%;
+    max-width: 960px;
+    box-sizing: border-box;
+    margin: 56px auto 24px auto;
+    display: flex;
+    padding: 0 8px;
+    flex-direction: column;
+}
+#listings-return a {
+    text-decoration: none;
+    color: var(--light-text-grey);
+}
+#listings-return a {
+    text-decoration: underline;
+    color: var(--light-text-grey);
+}
+.listing-detail-h1 {
+    color: var(--off-black);
+    font-size: 32px;
+    font-weight: 600;
+    margin: 0;
+    padding: 8px 0;
+    width: 100%;
+    text-align: center;
+}
+#listing-details-flex {
+    width: 100%;
+    margin: 8px 0;
+    flex-direction: row;
+    border: 1px solid var(--light-mid-bg-grey);
+    padding-top: 8px;
+}
+#listing-particulars-col {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    margin-right: 8px;
+}
+#listing-description-col {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    margin-left: 8px;
+}
