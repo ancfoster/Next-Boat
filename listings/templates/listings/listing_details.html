@@ -1,17 +1,51 @@
 {% extends 'listings/base.html' %}
 {% load humanize %}
+{% load static %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/listing_details.css' %}"> </link>
+{% endblock %}
 {% block content %}
-<h1>
-    {{ listing.make }} {{ listing.model }}
-</h1>
-<div>
-    {{ listing.listing_description }}
-</div>
-<div>
-    {% for image in images %}
 
-    <img src=" {{ image.image.url }}" height="auto" width="auto"/>
+<main id="listing-detail-main">
+    <div id="listings-return"><a href>Search results</a></div>
+    <h1 class="listing-detail-h1">Regal 2565 Window Express</h1>
+    <div id="listing-details-flex">
+        <div id="listing-particulars-col">
+            <h3 class="listing-details-h3">Overview</h3>
+            <div class="particulars-card">
+                <div class="particulars-card-col-left">
+                    <span class="particulars-descriptor">Make</span>
+                    <span class="particulars-detail">{{ listing.get_make_display }}</span>
+                    <span class="particulars-descriptor">Price</span>
+                    <span class="particulars-detail"> {{ listing.price }}</span>
+                    <span class="particulars-descriptor">Year</span>
+                    <span class="particulars-detail"> {{ listing.year_construction }}</span>
+                    <span class="particulars-descriptor">Country</span>
+                    <span class="particulars-detail"> {{ listing.country }}</span>
+                    <span class="particulars-descriptor">Seller</span>
+                    <span class="particulars-detail"> {{ listing.created_by }}</span>
+                </div>
+                <div class="particulars-card-col-right">
+                    <span class="particulars-descriptor">Model</span>
+                    <span class="particulars-detail"> {{ listing.model }}</span>
+                    <span class="particulars-descriptor">Tax Status</span>
+                    <span class="particulars-detail"> {{ listing.get_tax_paid_display }}</span>
+                    <span class="particulars-descriptor">Condition</span>
+                    <span class="particulars-detail">{{ listing.get_condition_display }}</span>
+                    <span class="particulars-descriptor">Location</span>
+                    <span class="particulars-detail">{{ listing.location }}&nbsp;</span>
+                    <span class="particulars-descriptor">Listed on</span>
+                    <span class="particulars-detail">{{ listing.created_on }}</span>
+                </div>
+            </div>
+        </div>
+        <div id="listing-description-col">
+            <h3 class="listing-details-h3">Description</h3>
+            <div class="particulars-card">
+                <span class="particulars-detail"> {{ listing.listing_description }}</span>
+            </div>
+        </div>
+    </div>
+</main>
 
-    {% endfor %}
-</div>
 {% endblock %}
