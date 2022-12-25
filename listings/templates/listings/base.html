@@ -11,10 +11,24 @@
     {% endblock %}
 </head>
 <body>
-Base Template
-    <main>
+<div id="nav-bar-container">
+    <div id="nav-bar">
+        <nav id="buy-sell-nav">
+            <a href="#" id="buy-nav">Buy</a>
+            <div id="nav-divider"></div>
+            <a href="#" id="sell-nav">Sell</a>
+        </nav>
+        <a href="#" id="logo-nav">
+            <image id="nav-logo" src="/images/logo.svg" alt="Next Boat Logo">
+        </a>
+        <div role="button" id="burger-profile-icon">
+
+        </div>
+    </div>
+</div>    
+<main>
     {% block content %}
     {% endblock %}
-    </main>
+</main>
 </body>
 </html>
