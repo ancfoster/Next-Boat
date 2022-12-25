@@ -631,6 +631,7 @@ class Listings(models.Model):
     listing_excerpt = models.CharField(max_length=66, verbose_name="Short Description")
     listing_description = models.CharField(max_length=2500, verbose_name="Boat Description")
     boat_feature_list = models.CharField(blank=True, max_length=7000, default='')
+    featured_image = models.ImageField(verbose_name='Featured Image')
 
     def __str__(self):
         return f"{self.make} {self.model}"
