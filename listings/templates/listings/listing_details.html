@@ -17,7 +17,7 @@
                     <span class="particulars-descriptor">Make</span>
                     <span class="particulars-detail">{{ listing.get_make_display }}</span>
                     <span class="particulars-descriptor">Price</span>
-                    <span class="particulars-detail"> {{ listing.price }}</span>
+                    <span class="particulars-detail">£{{ listing.price|intcomma }}</span>
                     <span class="particulars-descriptor">Year</span>
                     <span class="particulars-detail"> {{ listing.year_construction }}</span>
                     <span class="particulars-descriptor">Country</span>
@@ -36,6 +36,57 @@
                     <span class="particulars-detail">{{ listing.location }}&nbsp;</span>
                     <span class="particulars-descriptor">Listed on</span>
                     <span class="particulars-detail">{{ listing.created_on }}</span>
+                </div>
+            </div>
+            <h3 class="listing-details-h3">Particulars</h3>
+            <div class="particulars-card">
+                <div class="particulars-card-col-left">
+                    <span class="particulars-descriptor">Length</span>
+                    <span class="particulars-detail">{{ listing.length }} m</span>
+                    <span class="particulars-descriptor">Draft</span>
+                    <span class="particulars-detail"> {{ listing.draft }} m</span>
+                    <span class="particulars-descriptor">Type</span>
+                    <span class="particulars-detail"> {{ listing.type }}</span>
+                </div>
+                <div class="particulars-card-col-right">
+                    <span class="particulars-descriptor">Beam</span>
+                    <span class="particulars-detail"> {{ listing.beam }} m</span>
+                    <span class="particulars-descriptor">Weight</span>
+                    <span class="particulars-detail"> {{ listing.weight }} kg</span>
+                    <span class="particulars-descriptor">Hull Material</span>
+                    <span class="particulars-detail">{{ listing.get_hull_material_display }}</span>
+                </div>
+            </div>
+            <h3 class="listing-details-h3">Propulsion</h3>
+            <div class="particulars-card">
+                <div class="particulars-card-col-left">
+                    <span class="particulars-descriptor">Number of engines</span>
+                    <span class="particulars-detail">{{ listing.number_of_engines }} m</span>
+                    <span class="particulars-descriptor">Maximum Speed</span>
+                    <span class="particulars-detail"> {{ listing.speed }} knots</span>
+                    <span class="particulars-descriptor">Range</span>
+                    <span class="particulars-detail"> {{ listing.range }} NM</span>
+                </div>
+                <div class="particulars-card-col-right">
+                    <span class="particulars-descriptor">Fuel</span>
+                    <span class="particulars-detail"> {{ listing.get_fuel_display }} m</span>
+                    <span class="particulars-descriptor">Cruising Speed</span>
+                    <span class="particulars-detail"> {{ listing.cruising_speed }} knots</span>
+                </div>
+            </div>
+            <h3 class="listing-details-h3">Accomodation</h3>
+            <div class="particulars-card">
+                <div class="particulars-card-col-left">
+                    <span class="particulars-descriptor">Cabins</span>
+                    <span class="particulars-detail">{{ listing.cabins }}&nbsp;</span>
+                    <span class="particulars-descriptor">Heads</span>
+                    <span class="particulars-detail"> {{ listing.heads }}&nbsp;</span>
+                </div>
+                <div class="particulars-card-col-right">
+                    <span class="particulars-descriptor">Berths</span>
+                    <span class="particulars-detail"> {{ listing.berths }}&nbsp;</span>
+                    <span class="particulars-descriptor">Cabin Headroom</span>
+                    <span class="particulars-detail"> {{ listing.cabin_headroom }}&nbsp;</span>
                 </div>
             </div>
         </div>

@@ -1,3 +1,19 @@
+:root {
+    /* Colours */
+    --accent-colour: #33CCCC;
+    --white: #ffffff;
+    --light-bg-grey: #fafafa;
+    --light-mid-bg-grey: #EBEBEB;
+    --light-text-grey: #666666;
+    --medium-grey: #484848;
+    --off-black: #333333;
+    --black: #222222;
+    /* Font weights */
+    --regular: 400;
+    --medium: 500;
+    --semibold: 600;
+    --bold: 700;
+}
 /* Listing Detail View Styles */
 #listing-detail-main {
     width: 100%;
