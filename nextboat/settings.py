@@ -32,7 +32,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['localhost', 'https://nextboat-ci.herokuapp.com', 'nextboat-ci.herokuapp.com', 'https://8000-ancfoster-nextboat-it0l4y6a3r7.ws-eu77.gitpod.io']
 
-CSRF_TRUSTED_ORIGINS = ['https://8000-ancfoster-nextboat-it0l4y6a3r7.ws-eu77.gitpod.io']
+CSRF_TRUSTED_ORIGINS = ['https://8000-ancfoster-nextboat-30jcardk2uj.ws-eu80.gitpod.io']
 
 
 # Application definition

@@ -1,8 +1,9 @@
 {% extends 'listings/base.html' %}
 {% load humanize %}
+{% load listing_tags %}
 {% load static %}
 {% block head %}
-    <link rel="stylesheet" href="{% static 'css/listing_details.css' %}"> </link>
+<link rel="stylesheet" href="{% static 'css/listing_details.css' %}"> </link>
 {% endblock %}
 {% block content %}
 
@@ -35,7 +36,7 @@
                     <span class="particulars-descriptor">Location</span>
                     <span class="particulars-detail">{{ listing.location }}&nbsp;</span>
                     <span class="particulars-descriptor">Listed on</span>
-                    <span class="particulars-detail">{{ listing.created_on }}</span>
+                    <span class="particulars-detail">{{ listing.created_on|date:"d M Y"}}</span>
                 </div>
             </div>
             <h3 class="listing-details-h3">Particulars</h3>
@@ -94,6 +95,15 @@
             <h3 class="listing-details-h3">Description</h3>
             <div class="particulars-card">
                 <span class="particulars-detail"> {{ listing.listing_description }}</span>
+            </div>
+            <h3 class="listing-details-h3">Features</h3>
+            <div class="particulars-card">
+                <!--This code snippet is from Stackoverflow user artem https://stackoverflow.com/questions/8317537/django-templates-split-string-to-array-->
+                {% with listing.boat_feature_list|split:"\*" as features %}
+                    {% for feature in features %}
+                        {{ feature }}<br>
+                    {% endfor %}
+                {% endwith %}
             </div>
         </div>
     </div>
