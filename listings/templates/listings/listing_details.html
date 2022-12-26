@@ -8,8 +8,18 @@
 {% block content %}
 
 <main id="listing-detail-main">
-    <div id="listings-return"><a href>Search results</a></div>
-    <h1 class="listing-detail-h1">Regal 2565 Window Express</h1>
+    <div id="listings-return"><a href="/boats">Search results</a></div>
+    <h1 class="listing-detail-h1">{{ listing.get_make_display }} {{ listing.model }}</h1> 
+    <div id="listing-pictures-cont">
+        <div id="gallery-launch_button" role="button">
+            <span>
+                All pictures
+            </span>
+        </div>
+        <div id="main-listing-picture">
+            <img src="{{ listing.featured_image.url }}" alt="Picture of {{ listing.get_make_display }} {{ listing.model }}">
+        </div>
+    </div>
     <div id="listing-details-flex">
         <div id="listing-particulars-col">
             <h3 class="listing-details-h3">Overview</h3>
