@@ -95,7 +95,9 @@ Alternatively, if using Gitpod, you can click below to create your own workspace
 
 - I followed a tutorial created by [Michael Herman](https://testdriven.io/blog/storing-django-static-and-media-files-on-amazon-s3/) on how to configure a Django application to store static and media files on AWS S3.
 
--M Extensive use was made of the [Django project documentation](https://docs.djangoproject.com/en/4.1/)
+- Extensive use was made of the [Django project documentation](https://docs.djangoproject.com/en/4.1/)
+
+- Code snippet from Stackoverflow user [artem](https://stackoverflow.com/questions/8317537/django-templates-split-string-to-array) to convert a string into an array with a custom Django template filter
 
 ### Acknowledgements
 I would like to thank my Code Institute mentor Tim Nelson for providing invaluable guidance duirng the development of this project

@@ -111,3 +111,23 @@
     display: block;
     margin-bottom: 4px;
 }
+.listing-details-feature {
+    display: block;
+    font-size: 16px;
+    color: var(--black);
+    padding: 4px 0;
+}
+.listing-details-feature::before {
+    content: url("/static/images/check_icon.svg");
+    height: 16px;
+    width: 16px;
+    margin-right: 8px;
+    display: inline-block;
+
+}
+#features-flex {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
