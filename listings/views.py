@@ -24,14 +24,16 @@ class ListingDetails(View):
     def get(self, request, id, *args, **kwargs):
         queryset = Listings.objects.all()
         listing = get_object_or_404(queryset, id=id)
-        images = listing.listing_media.all()
+        gallery_images = listing.listing_media.all()
+        preview_images = listing.listing_media.all()[:4]
         
         return render(
             request,
             "listings/listing_details.html",
             {
                 "listing": listing,
-                "images": images
+                "gallery_images": gallery_images,
+                "preview_images": preview_images
             },
         )
 
