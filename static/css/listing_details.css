@@ -211,3 +211,78 @@
     margin-right: 8px;
     display: inline-block;
 }
+#interested-cont {
+    width: 100%;
+    margin: 16px 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+#contact-seller-cont {
+    width: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+#contact-seller-label {
+    display: inline-block;
+    font-weight: var(--medium);
+    color: var(--medium-grey);
+    margin-right: 16px;
+}
+#favourite-button {
+    height: 32px;
+    width: 32px;
+    border-radius: 16px;
+    position: absolute;
+    right: 40px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: var(--light-mid-bg-grey);
+    background-image: url(/static/images/heart_icon.svg);
+    background-size: auto 16px;
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+#share-button {
+    height: 32px;
+    width: 32px;
+    border-radius: 16px;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: var(--light-mid-bg-grey);
+    background-image: url(/static/images/share_icon.svg);
+    background-size: auto 16px;
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+#contact-button-a {
+    color: var(--white);
+    text-decoration: none;
+}
+#contact-seller-button {
+    width: 152px;
+    height: 32px;
+    background-color: var(--accent-colour);
+    color: var(--white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 16px;
+}
+#contact-seller-button span::before {
+    content: url(/static/images/contact_seller_icon.svg);
+    height: 16px;
+    width: 16px;
+    margin-right: 8px;
+    display: inline-block;
+    transform: translateY(3px);
+}
