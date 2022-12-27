@@ -19,6 +19,12 @@
         <div id="main-listing-picture">
             <img src="{{ listing.featured_image.url }}" alt="Picture of {{ listing.get_make_display }} {{ listing.model }}">
         </div>
+        <div id="listing-picture-grid">
+            {% for preview_image in preview_images %}
+
+               <img src="{{ preview_image.image.url }}">
+            {% endfor %}
+        </div>
     </div>
     <div id="listing-details-flex">
         <div id="listing-particulars-col">
