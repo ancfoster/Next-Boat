@@ -8,6 +8,11 @@
     --light-text-grey: #666666;
     --medium-grey: #484848;
     --off-black: #333333;
+    /* Font weights */
+    --regular: 400;
+    --medium: 500;
+    --semibold: 600;
+    --bold: 700;
 }
   
 body {
@@ -21,6 +26,7 @@ body {
 /* Navigation bar styles */
 #nav-bar-container {
     width: 100%;
+    height: 52px;
     position: fixed;
     top: 0;
     left: 0;
@@ -43,14 +49,14 @@ body {
     box-sizing: border-box;
 }
 #buy-sell-nav {
-    font-size: 16px;
+    font-size: 20px;
     display: flex;
     flex-direction: row;
 }
 #buy-sell-nav a {
     color: var(--medium-grey);
     text-decoration: none;
-    padding: 0 8px;
+    padding: 0 4px;
 }
 #buy-sell-nav a:hover {
     color: var(--accent-colour);
@@ -61,9 +67,6 @@ body {
     height: 24px;
     background-color: #D0D0D0;
     margin: 2px 4px 0 4px;
-}
-#buy-nav::before {
-    content: url('..');
 }
 #logo-nav {
     text-decoration: none;
@@ -78,11 +81,163 @@ body {
     text-decoration: none;
     cursor: pointer;
 }
-#burger-profile-icon {
-    width: 72px;
-    height: 32px;
+#menu-button {
+    width: 40px;
+    height: 40px;
     background-color: var(--light-mid-bg-grey);
-    border-radius: 16px;
+    border-radius: 20px;
+    position: relative;
 }
+#menu-button-icon {
+    position: absolute;
+    height: 20px;
+    width: 20px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-48%, -50%);
+    opacity: 1.0;
+    transition: ease 0.4s;
+}
+#menu-button-icon-close {
+    position: absolute;
+    height: 20px;
+    width: 20px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.0;
+    transition: ease 0.4s;
+}
+#menu-spacer {
+    width: 100%;
+    max-width: 960px;
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    box-sizing: border-box;
+    height: 52px;
+    z-index: 8;
+}
+#menu-container {
+    width: 320px;
+    position: absolute;
+    top: 52px;
+    z-index: 8;
+    right: 0;
+    background-color: #EBEBEB90;
+    border-radius: 0 0 16px 16px;
+    -webkit-backdrop-filter: blur(8px);
+    -o-backdrop-filter: blur(8px);
+    -moz-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    box-sizing: border-box;
+    padding: 16px;
+    display: flex;
+    min-height: 40px;
+    overflow: hidden;
+}
+#menu-container ul {
+    width: 100%;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+#menu-container ul li {
+    background-color: var(--light-bg-grey);
+    font-size: 16px;
+    width: 100%;
+    border-bottom: 1px solid #dddddd;
+}
+#menu-container ul li a {
+    width: 100%;
+    text-align: left;
+    color: var(--off-black);
+    text-decoration: none;
+}
+#menu-container ul li a span {
+    display: inline-block;
+    width: 100%;
+    padding: 16px;
+    font-size: 20px;
+    font-weight: var(--medium);
+    box-sizing: border-box;
+}
+#menu-container ul li:last-child {
+    border-radius: 0 0 16px 16px;
+    border-bottom: none !important;
+}
+#login-text::before {
+    content: url("/static/images/user_menu_icon_484848.svg");
+    width: 20px;
+    height: 20px;
+    margin-right: 16px;
+    display: inline-block;
+    transform: translateY(2px);
+}
+#signup-text::before {
+    content: url("/static/images/create_icon.svg");
+    width: 20px;
+    height: 20px;
+    margin-right: 16px;
+    display: inline-block;
+    transform: translateY(2px);
+}
+#logout-text::before {
+    content: url("/static/images/logout.svg");
+    width: 20px;
+    height: 20px;
+    margin-right: 16px;
+    display: inline-block;
+    transform: translateY(2px);
+}
+#account-text::before {
+    content: url("/static/images/settings_icon.svg");
+    width: 20px;
+    height: 20px;
+    margin-right: 16px;
+    display: inline-block;
+    transform: translateY(2px);
+}
+#message-centre-text::before {
+    content: url("/static/images/message_icon.svg");
+    width: 20px;
+    height: 20px;
+    margin-right: 16px;
+    display: inline-block;
+    transform: translateY(2px);
+}
+#favourite-text::before {
+    content: url("/static/images/heart_icon.svg");
+    width: 20px;
+    height: 20px;
+    margin-right: 16px;
+    display: inline-block;
+    transform: translateY(2px);
+}
+#your-listings-text::before {
+    content: url("/static/images/listings_icon.svg");
+    width: 20px;
+    height: 20px;
+    margin-right: 16px;
+    display: inline-block;
+    transform: translateY(2px);
+}
+#new-listing-text::before {
+    content: url("/static/images/create_icon.svg");
+    width: 20px;
+    height: 20px;
+    margin-right: 16px;
+    display: inline-block;
+    transform: translateY(2px);
+}
+/* Footer styles */
+footer {
+    width: 100%;
+    background-color: var(--light-mid-bg-grey);
+    padding: 24px 8px;
+    box-sizing: border-box;
+        transform: translateY(2px);
 
-/* Nav bar responsive styles */
+
+}
