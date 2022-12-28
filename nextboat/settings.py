@@ -46,11 +46,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.humanize',
     'django.contrib.sites',
+    'storages',
+    'listings',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    'storages',
-    'listings',
+
 ]
 
 # django-allauth config
@@ -74,7 +75,7 @@ ROOT_URLCONF = 'nextboat.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR,'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -86,6 +87,8 @@ TEMPLATES = [
         },
     },
 ]
+
+
 
 WSGI_APPLICATION = 'nextboat.wsgi.application'
 
