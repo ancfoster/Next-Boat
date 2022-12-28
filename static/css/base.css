@@ -87,6 +87,7 @@ body {
     background-color: var(--light-mid-bg-grey);
     border-radius: 20px;
     position: relative;
+    cursor: pointer;
 }
 #menu-button-icon {
     position: absolute;
@@ -132,10 +133,10 @@ body {
     -moz-backdrop-filter: blur(8px);
     backdrop-filter: blur(8px);
     box-sizing: border-box;
-    padding: 16px;
-    display: flex;
-    min-height: 40px;
+    padding: 0px;
+    height: 0px;
     overflow: hidden;
+    display: hidden;
 }
 #menu-container ul {
     width: 100%;
