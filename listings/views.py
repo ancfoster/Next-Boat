@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.http import HttpResponseRedirect
-from .forms import ListingCreateForm
+from .forms import ListingCreateForm, ListingMediaForm
 from django.views import generic, View
 from django.views.generic import DetailView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
@@ -20,13 +20,11 @@ class ListingsList(generic.ListView):
 
 
 class ListingDetails(View):
-
     def get(self, request, id, *args, **kwargs):
         queryset = Listings.objects.all()
         listing = get_object_or_404(queryset, id=id)
         gallery_images = listing.listing_media.all()
-        preview_images = listing.listing_media.all()[:4]
-        
+        preview_images = listing.listing_media.all()[:4]        
         return render(
             request,
             "listings/listing_details.html",
@@ -37,26 +35,23 @@ class ListingDetails(View):
             },
         )
 
+@login_required
+def createListing(request):
+    listing_create_form = ListingCreateForm(request.POST)
+    if listing_create_form.is_valid():
+        form_obj = form.save()
+        form.save()
+        global listing_id_for_media
+        listing_id_for_media = form_obj.id
+    listing_media_form = ListingMediaForm(request.POST, request.FILES)
+    if listing_media_form.is_valid():
+        for image_uploaded in request.FILES.getlist('image'):
+            image_instance = ListingMedia.objects.create(listing=listing_id_for_media, image=image_uploaded)
+            image_instance.save()
+        return HttpResponse('OK')
+        return redirect('boats/')
+    return render(request, 'listings/listing_create_form.html', {'listing_create_form': listing_create_form, 'listing_media_form': listing_media_form})
 
-class ListingCreate(CreateView):
-    model = Listings
-    template_name = "listings/listing_create_form.html"
-    form_class = ListingCreateForm
-
-
-class ListingCreate(CreateView):
-    def get(self, request, *args, **kwargs):
-        context = {'form': ListingCreateForm()}
-        return render(request, 'listings/listing_create_form.html', context)
-
-    def post(self, request, *args, **kwargs):
-        form = ListingCreateForm(request.POST)
-        if form.is_valid():
-            listing = form.save(commit=False)
-            listing.created_by = request.user
-            listing.save()
-            return HttpResponseRedirect('')
-        return render(request, 'listings/listing_create_form.html', {'form': form})
 
 def home(request):
     return render(request, 'listings/index.html')
