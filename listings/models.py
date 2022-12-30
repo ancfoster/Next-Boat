@@ -646,3 +646,10 @@ class Listings(models.Model):
 class ListingMedia(models.Model):
     listing = models.ForeignKey(Listings,on_delete=models.CASCADE, related_name='listing_media')
     image = models.ImageField()
+
+    def __str__(self):
+        return f"{self.listing}"
+
+    def image_preview(self):
+        from django.utils.html import format_html
+        return format_html(f"<img src='{self.image.url}' height='150'>")
