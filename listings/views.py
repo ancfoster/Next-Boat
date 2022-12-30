@@ -1,9 +1,9 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.forms import modelformset_factory
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib import messages
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from .forms import ListingCreateForm, ListingMediaForm
 from django.views import generic, View
 from django.views.generic import DetailView
@@ -37,20 +37,26 @@ class ListingDetails(View):
 
 @login_required
 def createListing(request):
-    listing_create_form = ListingCreateForm(request.POST)
-    if listing_create_form.is_valid():
-        form_obj = form.save()
-        form.save()
-        global listing_id_for_media
-        listing_id_for_media = form_obj.id
-    listing_media_form = ListingMediaForm(request.POST, request.FILES)
-    if listing_media_form.is_valid():
-        for image_uploaded in request.FILES.getlist('image'):
-            image_instance = ListingMedia.objects.create(listing=listing_id_for_media, image=image_uploaded)
-            image_instance.save()
-        return HttpResponse('OK')
-        return redirect('boats/')
-    return render(request, 'listings/listing_create_form.html', {'listing_create_form': listing_create_form, 'listing_media_form': listing_media_form})
+    listing_create_form = ListingCreateForm(request.POST or None, request.FILES)
+    listing_media_form = ListingMediaForm(request.POST or None, request.FILES)
+    if request.method == 'POST':
+        if listing_create_form.is_valid() and listing_media_form.is_valid():
+            listing_create_form.instance.created_by = request.user
+            form = listing_create_form.save()
+            form.save()
+            new_listing_id = form.pk
+
+            # loop over images to upload multiple
+            for image_uploaded in request.FILES.getlist('image'):
+                image_instance = ListingMedia.objects.create(listing=form, image=image_uploaded)
+                image_instance.save()
+            return redirect('boat_listings')
+    template = 'listings/listing_create_form.html'
+    context = {
+        'listing_create_form': listing_create_form,
+        'listing_media_form': listing_media_form,
+    }
+    return render(request, template, context)
 
 
 def home(request):
