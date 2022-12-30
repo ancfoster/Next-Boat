@@ -1,6 +1,10 @@
 from django.contrib import admin
 from .models import Listings, ListingMedia
 
-# Register your models here.
+
+@admin.register(ListingMedia)
+class ListingMediaAdmin(admin.ModelAdmin):
+    list_display = ("listing", "image",)
+
+
 admin.site.register(Listings)
-admin.site.register(ListingMedia)
