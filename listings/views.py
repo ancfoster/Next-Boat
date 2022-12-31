@@ -41,6 +41,7 @@ def createListing(request):
         listing_create_form = ListingCreateForm(request.POST, request.FILES)
         listing_media_form = ListingMediaForm(request.POST, request.FILES)
         if listing_create_form.is_valid() and listing_media_form.is_valid():
+            listing_create_form.instancr.listing_status = 'A'
             listing_create_form.instance.created_by = request.user
             form = listing_create_form.save()
             form.save()
