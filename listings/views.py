@@ -37,27 +37,24 @@ class ListingDetails(View):
 
 @login_required
 def createListing(request):
-    listing_create_form = ListingCreateForm(request.POST or None, request.FILES)
-    listing_media_form = ListingMediaForm(request.POST or None, request.FILES)
     if request.method == 'POST':
+        listing_create_form = ListingCreateForm(request.POST, request.FILES)
+        listing_media_form = ListingMediaForm(request.POST, request.FILES)
         if listing_create_form.is_valid() and listing_media_form.is_valid():
             listing_create_form.instance.created_by = request.user
             form = listing_create_form.save()
             form.save()
             new_listing_id = form.pk
-
             # loop over images to upload multiple
             for image_uploaded in request.FILES.getlist('image'):
                 image_instance = ListingMedia.objects.create(listing=form, image=image_uploaded)
                 image_instance.save()
             return redirect('boat_listings')
-    template = 'listings/listing_create_form.html'
-    context = {
-        'listing_create_form': listing_create_form,
-        'listing_media_form': listing_media_form,
-    }
-    return render(request, template, context)
-
+    else:
+        listing_create_form = ListingCreateForm()
+        listing_media_form = ListingMediaForm()
+    context = {'listing_create_form': listing_create_form, 'listing_media_form': listing_media_form}
+    return render(request, 'listings/listing_create_form.html', context)
 
 def home(request):
     return render(request, 'listings/index.html')
