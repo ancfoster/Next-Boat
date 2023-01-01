@@ -1,26 +1,16 @@
 {% extends "listings/base.html" %}
-
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/listing_details.css' %}"> </link>
+{% endblock %}
 {% block content %}
-<br>
-<br>
-<br>
-<br>
-<br>
 
 <form method="post" enctype="multipart/form-data">
   {% csrf_token %}
+  {{ listing_create_form.type }}
 
-  <!-- {% if listing_create_form.errors %}
-    {% for key, value in listing_create_form.errors.items %}
-      {{key|escape}}<br>
-      {{value|escape}}
-    {% endfor %}
-  {% endif %} -->
-  
-  {{ listing_create_form.as_p }}
-  
-  {{ listing_media_form.as_p }}
-  <!-- <input type="submit" value="Submit Form 2"> -->
+  {{ listing_media_form.image }}
+
   <button type="submit">Submit Form</button>
 </form>
 
