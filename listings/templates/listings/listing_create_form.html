@@ -1,17 +1,65 @@
 {% extends "listings/base.html" %}
 {% load static %}
 {% block head %}
-<link rel="stylesheet" href="{% static 'css/listing_details.css' %}"> </link>
+<link rel="stylesheet" href="{% static 'css/create.css' %}"> </link>
 {% endblock %}
 {% block content %}
 
-<form method="post" enctype="multipart/form-data">
-  {% csrf_token %}
-  {{ listing_create_form.type }}
+<main>
+  <h1>Create a new listing</h1>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <h2>What kind of boat are you selling?</h2>
+    <div class="form-section-cont">
 
-  {{ listing_media_form.image }}
+    </div>
+    <h2>Price and Location</h2>
+    <div class="form-section-cont">
+      <h3>Price</h3>
+      <div id="price-cont">
+        <span id="currency-symbol">£</span>{{listing_create_form.price}}
+      </div>
+      <h3>Tax Status</h3>
+      <h3>Country</h3>
+        {{listing_create_form.country}}
+      <h3>Location</h3>
+        {{listing_create_form.location}}
 
-  <button type="submit">Submit Form</button>
-</form>
+    </div>
+    <h2>Particulars</h2>
+    <div class="form-section-cont">
 
+    </div>
+    <h2>Propulsion</h2>
+    <div class="form-section-cont">
+
+    </div>
+    <h2>Accomodation</h2>
+    <div class="form-section-cont">
+
+    </div>
+    <h2>Description</h2>
+    <div class="form-section-cont">
+
+    </div>
+    <h2>Features</h2>
+    <div class="form-section-cont">
+
+    </div>
+    <h2>Images</h2>
+    <div class="form-section-cont">
+
+    </div>
+    <h2>List</h2>
+    <div class="form-section-cont">
+
+    </div>
+
+    {{ listing_create_form.type }}
+  
+    {{ listing_media_form.image }}
+  
+    <button type="submit">Submit Form</button>
+  </form>
+</main>
 {% endblock %}
