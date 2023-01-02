@@ -12,6 +12,26 @@ class Listings(models.Model):
     BOAT_TYPE = [('P', 'Power'), ('S', 'Sail')]
     HULL_MATERIAL = [('F', 'Fibreglass/GRP'), ('S', 'Steel'), ('W', 'Wood'), ('A', 'Aluminium')]
     FUEL = [('D', 'Diesel' ), ('P', 'Petrol'), ('E', 'Electric'), ('N', 'None')]
+    COUNTRIES = [('BE', 'Belgium'),
+        ('CA', 'Canada'),
+        ('DE', 'Denmark'),
+        ('FI', 'Finland'),
+        ('FR', 'France'),
+        ('GE', 'Germany'),
+        ('GI', 'Gibraltar'),
+        ('GE', 'Greece'),
+        ('IR', 'Republic of Ireland'),
+        ('IT', 'Italy'),
+        ('MA', 'Malta'),
+        ('NE', 'Netherlands'),
+        ('NO', 'Norway'),
+        ('PO', 'Poland'),
+        ('PR', 'Portugal'),
+        ('ES', 'Spain'),
+        ('SV', 'Sweden'),
+        ('TK', 'Turkey'),
+        ('UK', 'United Kingdom'),
+        ('US', 'United States')]
 
     BOAT_MODELS_LIST = [
         ('M1', 'AB Inflatables'),
@@ -609,7 +629,7 @@ class Listings(models.Model):
     price = models.PositiveIntegerField(verbose_name="Price")
     tax_paid = models.CharField(choices=TAX_PAID_CHOICES, max_length=1, default='Y', verbose_name="Tax Status")
     condition = models.CharField(choices=CONDITION_CHOICES, max_length=1, verbose_name="Condition")
-    country = models.CharField(max_length=30, default="United Kingdom", verbose_name="Country")
+    country = models.CharField(choices=COUNTRIES, max_length=2, default='UK', verbose_name="Country")
     location = models.CharField(max_length=50, default="", blank=True)
     year_construction = models.PositiveSmallIntegerField(verbose_name="Year of Construction", validators=[MinValueValidator(1900), MaxValueValidator(2024)])
     length = models.DecimalField(decimal_places=2, max_digits=4, validators=[MinValueValidator(2.00), MaxValueValidator(50.00)], verbose_name="Length")
