@@ -18,7 +18,7 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: var(--light-bg-grey);
+    background-color: #F2F2F2;
     font-family: proxima-nova, sans-serif, Arial;
     font-weight: 400;
     box-sizing: border-box;

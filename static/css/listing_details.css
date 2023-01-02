@@ -93,8 +93,6 @@
     padding: 16px;
     border-radius: 16px;
     background-color: var(--white);
-    box-shadow: 0px 0px 8px 1px rgba(0, 0, 0, 0.1);
-    -webkit-box-shadow: 0px 0px 8px 1px rgba(0, 0, 0, 0.1);
     box-sizing: border-box;
 }
 .particulars-card-col-left {
