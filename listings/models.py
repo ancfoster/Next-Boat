@@ -623,7 +623,7 @@ class Listings(models.Model):
     number_of_engines = models.PositiveSmallIntegerField(verbose_name="Number of main engines or motors", validators=[MinValueValidator(0), MaxValueValidator(9)], default=0)
     maximum_speed = models.PositiveSmallIntegerField(verbose_name="Maximum Speed", validators=[MaxValueValidator(99)])
     cruising_speed = models.PositiveSmallIntegerField(verbose_name="Cruising Speed", validators=[MaxValueValidator(99)])
-    range = models.PositiveSmallIntegerField(verbose_name="Range", validators=[MaxValueValidator(6000)])
+    total_hp = models.PositiveSmallIntegerField(verbose_name="Total HP", validators=[MaxValueValidator(4000)], blank=True)
     cabins = models.PositiveSmallIntegerField(verbose_name="Cabins", validators=[MinValueValidator(0), MaxValueValidator(20)])
     berths = models.PositiveSmallIntegerField(verbose_name="Berths", validators=[MinValueValidator(0), MaxValueValidator(40)])
     heads = models.PositiveSmallIntegerField(verbose_name="Heads", validators=[MinValueValidator(0), MaxValueValidator(20)])
