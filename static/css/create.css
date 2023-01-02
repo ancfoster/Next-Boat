@@ -1,0 +1,106 @@
+/* Variables */
+:root {
+    /* Colours */
+    --accent-colour: #33CCCC;
+    --white: #ffffff;
+    --light-bg-grey: #fafafa;
+    --light-mid-bg-grey: #EBEBEB;
+    --light-text-grey: #666666;
+    --medium-grey: #484848;
+    --off-black: #333333;
+    --dark-black: #222222;
+
+    --form-field-bg-inactive: #fbfbfb;
+    --form-field-border-inactive: #d9d9d9;
+    /* Font weights */
+    --regular: 400;
+    --medium: 500;
+    --semibold: 600;
+    --bold: 700;
+}
+/* Heading styles */
+main {
+    width: 100%;
+    max-width: 960px;
+    box-sizing: border-box;
+    margin: 56px auto 24px auto;
+    display: flex;
+    padding: 0 8px;
+    flex-direction: column;
+    justify-content: center;
+}
+form {
+    display: flex;
+    flex-direction: column;
+}
+.form-section-cont {
+    width: 100%;
+    background-color: #ffffff;
+    border-radius: 16px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    margin: 8px 0;
+}
+input[type=text] {
+    width: 100%;
+    max-width: 320px;
+    font-size: 16px;
+    background-color: var(--form-field-bg-inactive);
+    border: 2px solid var(--form-field-border-inactive);
+    font-weight: var(--medium);
+    padding: 8px;
+    margin: 4px auto;
+    border-radius: 8px;
+}
+input[type=text]:active {
+    border: 2px solid var(--accent-colour);
+}
+input[type=number] {
+    width: 100%;
+    max-width: 320px;
+    font-size: 16px;
+    background-color: var(--form-field-bg-inactive);
+    border: 2px solid var(--form-field-border-inactive);
+    font-weight: var(--medium);
+    padding: 8px;
+    margin: 4px auto;
+    border-radius: 8px;
+}
+input[type=number]:active {
+    border: 2px solid var(--accent-colour);
+}
+select {
+    max-width: 340px;
+    width: 100%;
+    border-radius: 8px;
+    background-color: var(--form-field-bg-inactive);
+    border: 2px solid var(--form-field-border-inactive);
+    padding: 8px;
+    font-size: 16px;
+    font-weight: var(--medium);
+    margin: 4px auto;
+}
+#price-cont {
+    width: 100%;
+    max-width: 320px;
+    font-size: 16px;
+    background-color: var(--form-field-bg-inactive);
+    border: 2px solid var(--form-field-border-inactive);
+    border-radius: 8px;
+    margin: 4px auto;
+}
+#price-cont input[type=number] {
+    width: calc(100% - 54px) ;
+    background-color: var(--form-field-bg-inactive);
+    border: none !important;
+    padding: 8px;
+    font-size: 16px;
+    font-weight: var(--medium);
+}
+#currency-symbol {
+    font-size: 20px;
+    margin: 0 12px;
+    font-weight: var(--medium);
+    color: var(--medium-grey);
+}

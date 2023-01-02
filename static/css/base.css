@@ -8,13 +8,13 @@
     --light-text-grey: #666666;
     --medium-grey: #484848;
     --off-black: #333333;
+    --dark-black: #222222;
     /* Font weights */
     --regular: 400;
     --medium: 500;
     --semibold: 600;
     --bold: 700;
 }
-  
 body {
     margin: 0;
     padding: 0;
@@ -22,6 +22,28 @@ body {
     font-family: proxima-nova, sans-serif, Arial;
     font-weight: 400;
     box-sizing: border-box;
+}
+/* Heading styles */
+h1 {
+    color: var(--dark-black);
+    font-weight: var(--semibold);
+    font-size: 32px;
+    padding: 16px 0;
+    margin: 0 auto;
+}
+h2 {
+    color: var(--off-black);
+    font-weight: var(--bold);
+    font-size: 24px;
+    padding: 12px 0;
+    margin: 0 auto;
+}
+h3 {
+    color: var(--off-black);
+    font-weight: var(--semibold);
+    font-size: 20px;
+    padding: 8px 0;
+    margin: 0 auto;
 }
 /* Navigation bar styles */
 #nav-bar-container {
