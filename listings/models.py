@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.core.validators import MaxValueValidator, MinValueValidator
+from django.core.validators import MaxValueValidator, MinValueValidator, MaxLengthValidator
 
 # Create your models here.
 class Listings(models.Model):
@@ -616,7 +616,7 @@ class Listings(models.Model):
     beam = models.DecimalField(decimal_places=2, max_digits=4, validators=[MinValueValidator(2.00), MaxValueValidator(15.00)], verbose_name="Beam")
     draft = models.DecimalField(decimal_places=2, max_digits=4, validators=[MinValueValidator(0.20), MaxValueValidator(5.00)], verbose_name="Draft")
     weight = models.PositiveIntegerField(validators=[MinValueValidator(25), MaxValueValidator(500000)], verbose_name="Weight")
-    type = models.CharField(choices=BOAT_TYPE, max_length=1, verbose_name="Type")
+    type = models.CharField(choices=BOAT_TYPE, max_length=1, verbose_name="Type", default="P")
     category = models.CharField(max_length=30, verbose_name="Category", default="Cruiser")
     hull_material = models.CharField(choices=HULL_MATERIAL, max_length=1, verbose_name="Hull Material")
     fuel = models.CharField(choices=FUEL, max_length=1, verbose_name='Fuel Type')
@@ -629,8 +629,8 @@ class Listings(models.Model):
     heads = models.PositiveSmallIntegerField(verbose_name="Heads", validators=[MinValueValidator(0), MaxValueValidator(20)])
     cabin_headroom = models.PositiveSmallIntegerField(verbose_name="Cabin Headroom", validators=[MinValueValidator(0), MaxValueValidator(20)], blank=True, null=True)
     listing_excerpt = models.CharField(max_length=66, verbose_name="Short Description")
-    listing_description = models.CharField(max_length=2500, verbose_name="Boat Description")
-    boat_feature_list = models.CharField(blank=True, max_length=7000, default='')
+    listing_description = models.TextField(max_length=5000, blank=True, validators=[MaxLengthValidator(5000)])
+    boat_feature_list = models.CharField(blank=True, max_length=3500, default='')
     featured_image = models.ImageField(verbose_name='Featured Image')
 
     def __str__(self):
