@@ -9,7 +9,7 @@
     --medium-grey: #484848;
     --off-black: #333333;
     --dark-black: #222222;
-
+    --form-field-bg-hover: #d5d5d5;
     --form-field-bg-inactive: #fbfbfb;
     --form-field-border-inactive: #d9d9d9;
     /* Font weights */
@@ -37,35 +37,41 @@ form {
     width: 100%;
     background-color: #ffffff;
     border-radius: 16px;
-    padding: 16px;
+    padding: 16px 16px 32px 16px;
     display: flex;
     flex-direction: column;
     margin: 8px 0;
+    box-sizing: border-box;
 }
 input[type=text] {
     width: 100%;
-    max-width: 320px;
-    font-size: 16px;
+    max-width: 340px;
+    font-size: 20px;
     background-color: var(--form-field-bg-inactive);
     border: 2px solid var(--form-field-border-inactive);
     font-weight: var(--medium);
     padding: 8px;
     margin: 4px auto;
     border-radius: 8px;
+    box-sizing: border-box;
 }
-input[type=text]:active {
+input[type=text]:focus {
     border: 2px solid var(--accent-colour);
+    background-color: var(--white);
 }
 input[type=number] {
     width: 100%;
     max-width: 320px;
-    font-size: 16px;
+    font-size: 20px;
     background-color: var(--form-field-bg-inactive);
     border: 2px solid var(--form-field-border-inactive);
     font-weight: var(--medium);
     padding: 8px;
     margin: 4px auto;
     border-radius: 8px;
+}
+input[type=number]:focus {
+    background-color: var(--white);
 }
 input[type=number]:active {
     border: 2px solid var(--accent-colour);
@@ -76,15 +82,18 @@ select {
     border-radius: 8px;
     background-color: var(--form-field-bg-inactive);
     border: 2px solid var(--form-field-border-inactive);
-    padding: 8px;
+    height: 44px;
     font-size: 16px;
     font-weight: var(--medium);
     margin: 4px auto;
 }
+select:focus {
+    background-color: var(--white);
+}
 #price-cont {
     width: 100%;
-    max-width: 320px;
-    font-size: 16px;
+    max-width: 340px;
+    font-size: 20px;
     background-color: var(--form-field-bg-inactive);
     border: 2px solid var(--form-field-border-inactive);
     border-radius: 8px;
@@ -94,9 +103,12 @@ select {
     width: calc(100% - 54px) ;
     background-color: var(--form-field-bg-inactive);
     border: none !important;
-    padding: 8px;
-    font-size: 16px;
+    padding: 6px;
+    font-size: 20px;
     font-weight: var(--medium);
+}
+#price-cont input[type=number]:active {
+    border: 2px solid var(--accent-colour);
 }
 #currency-symbol {
     font-size: 20px;
@@ -104,3 +116,58 @@ select {
     font-weight: var(--medium);
     color: var(--medium-grey);
 }
+label {
+    display: block;
+    width: 100%;
+    max-width: 336px;
+    padding: 0 8px;
+    margin: 8px auto;
+    font-size: 16px;
+    font-weight: var(--regular);
+    color: #484848;
+    text-align: left;
+}
+.radio-cont-2 {
+    max-width: 340px;
+    box-sizing: border-box;
+    width: 100%;
+    margin: 8px auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.radio-cont-2 label {
+    width: calc(50% - 4px);
+    height: auto;
+    position: relative;
+    padding: 0;
+    margin: 0;
+}
+.radio-cont-2:first-child {
+    margin-right: 4px;
+}
+.radio-cont-2:last-child {
+    margin-left: 4px;
+}
+.radio-div-2 {
+    background-color: var(--form-field-bg-inactive);
+    border: solid 2px var(--form-field-border-inactive);
+    border-radius: 8px;
+    width: 100%;
+    height: 44px;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+.hidden-radio {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+.radio-cont-2 [type=radio]:checked + div {
+    border: 2px solid var(--accent-colour);
+  }
