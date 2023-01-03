@@ -11,7 +11,22 @@
     {% csrf_token %}
     <h2>What kind of boat are you selling?</h2>
     <div class="form-section-cont">
-
+      <h3>Condition</h3>
+      <div class="radio-cont-2">
+        <label>
+          <input type="radio" class="hidden-radio" value="U" checked name="condition_field">
+          <div class="radio-div-2">Used</div>
+        </label>
+        <label>
+          <input type="radio" class="hidden-radio" value="N" name="condition_field">
+          <div class="radio-div-2">New</div>
+        </label>
+      </div>
+      <h3>What's the make & model?</h3>
+      <label for="make">Make</label>
+      {{ listing_create_form.make }}
+      <label for="model">Model</label>
+      {{ listing_create_form.model }}
     </div>
     <h2>Price and Location</h2>
     <div class="form-section-cont">
@@ -20,6 +35,16 @@
         <span id="currency-symbol">£</span>{{listing_create_form.price}}
       </div>
       <h3>Tax Status</h3>
+      <div class="radio-cont-2">
+        <label>
+          <input type="radio" class="hidden-radio" value="Y" checked name="tax_status_field">
+          <div class="radio-div-2">Paid</div>
+        </label>
+        <label>
+          <input type="radio" class="hidden-radio" value="N" name="tax_status_field">
+          <div class="radio-div-2">Unpaid</div>
+        </label>
+      </div>
       <h3>Country</h3>
         {{listing_create_form.country}}
       <h3>Location</h3>
@@ -50,10 +75,7 @@
     <div class="form-section-cont">
 
     </div>
-    <h2>List</h2>
-    <div class="form-section-cont">
-
-    </div>
+  
 
     {{ listing_create_form.type }}
   
