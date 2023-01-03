@@ -10,9 +10,19 @@ class ListingCreateForm(forms.ModelForm):
                     "enctype": "multipart/form-data"
                 }
             ),
+            "boat_feature_list": forms.HiddenInput(
+                attrs={'id':'feature_list_arr'}
+            ),
+            "type": forms.RadioSelect(
+                attrs={'id':'boat_type'}
+            ),
+            "price": forms.NumberInput(
+                attrs={'id':'price-field'}
+            ),
         }
+        test = forms.FloatField( widget=forms.HiddenInput(attrs={'id':'some-custom-test-id'}))
         fields = "__all__"
-        exclude = ("created_by", "created_on", "last_modified",)
+        exclude = ("created_by", "created_on", "last_modified", "listing_status", )
 
 class ListingMediaForm(forms.ModelForm):
     class Meta:
