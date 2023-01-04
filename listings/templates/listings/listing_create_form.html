@@ -9,8 +9,21 @@
   <h1>Create a new listing</h1>
   <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
+    {{ listing_create_form.condition }}
+    {{ listing_create_form.tax_paid }}
     <h2>What kind of boat are you selling?</h2>
     <div class="form-section-cont">
+      <h3>Boat Type</h3>
+      <div class="radio-cont-2">
+        <label>
+          <input type="radio" class="hidden-radio" value="P" checked name="type_field">
+          <div class="radio-div-2">Power</div>
+        </label>
+        <label>
+          <input type="radio" class="hidden-radio" value="S" name="type_field">
+          <div class="radio-div-2">Sail</div>
+        </label>
+      </div>
       <h3>Condition</h3>
       <div class="radio-cont-2">
         <label>
@@ -30,9 +43,9 @@
     </div>
     <h2>Price and Location</h2>
     <div class="form-section-cont">
-      <h3>Price</h3>
-      <div id="price-cont">
-        <span id="currency-symbol">£</span>{{listing_create_form.price}}
+      <label for=""><h3>Price</h3></label>
+      <div class="num-input-cont">
+        <span class="unit-symbol">£</span>{{listing_create_form.price}}
       </div>
       <h3>Tax Status</h3>
       <div class="radio-cont-2">
@@ -53,7 +66,34 @@
     </div>
     <h2>Particulars</h2>
     <div class="form-section-cont">
-
+      <div class="wrap-flex">
+        <div class="particular-half-col">
+          <label for="id_length">Length</label>
+          <div class="num-input-cont">
+            {{listing_create_form.length}}<span class="unit-symbol">m</span>
+          </div>
+        </div>
+        <div class="particular-half-col">
+          <label for="id_beam">Beam</label>
+          <div class="num-input-cont">
+            {{listing_create_form.beam}}<span class="unit-symbol">m</span>
+          </div>
+        </div>
+        <div class="particular-half-col">
+          <label for="id_draft">Draft</label>
+          <div class="num-input-cont">
+            {{listing_create_form.draft}}<span class="unit-symbol">m</span>
+          </div>
+        </div>
+        <div class="particular-half-col">
+          <label for="id_weight">Weight</label>
+          <div class="num-input-cont">
+            {{listing_create_form.weight}}<span class="unit-symbol" id="kg-unit">kg</span>
+          </div>
+        </div>
+      </div>
+      <label for="id_draft">Hull Material</label>
+      {{ listing_create_form.hull_material }}
     </div>
     <h2>Propulsion</h2>
     <div class="form-section-cont">
