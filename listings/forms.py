@@ -10,15 +10,13 @@ class ListingCreateForm(forms.ModelForm):
                     "enctype": "multipart/form-data"
                 }
             ),
-            "boat_feature_list": forms.HiddenInput(
-                attrs={'id':'feature_list_arr'}
+            "boat_feature_list": forms.HiddenInput(),
+            "type": forms.HiddenInput(
             ),
-            "type": forms.RadioSelect(
-                attrs={'id':'boat_type'}
-            ),
-            "price": forms.NumberInput(
-                attrs={'id':'price-field'}
-            ),
+            "condition": forms.HiddenInput(),
+            "tax_paid": forms.HiddenInput(),
+            "category": forms.HiddenInput(),
+
         }
         test = forms.FloatField( widget=forms.HiddenInput(attrs={'id':'some-custom-test-id'}))
         fields = "__all__"
