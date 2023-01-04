@@ -647,7 +647,6 @@ class Listings(models.Model):
     cabins = models.PositiveSmallIntegerField(verbose_name="Cabins", validators=[MinValueValidator(0), MaxValueValidator(20)])
     berths = models.PositiveSmallIntegerField(verbose_name="Berths", validators=[MinValueValidator(0), MaxValueValidator(40)])
     heads = models.PositiveSmallIntegerField(verbose_name="Heads", validators=[MinValueValidator(0), MaxValueValidator(20)])
-    cabin_headroom = models.PositiveSmallIntegerField(verbose_name="Cabin Headroom", validators=[MinValueValidator(0), MaxValueValidator(20)], blank=True, null=True)
     listing_excerpt = models.CharField(max_length=66, verbose_name="Short Description")
     listing_description = models.TextField(max_length=5000, blank=True, validators=[MaxLengthValidator(5000)])
     boat_feature_list = models.CharField(blank=True, max_length=3500, default='')
