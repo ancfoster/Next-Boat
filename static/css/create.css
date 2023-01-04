@@ -91,7 +91,7 @@ select {
 select:focus {
     background-color: var(--white);
 }
-#price-cont {
+.num-input-cont {
     width: 100%;
     max-width: 340px;
     font-size: 20px;
@@ -100,22 +100,26 @@ select:focus {
     border-radius: 8px;
     margin: 4px auto;
 }
-#price-cont input[type=number] {
-    width: calc(100% - 54px) ;
+.num-input-cont input[type=number] {
+    width: calc(100% - 58px);
     background-color: var(--form-field-bg-inactive);
     border: none !important;
     padding: 6px;
     font-size: 20px;
     font-weight: var(--medium);
+    margin-left: 4px;
 }
-#price-cont input[type=number]:active {
+.num-input-cont input[type=number]:active {
     border: 2px solid var(--accent-colour);
 }
-#currency-symbol {
+.unit-symbol {
     font-size: 20px;
     margin: 0 12px;
     font-weight: var(--medium);
     color: var(--medium-grey);
+}
+#kg-unit {
+    margin: 0 12px 0 8px;
 }
 label {
     display: block;
@@ -172,4 +176,22 @@ label {
 }
 .radio-cont-2 [type=radio]:checked + div {
     border: 2px solid var(--accent-colour);
-  }
+}
+.wrap-flex {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 338px;
+    justify-content: space-between;
+    margin: 0 auto;
+}
+.particular-half-col {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    width: calc(50% - 6px);
+    max-width: 340px;
+    margin: 0;
+    box-sizing: border-box;
+}
