@@ -86,6 +86,7 @@ select {
     font-size: 16px;
     font-weight: var(--medium);
     margin: 4px auto;
+    padding: 0 8px;
 }
 select:focus {
     background-color: var(--white);
@@ -120,12 +121,13 @@ label {
     display: block;
     width: 100%;
     max-width: 336px;
-    padding: 0 8px;
+    padding: 0;
     margin: 8px auto;
     font-size: 16px;
     font-weight: var(--regular);
     color: #484848;
     text-align: left;
+    box-sizing: border-box;
 }
 .radio-cont-2 {
     max-width: 340px;
