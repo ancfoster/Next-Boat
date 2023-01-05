@@ -88,7 +88,7 @@
         <div class="particular-half-col">
           <label for="id_weight">Weight</label>
           <div class="num-input-cont">
-            {{listing_create_form.weight}}<span class="unit-symbol" id="kg-unit">kg</span>
+            {{listing_create_form.weight}}<span class="two-digit-unit">kg</span>
           </div>
         </div>
       </div>
@@ -97,11 +97,58 @@
     </div>
     <h2>Propulsion</h2>
     <div class="form-section-cont">
-
+      <div class="wrap-flex">
+        <div class="particular-half-col">
+          <label for="id_length">Number of engines</label>
+          <div class="num-input-cont">
+            {{listing_create_form.number_of_engines }}
+          </div>
+        </div>
+        <div class="particular-half-col">
+          <label for="id_beam">Total HP</label>
+          <div class="num-input-cont">
+            {{listing_create_form.total_hp }}<span class="unit-symbol">m</span>
+          </div>
+        </div>
+        <div class="particular-half-col">
+          <label for="id_draft">Maximum Speed</label>
+          <div class="num-input-cont">
+            {{listing_create_form.maximum_speed}}<span class="two-digit-unit">Kn</span>
+          </div>
+        </div>
+        <div class="particular-half-col">
+          <label for="id_weight">Cruising Speed</label>
+          <div class="num-input-cont">
+            {{listing_create_form.cruising_speed}}<span class="two-digit-unit">Kn</span>
+          </div>
+        </div>
+      </div>
+      <label for="id_draft">Fuel</label>
+      {{ listing_create_form.fuel }}
+    </div>
     </div>
     <h2>Accomodation</h2>
     <div class="form-section-cont">
-
+      <div class="wrap-flex">
+        <div class="particular-half-col">
+          <label for="id_length">Cabins</label>
+          <div class="num-input-cont">
+            {{listing_create_form.cabins }}
+          </div>
+        </div>
+        <div class="particular-half-col">
+          <label for="id_beam">Berths</label>
+          <div class="num-input-cont">
+            {{listing_create_form.berths }}
+          </div>
+        </div>
+        <div class="particular-half-col">
+          <label for="id_draft">Heads</label>
+          <div class="num-input-cont">
+            {{listing_create_form.heads}}
+          </div>
+        </div>
+      </div>
     </div>
     <h2>Description</h2>
     <div class="form-section-cont">
