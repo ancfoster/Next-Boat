@@ -7,9 +7,12 @@
 
 <main>
   <h1>Create a new listing</h1>
-  <form method="post" enctype="multipart/form-data">
+  <form method="post" id="create-form" enctype="multipart/form-data">
     {% csrf_token %}
     {{ listing_create_form.condition }}
+    {{ listing_create_form.boat_feature_list }}
+    {{ listing_create_form.category }}
+    {{ listing_create_form.type }}
     {{ listing_create_form.tax_paid }}
     <h2>What kind of boat are you selling?</h2>
     <div class="form-section-cont">
@@ -158,14 +161,14 @@
     <div class="form-section-cont">
       <label for="id_listing_excerpt">Short excerpt</label>
       {{listing_create_form.listing_excerpt}}
-      <div class="field-count" id="excerpt-length"></div>
+      <div class="field-char-count" id="excerpt-length"></div>
       <div class="form-tip">
         <image alt="" src="{% static 'images/information_icon.svg' %}"></image>
           <span>The excerpt is a short description that appears in search results.          </span>
       </div>
       <label for="id_listing_description">Description</label>
       {{listing_create_form.listing_description}}
-      <div class="field-count" id="description-length"></div>
+      <div class="field-char-count" id="description-length"></div>
       <div class="form-tip">
         <image alt="" src="{% static 'images/information_icon.svg' %}"></image>
           <span>Buyers love a detailed description. A well written and informative description can lead to a better sale price and more potential buyers.</span>
