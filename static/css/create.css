@@ -25,7 +25,7 @@ main {
     box-sizing: border-box;
     margin: 56px auto 24px auto;
     display: flex;
-    padding: 0 8px;
+    padding: 0 16px;
     flex-direction: column;
     justify-content: center;
 }
@@ -99,6 +99,7 @@ select:focus {
     border: 2px solid var(--form-field-border-inactive);
     border-radius: 8px;
     margin: 4px auto;
+    box-sizing: border-box;
 }
 .num-input-cont input[type=number] {
     width: calc(100% - 58px);
@@ -118,8 +119,11 @@ select:focus {
     font-weight: var(--medium);
     color: var(--medium-grey);
 }
-#kg-unit {
-    margin: 0 12px 0 8px;
+.two-digit-unit {
+    margin: 0 12px 0 6px;
+    font-weight: var(--medium);
+    color: var(--medium-grey);
+    font-size: 20px;
 }
 label {
     display: block;
@@ -194,4 +198,42 @@ label {
     max-width: 340px;
     margin: 0;
     box-sizing: border-box;
+}
+textarea {
+    width: 100%;
+    max-width: 340px;
+    font-size: 20px;
+    background-color: var(--form-field-bg-inactive);
+    border: 2px solid var(--form-field-border-inactive);
+    font-weight: var(--medium);
+    padding: 8px;
+    margin: 4px auto;
+    border-radius: 8px;
+    box-sizing: border-box;
+    resize:none;
+    height: 120px;
+}
+textarea:focus {
+    border: 2px solid var(--accent-colour);
+    background-color: var(--white);
+}
+.form-tip {
+    width: 100%;
+    max-width: 340px;
+    background-color: #e4f7f7;
+    border-radius: 8px;
+    font-size: 16px;
+    color: var(--light-text-grey);
+    margin: 8px auto;
+    box-sizing: border-box;
+    padding: 8px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    line-height: 18px;
+}
+.form-tip img {
+    height: 24px;
+    width: 24px;
+    margin: 4px 8px 0 4px;
 }
