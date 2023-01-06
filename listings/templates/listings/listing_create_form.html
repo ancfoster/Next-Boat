@@ -15,23 +15,23 @@
     <div class="form-section-cont">
       <h3>Boat Type</h3>
       <div class="radio-cont-2">
-        <label>
-          <input type="radio" class="hidden-radio" value="P" checked name="type_field">
+        <label for="power-radio">
+          <input type="radio" class="hidden-radio" id="power-radio" value="P" checked name="type_field">
           <div class="radio-div-2">Power</div>
         </label>
-        <label>
-          <input type="radio" class="hidden-radio" value="S" name="type_field">
+        <label for="sail-radio">
+          <input type="radio" class="hidden-radio" id="sail-radio" value="S" name="type_field">
           <div class="radio-div-2">Sail</div>
         </label>
       </div>
       <h3>Condition</h3>
       <div class="radio-cont-2">
-        <label>
-          <input type="radio" class="hidden-radio" value="U" checked name="condition_field">
+        <label for="used-radio">
+          <input type="radio" class="hidden-radio" id="used-radio" value="U" checked name="condition_field">
           <div class="radio-div-2">Used</div>
         </label>
-        <label>
-          <input type="radio" class="hidden-radio" value="N" name="condition_field">
+        <label for="new-radio">
+          <input type="radio" class="hidden-radio" id="new-radio" value="N" name="condition_field">
           <div class="radio-div-2">New</div>
         </label>
       </div>
@@ -43,20 +43,24 @@
     </div>
     <h2>Price and Location</h2>
     <div class="form-section-cont">
-      <label for=""><h3>Price</h3></label>
+      <label for="id_price"><h3>Price</h3></label>
       <div class="num-input-cont">
         <span class="unit-symbol">£</span>{{listing_create_form.price}}
       </div>
       <h3>Tax Status</h3>
       <div class="radio-cont-2">
-        <label>
-          <input type="radio" class="hidden-radio" value="Y" checked name="tax_status_field">
+        <label for="paid-radio">
+          <input type="radio" class="hidden-radio" id="paid-radio" value="Y" checked name="tax_status_field">
           <div class="radio-div-2">Paid</div>
         </label>
-        <label>
-          <input type="radio" class="hidden-radio" value="N" name="tax_status_field">
+        <label for="unpaid-radio">
+          <input type="radio" class="hidden-radio" id="unpaid-radio" value="N" name="tax_status_field">
           <div class="radio-div-2">Unpaid</div>
         </label>
+      </div>
+      <div class="form-tip">
+        <image alt="" src="{% static 'images/information_icon.svg' %}"></image>
+          <span>Has VAT been paid in the EU/UK when imported or originally sold?</span>
       </div>
       <h3>Country</h3>
         {{listing_create_form.country}}
@@ -92,38 +96,38 @@
           </div>
         </div>
       </div>
-      <label for="id_draft">Hull Material</label>
+      <label for="id_hull_material">Hull Material</label>
       {{ listing_create_form.hull_material }}
     </div>
     <h2>Propulsion</h2>
     <div class="form-section-cont">
       <div class="wrap-flex">
         <div class="particular-half-col">
-          <label for="id_length">Number of engines</label>
+          <label for="id_number_of_engines">Number of engines</label>
           <div class="num-input-cont">
             {{listing_create_form.number_of_engines }}
           </div>
         </div>
         <div class="particular-half-col">
-          <label for="id_beam">Total HP</label>
+          <label for="id_total_hp">Total HP</label>
           <div class="num-input-cont">
-            {{listing_create_form.total_hp }}<span class="unit-symbol">m</span>
+            {{listing_create_form.total_hp }}<span class="two-digit-unit">hp</span>
           </div>
         </div>
         <div class="particular-half-col">
-          <label for="id_draft">Maximum Speed</label>
+          <label for="id_maximum_speed">Maximum Speed</label>
           <div class="num-input-cont">
             {{listing_create_form.maximum_speed}}<span class="two-digit-unit">Kn</span>
           </div>
         </div>
         <div class="particular-half-col">
-          <label for="id_weight">Cruising Speed</label>
+          <label for="id_crusing_speed">Cruising Speed</label>
           <div class="num-input-cont">
             {{listing_create_form.cruising_speed}}<span class="two-digit-unit">Kn</span>
           </div>
         </div>
       </div>
-      <label for="id_draft">Fuel</label>
+      <label for="id_fuel">Fuel</label>
       {{ listing_create_form.fuel }}
     </div>
     </div>
@@ -131,19 +135,19 @@
     <div class="form-section-cont">
       <div class="wrap-flex">
         <div class="particular-half-col">
-          <label for="id_length">Cabins</label>
+          <label for="id_cabins">Cabins</label>
           <div class="num-input-cont">
             {{listing_create_form.cabins }}
           </div>
         </div>
         <div class="particular-half-col">
-          <label for="id_beam">Berths</label>
+          <label for="id_berths">Berths</label>
           <div class="num-input-cont">
             {{listing_create_form.berths }}
           </div>
         </div>
         <div class="particular-half-col">
-          <label for="id_draft">Heads</label>
+          <label for="id_heads">Heads</label>
           <div class="num-input-cont">
             {{listing_create_form.heads}}
           </div>
@@ -152,7 +156,18 @@
     </div>
     <h2>Description</h2>
     <div class="form-section-cont">
-
+      <label for="id_listing_excerpt">Short excerpt</label>
+      {{listing_create_form.listing_excerpt}}
+      <div class="form-tip">
+        <image alt="" src="{% static 'images/information_icon.svg' %}"></image>
+          <span>The excerpt is a short description that appears in search results.          </span>
+      </div>
+      <label for="id_listing_description">Description</label>
+      {{listing_create_form.listing_description}}
+      <div class="form-tip">
+        <image alt="" src="{% static 'images/information_icon.svg' %}"></image>
+          <span>Buyers love a detailed description. A well written and informative description can lead to a better sale price and more potential buyers.</span>
+      </div>
     </div>
     <h2>Features</h2>
     <div class="form-section-cont">
@@ -160,7 +175,11 @@
     </div>
     <h2>Images</h2>
     <div class="form-section-cont">
-
+      <label>Featured Image</label>
+      <div class="form-tip">
+        <image alt="" src="{% static 'images/information_icon.svg' %}"></image>
+          <span>This image will appear in search results, pick the best image of your boat and make a great first impression.</span>
+      </div>
     </div>
   
 
