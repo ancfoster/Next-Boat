@@ -10,13 +10,11 @@ class ListingCreateForm(forms.ModelForm):
                     "enctype": "multipart/form-data"
                 }
             ),
-            "boat_feature_list": forms.HiddenInput(),
-            "type": forms.HiddenInput(
-            ),
+            "boat_feature_list": forms.HiddenInput(attrs={'required': 'false' }),
+            "type": forms.HiddenInput(),
             "condition": forms.HiddenInput(),
             "tax_paid": forms.HiddenInput(),
             "category": forms.HiddenInput(),
-
         }
         test = forms.FloatField( widget=forms.HiddenInput(attrs={'id':'some-custom-test-id'}))
         fields = "__all__"
