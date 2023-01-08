@@ -176,7 +176,16 @@
     </div>
     <h2>Features</h2>
     <div class="form-section-cont">
-
+      <label for="add_feature_text">Add a feature:</label>
+      <div id="feature-form-flex">
+        <input type="text" maxlength="40" id="add_feature_text"><button type="button" disabled="disabled" id="add_feature_button">Add</button>      </div>
+      <div id="feature-flex-list">
+          <span id="add-feature-text">Begin by adding a feature.</span>
+      </div>
+        <div class="form-tip">
+        <image alt="" src="{% static 'images/information_icon.svg' %}"></image>
+          <span>Add boat features to your listing e.g bow thruster, watermaker, radar</span>
+      </div>
     </div>
     <h2>Images</h2>
     <div class="form-section-cont">
@@ -186,12 +195,6 @@
           <span>This image will appear in search results, pick the best image of your boat and make a great first impression.</span>
       </div>
     </div>
-  
-
-    {{ listing_create_form.type }}
-  
-    {{ listing_media_form.image }}
-  
     <button type="submit">Submit Form</button>
   </form>
 </main>
