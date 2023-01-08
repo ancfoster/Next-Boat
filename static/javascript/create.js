@@ -16,6 +16,15 @@ const addFeatureField = document.getElementById('add_feature_text');
 const addfeatureButton = document.getElementById('add_feature_button');
 const featureFlex = document.getElementById('feature-flex-list');
 
+// If add feature field is less than two characters in length add button is disabled
+addFeatureField.addEventListener('input', checkFeatureField);
+function checkFeatureField(e) {
+    if(addFeatureField.value.length > 2) {
+        addfeatureButton.disabled = false;
+    }
+}
+
+// Create event listener for when delete icons are clicked by user, then calculate child item of list item and call delete function
 featureFlex.addEventListener('click', e => {
     if(e.target.classList.contains('delete_list_item')) {
         let itemDivToDelete = e.target.parentElement;
@@ -26,6 +35,7 @@ featureFlex.addEventListener('click', e => {
     }
 })
 
+// This function deletes selected boat feature and updates the hidden form field.
 function deleteFeature(itemIndex) {
     updatedItemIndex = itemIndex - 1;
     featureArray.pop(updatedItemIndex)
@@ -68,6 +78,7 @@ addfeatureButton.addEventListener('click', () => {
         addFeatureField.value = '';
         idBoatFeatureList.value = idBoatFeatureList.value + "^%" + newItem;
     }
+    addfeatureButton.disabled = true;
 } )
 
 // These two functions count & display how many characters have been inputted into the excerpt & description form fields
