@@ -10,6 +10,65 @@ const idBoatFeatureList = document.getElementById('id_boat_feature_list')
 const idCategory = document.getElementById('id_category')
 const idType = document.getElementById('id_type')
 const idTaxPaid = document.getElementById('id_tax_paid')
+// Feature list variables
+let featureArray = [];
+const addFeatureField = document.getElementById('add_feature_text');
+const addfeatureButton = document.getElementById('add_feature_button');
+const featureFlex = document.getElementById('feature-flex-list');
+
+featureFlex.addEventListener('click', e => {
+    if(e.target.classList.contains('delete_list_item')) {
+        let itemDivToDelete = e.target.parentElement;
+        featureFlexNode = itemDivToDelete.parentNode;
+        let itemIndex = Array.from(featureFlexNode.children).indexOf(itemDivToDelete);
+        deleteFeature(itemIndex);
+        itemDivToDelete.remove();
+    }
+})
+
+function deleteFeature(itemIndex) {
+    updatedItemIndex = itemIndex - 1;
+    featureArray.pop(updatedItemIndex)
+    tempFeatureList = '';
+    if(featureArray.length === 0) {
+        featureFlex.innerHTML = `
+        <span id="add-feature-text">Begin by adding a feature.</span>`;
+        idBoatFeatureList.value = '';
+    } else {
+    for(i=0; i < featureArray.length; i++) {
+        if(i < featureArray.length) {
+            tempFeatureList = tempFeatureList + featureArray[i] + '^*';
+        } else {
+            tempFeatureList = tempFeatureList + featureArray[i];
+        }
+    }
+    idBoatFeatureList.value = tempFeatureList;
+    }
+}
+// Adds a new feature item to the DOM and idBoatFeatureList hidden form field
+addfeatureButton.addEventListener('click', () => {
+    newItem = addFeatureField.value;
+    if( featureArray.length === 0) {
+        featureArray.push(newItem);
+        featureFlex.innerHTML = `
+        <div class="feature-item">
+        <span>${newItem}</span><div class="delete_list_item" role="button">
+        </div>
+    </div>`;
+        addFeatureField.value = '';
+        idBoatFeatureList.value = newItem;    
+    }
+    else {
+        featureArray.push(newItem);
+        featureFlex.innerHTML = featureFlex.innerHTML + `
+        <div class="feature-item">
+        <span>${newItem}</span><div class="delete_list_item" role="button">
+        </div>
+    </div>`;
+        addFeatureField.value = '';
+        idBoatFeatureList.value = idBoatFeatureList.value + "^%" + newItem;
+    }
+} )
 
 // These two functions count & display how many characters have been inputted into the excerpt & description form fields
 excerptField.addEventListener('input', updateExcerptLength);
@@ -53,7 +112,6 @@ function relayRadioButtonValue(fieldId, fieldValue) {
             idTaxPaid.value = fieldValue;
             break;
         default:
-            console.log("Error assigning clicked form input to hidden form field");
+            break;
     }
-
 }
