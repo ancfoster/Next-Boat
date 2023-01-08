@@ -124,7 +124,7 @@
             <div class="particulars-card">
                 <!--This code snippet is from Stackoverflow user artem https://stackoverflow.com/questions/8317537/django-templates-split-string-to-array-->
                 <div id="features-flex">
-                    {% with listing.boat_feature_list|split:"\*" as features %}
+                    {% with listing.boat_feature_list|split:"^*" as features %}
                         {% for feature in features %}
                         <span class="listing-details-feature">{{ feature }}</span>
                         {% endfor %}
@@ -134,5 +134,4 @@
         </div>
     </div>
 </main>
-
 {% endblock %}
