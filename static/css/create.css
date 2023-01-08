@@ -12,6 +12,7 @@
     --form-field-bg-hover: #d5d5d5;
     --form-field-bg-inactive: #fbfbfb;
     --form-field-border-inactive: #d9d9d9;
+    --accent-colour-dark: #20AFAF;
     /* Font weights */
     --regular: 400;
     --medium: 500;
@@ -247,4 +248,102 @@ textarea:focus {
     color: var(--light-text-grey);
     text-align: right;
     font-size: 16px;
+}
+#feature-form-flex {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 340px;
+    margin: 0 auto 4px auto;
+    align-items: center;
+    justify-content: space-between;
+}
+#add_feature_text {
+    width: calc(100% - 60px);
+    margin: 0;
+}
+button {
+    background-color: var(--accent-colour);
+    border-radius: 8px;
+    color: var(--white);
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+button:disabled {
+    background-color: #868686;
+    border-radius: 8px;
+    color: var(--medium-grey);
+    font-size: 16px;
+    border: none;
+}
+#add_feature_button {
+    font-size: 16px;
+    margin: 0;
+    padding: 0px 8px;
+    height: 38px;
+    width: 52px;
+}
+#add_feature_button:hover {
+    color: var(--white);
+    background-color: var(--accent-colour-dark);
+}
+button:hover {
+    background-color: var(--accent-colour);
+    border-radius: 8px;
+    color: var(--whiite);
+    font-size: 24px;
+}
+#feature-flex-list {
+    width: 100%;
+    max-width: 340px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+.feature-item {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    margin: 4px 0;
+    background-color: var(--form-field-bg-inactive);
+    padding: 6px 6px 6px 8px;
+    border: 1px solid var(--form-field-border-inactive);
+    border-radius: 8px;
+}
+.feature-item span {
+    display: inline-block;
+    width: calc(100% - 38px);
+    margin: 4px 4px 4px 0;
+}
+.delete_list_item {
+    width: 32px;
+    height: 32px;
+    padding: 4px;
+    box-sizing: border-box;
+    background-color: var(--light-mid-bg-grey);
+    border: solid 1px var(--form-field-border-inactive);
+    background-image: url(/static/images/delete.svg);
+    background-size: auto 16px;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 8px;
+    cursor: pointer;
+}
+.delete_list_item:hover {
+    background-color: var(--form-field-border-inactive);
+}
+.add-feature-text {
+    display: inline-block;
+    width: 100%;
+    margin: 8px auto;
+    text-align: center;
+    font-size: 16px;
+    color: var(--light-text-grey);
 }
