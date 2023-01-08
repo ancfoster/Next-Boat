@@ -273,11 +273,15 @@ button {
     cursor: pointer;
 }
 button:disabled {
-    background-color: #868686;
+    background-color: #bebebe;
     border-radius: 8px;
     color: var(--medium-grey);
     font-size: 16px;
     border: none;
+    cursor: not-allowed;
+}
+button:hover:disabled {
+    background-color: #bebebe;
 }
 #add_feature_button {
     font-size: 16px;
@@ -339,10 +343,10 @@ button:hover {
 .delete_list_item:hover {
     background-color: var(--form-field-border-inactive);
 }
-.add-feature-text {
+#add-feature-text {
     display: inline-block;
     width: 100%;
-    margin: 8px auto;
+    margin: 12px auto;
     text-align: center;
     font-size: 16px;
     color: var(--light-text-grey);
