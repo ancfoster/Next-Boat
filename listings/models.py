@@ -10,8 +10,21 @@ class Listings(models.Model):
     TAX_PAID_CHOICES = [('Y', 'Tax Paid'), ('N', 'Tax Unpaid')]
     CONDITION_CHOICES = [('N', 'New'), ('U', 'Used')]
     BOAT_TYPE = [('P', 'Power'), ('S', 'Sail')]
-    HULL_MATERIAL = [('F', 'Fibreglass/GRP'), ('S', 'Steel'), ('W', 'Wood'), ('A', 'Aluminium')]
+    HULL_MATERIAL = [('F', 'Fibreglass/GRP'), ('S', 'Steel'), ('W', 'Wood'), ('A', 'Aluminium'), ('O', 'Other')]
+    HULL_CONFIG = [('M', 'Monohull'), ('C', 'Catamaran'), ('T', 'Trimaran')]
     FUEL = [('D', 'Diesel' ), ('P', 'Petrol'), ('E', 'Electric'), ('N', 'None')]
+    CATEGORY_CHOICES = [('PC', 'Planing Cruiser'),
+        ('DC', 'Displacement Cruiser'),
+        ('S', 'Sport'),
+        ('F', 'Fishing'),
+        ('RT', 'RIB/Tender'),
+        ('NC', 'Narrow/Canal'),
+        ('C', 'Cruiser'),
+        ('DS', 'Day Sailer'),
+        ('DI', 'Dinghy'),
+        ('RA', 'Racing'),
+        ]
+
     COUNTRIES = [('BE', 'Belgium'),
         ('CA', 'Canada'),
         ('DE', 'Denmark'),
@@ -628,7 +641,7 @@ class Listings(models.Model):
     model = models.CharField(max_length=25, verbose_name="Boat Model")
     price = models.PositiveIntegerField(verbose_name="Price")
     tax_paid = models.CharField(choices=TAX_PAID_CHOICES, max_length=1, default='Y', verbose_name="Tax Status")
-    condition = models.CharField(choices=CONDITION_CHOICES, max_length=1, verbose_name="Condition")
+    condition = models.CharField(choices=CONDITION_CHOICES, max_length=1, default='U', verbose_name="Condition")
     country = models.CharField(choices=COUNTRIES, max_length=2, default='UK', verbose_name="Country")
     location = models.CharField(max_length=50, default="", blank=True)
     year_construction = models.PositiveSmallIntegerField(verbose_name="Year of Construction", validators=[MinValueValidator(1900), MaxValueValidator(2024)])
@@ -637,8 +650,9 @@ class Listings(models.Model):
     draft = models.DecimalField(decimal_places=2, max_digits=4, validators=[MinValueValidator(0.20), MaxValueValidator(5.00)], verbose_name="Draft")
     weight = models.PositiveIntegerField(validators=[MinValueValidator(25), MaxValueValidator(500000)], verbose_name="Weight")
     type = models.CharField(choices=BOAT_TYPE, max_length=1, verbose_name="Type", default="P")
-    category = models.CharField(max_length=30, verbose_name="Category", default="Cruiser")
+    category = models.CharField(choices=CATEGORY_CHOICES, max_length=4, verbose_name="Category", default='PC')
     hull_material = models.CharField(choices=HULL_MATERIAL, max_length=1, verbose_name="Hull Material")
+    hull_configuration = models.CharField(choices=HULL_CONFIG, max_length=1, verbose_name="Hull Configuration", default='M')
     fuel = models.CharField(choices=FUEL, max_length=1, verbose_name='Fuel Type')
     number_of_engines = models.PositiveSmallIntegerField(verbose_name="Number of main engines or motors", validators=[MinValueValidator(0), MaxValueValidator(9)], default=0)
     maximum_speed = models.PositiveSmallIntegerField(verbose_name="Maximum Speed", validators=[MaxValueValidator(99)])
@@ -664,11 +678,7 @@ class Listings(models.Model):
 
 class ListingMedia(models.Model):
     listing = models.ForeignKey(Listings,on_delete=models.CASCADE, related_name='listing_media')
-    image = models.ImageField()
+    image = models.FileField()
 
     def __str__(self):
         return f"{self.listing}"
-
-    def image_preview(self):
-        from django.utils.html import format_html
-        return format_html(f"<img src='{self.image.url}' height='150'>")
