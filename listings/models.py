@@ -4,7 +4,6 @@ from django.core.validators import MaxValueValidator, MinValueValidator, MaxLeng
 
 # Create your models here.
 class Listings(models.Model):
-
     #Choice lists
     LISTING_STATUS_CHOICES = [('A', 'Available'), ('P', 'Pending Sale'), ('S', 'Sold'), ('N', 'Not Listed')]
     TAX_PAID_CHOICES = [('Y', 'Tax Paid'), ('N', 'Tax Unpaid')]
