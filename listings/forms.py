@@ -14,7 +14,6 @@ class ListingCreateForm(forms.ModelForm):
             "type": forms.HiddenInput(),
             "condition": forms.HiddenInput(),
             "tax_paid": forms.HiddenInput(),
-            "category": forms.HiddenInput(),
         }
         test = forms.FloatField( widget=forms.HiddenInput(attrs={'id':'some-custom-test-id'}))
         fields = "__all__"
@@ -32,4 +31,3 @@ class ListingMediaForm(forms.ModelForm):
         }
         model = ListingMedia
         fields = ['image']
-
