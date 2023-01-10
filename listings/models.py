@@ -664,6 +664,7 @@ class Listings(models.Model):
     listing_description = models.TextField(max_length=5000, blank=True, validators=[MaxLengthValidator(5000)])
     boat_feature_list = models.CharField(blank=True, max_length=3500, default='')
     featured_image = models.ImageField(verbose_name='Featured Image')
+    featured_image_thumbnail = models.ImageField(verbose_name='Featured Image Thumnail', blank=True)
 
     def __str__(self):
         return f"{self.make} {self.model}"
