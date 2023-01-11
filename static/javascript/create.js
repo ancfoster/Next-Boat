@@ -4,6 +4,7 @@ const descriptionField = document.getElementById("id_listing_description");
 const createForm = document.getElementById("create-form");
 const descriptionLengthDiv = document.getElementById("description-length");
 const excerptLengthDiv = document.getElementById("excerpt-length");
+const categoryCont = document.getElementById("category-cont");
 // Hidden field variables
 const idCondition = document.getElementById('id_condition')
 const idBoatFeatureList = document.getElementById('id_boat_feature_list')
@@ -15,6 +16,56 @@ let featureArray = [];
 const addFeatureField = document.getElementById('add_feature_text');
 const addfeatureButton = document.getElementById('add_feature_button');
 const featureFlex = document.getElementById('feature-flex-list');
+
+// Category Constants
+const categoryListPower = document.getElementById('category_list_power');
+const categoryListSail = document.getElementById('category_list_sail');
+const categoryListPowerLabel = document.getElementById('clp');
+const categoryListSailLabel = document.getElementById('cls');
+
+window.addEventListener("load", loadState);
+
+function loadState(){
+    console.log('Load fired')
+    if (idCondition == 'N') {
+        document.getElementById('new-radio').checked = true;
+    }
+    if (idTaxPaid == 'N') {
+        document.getElementById('unpaid-radio').checked = true;
+    }
+    boatCategoryLoad();
+    // if (idBoatFeatureList.value !== '') {
+    //     let newFeatureArray = [];
+    //     let idBoatFeatureListString = idBoatFeatureList.value;
+    //     newFeatureArray = idBoatFeatureListString.split('^^');
+    //     console.log(newFeatureArray);
+    //     featureFlex.removeChild(featureFlex.firstChild);
+    //     for(i = 0; newFeatureArray.length; i++){
+    //         let featureArrayItem = document.createElement("div");
+    //         featureArrayItem.classList = "feature-item";
+    //         featureArrayItem.innerHTML = `
+    //         <span>${newFeatureArray[i]}</span><div class="delete_list_item" role="button">
+    //         `;
+    //     }
+    // }
+}
+function boatCategoryLoad() {
+    if(idType.value == "P") {
+        categoryListPowerLabel.style.display = 'block';
+        categoryListPower.style.display = 'block';
+    } else {
+        categoryListSailLabel.style.display = 'block';
+        categoryListSail.style.display = 'block';
+    };
+}
+
+// When an option from either power or sail category lists is selected, the value is forwarded to the hidden from field
+categoryListPower.addEventListener('change', function() {
+    idCategory.value = categoryListPower.value;
+})
+categoryListSail.addEventListener('change', function() {
+    idCategory.value = categoryListSail.value;
+})
 
 // If add feature field is less than two characters in length add button is disabled
 addFeatureField.addEventListener('input', checkFeatureField);
@@ -46,8 +97,8 @@ function deleteFeature(itemIndex) {
         idBoatFeatureList.value = '';
     } else {
     for(i=0; i < featureArray.length; i++) {
-        if(i < featureArray.length) {
-            tempFeatureList = tempFeatureList + featureArray[i] + '^*';
+        if(i < featureArray.length - 1) {
+            tempFeatureList = tempFeatureList + featureArray[i] + '^^';
         } else {
             tempFeatureList = tempFeatureList + featureArray[i];
         }
@@ -55,6 +106,7 @@ function deleteFeature(itemIndex) {
     idBoatFeatureList.value = tempFeatureList;
     }
 }
+
 // Adds a new feature item to the DOM and idBoatFeatureList hidden form field
 addfeatureButton.addEventListener('click', () => {
     newItem = addFeatureField.value;
@@ -76,7 +128,7 @@ addfeatureButton.addEventListener('click', () => {
         </div>
     </div>`;
         addFeatureField.value = '';
-        idBoatFeatureList.value = idBoatFeatureList.value + "^%" + newItem;
+        idBoatFeatureList.value = idBoatFeatureList.value + "^^" + newItem;
     }
     addfeatureButton.disabled = true;
 } )
@@ -105,9 +157,22 @@ function relayRadioButtonValue(fieldId, fieldValue) {
     switch (fieldId)
     {
         case "power-radio":
-            idType.value = fieldValue;
+            if (idType.value == 'S') {
+                categoryListPower.style.display = 'block';
+                categoryListPowerLabel.style.display = 'block';
+                categoryListSailLabel.style.display = 'nonw';
+                categoryListSail.style.display = 'nonw';
+                idCategory.value = 'PC';
+            }
             break;
         case "sail-radio":
+            if (idType.value == 'P') {
+                categoryListPower.style.display = 'none';
+                categoryListPowerLabel.style.display = 'none';
+                categoryListSailLabel.style.display = 'block';
+                categoryListSail.style.display = 'block';
+                idCategory.value = 'C';
+            }
             idType.value = fieldValue;
             break;
         case "used-radio":
