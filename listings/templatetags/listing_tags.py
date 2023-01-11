@@ -5,7 +5,7 @@ register = template.Library()
 #https://stackoverflow.com/questions/8317537/django-templates-split-string-to-array
 @register.filter(name='split')
 def split(value, arg):
-    return value.split("^*")
+    return value.split("^^")
 
 
 
