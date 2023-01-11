@@ -26,7 +26,6 @@ const categoryListSailLabel = document.getElementById('cls');
 window.addEventListener("load", loadState);
 
 function loadState(){
-    console.log('Load fired')
     if (idCondition == 'N') {
         document.getElementById('new-radio').checked = true;
     }
@@ -34,20 +33,19 @@ function loadState(){
         document.getElementById('unpaid-radio').checked = true;
     }
     boatCategoryLoad();
-    // if (idBoatFeatureList.value !== '') {
-    //     let newFeatureArray = [];
-    //     let idBoatFeatureListString = idBoatFeatureList.value;
-    //     newFeatureArray = idBoatFeatureListString.split('^^');
-    //     console.log(newFeatureArray);
-    //     featureFlex.removeChild(featureFlex.firstChild);
-    //     for(i = 0; newFeatureArray.length; i++){
-    //         let featureArrayItem = document.createElement("div");
-    //         featureArrayItem.classList = "feature-item";
-    //         featureArrayItem.innerHTML = `
-    //         <span>${newFeatureArray[i]}</span><div class="delete_list_item" role="button">
-    //         `;
-    //     }
-    // }
+    if (idBoatFeatureList.value !== '') {
+        let newFeatureArray = [];
+        let idBoatFeatureListString = idBoatFeatureList.value;
+        featureArray = idBoatFeatureListString.split('^^');
+        featureFlex.innerHTML = '';
+        for(i = 0; i < featureArray.length; i++){
+            featureFlex.innerHTML = featureFlex.innerHTML + `
+            <div class="feature-item">
+            <span>${featureArray[i]}</span><div class="delete_list_item" role="button">
+            </div>
+            </div>`;
+        }
+    }
 }
 function boatCategoryLoad() {
     if(idType.value == "P") {
@@ -160,10 +158,11 @@ function relayRadioButtonValue(fieldId, fieldValue) {
             if (idType.value == 'S') {
                 categoryListPower.style.display = 'block';
                 categoryListPowerLabel.style.display = 'block';
-                categoryListSailLabel.style.display = 'nonw';
-                categoryListSail.style.display = 'nonw';
+                categoryListSailLabel.style.display = 'none';
+                categoryListSail.style.display = 'none';
                 idCategory.value = 'PC';
             }
+            idType.value = fieldValue;
             break;
         case "sail-radio":
             if (idType.value == 'P') {
