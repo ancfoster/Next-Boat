@@ -83,6 +83,9 @@ input[type=text] {
     -webkit-box-sizing: border-box;
             box-sizing: border-box;
 }
+input[type=text]:hover {
+    background-color: var(--white);
+}
 input[type=text]:focus {
     border: 2px solid var(--accent-colour);
     background-color: var(--white);
@@ -105,6 +108,9 @@ input[type=number]:focus {
 input[type=number]:active {
     border: 2px solid var(--accent-colour);
 }
+input[type=number]:hover {
+    background-color: var(--white);
+}
 select {
     max-width: 340px;
     width: 100%;
@@ -117,6 +123,9 @@ select {
     margin: 4px auto;
     padding: 0 8px;
     color: var(--medium-grey);
+}
+select:hover {
+    background-color: var(--white);
 }
 select:focus {
     background-color: var(--white);
@@ -137,9 +146,12 @@ select:focus {
     background-color: var(--form-field-bg-inactive);
     border: none !important;
     padding: 6px;
-    font-size: 20px;
+    font-size: 16px;
     font-weight: var(--medium);
     margin-left: 4px;
+}
+.num-input-cont input[type=number]:hover {
+    background-color: var(--white);
 }
 .num-input-cont input[type=number]:active {
     border: 2px solid var(--accent-colour);
@@ -220,6 +232,9 @@ label {
     -webkit-box-sizing: border-box;
             box-sizing: border-box;
 }
+.radio-div-2:hover {
+    background-color: var(--white);
+}
 .hidden-radio {
     position: absolute;
     opacity: 0;
@@ -228,6 +243,7 @@ label {
 }
 .radio-cont-2 [type=radio]:checked + div {
     border: 2px solid var(--accent-colour);
+    background-color: #f8f8f8;
 }
 .wrap-flex {
     display: -webkit-box;
@@ -476,4 +492,20 @@ input[type="file"] {
     max-width: 340px;
     display: flex;
     width: 100%;
+}
+.errorlist {
+    list-style-type: none;
+    padding: 0;
+    margin: 0 auto;
+    width: 100%;
+}
+.errorlist li {
+    padding: 8px;
+    font-size: 16px;
+    line-height: 16px;
+    margin: 4px 0;
+    background-color: #ffe3e3;
+    border-radius: 8px;
+    font-size: 14px;
+    color: var(--light-text-grey);
 }
