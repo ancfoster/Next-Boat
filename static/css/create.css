@@ -97,6 +97,7 @@ input[type=number] {
     padding: 8px;
     margin: 4px auto;
     border-radius: 8px;
+    color: var(--medium-grey);
 }
 input[type=number]:focus {
     background-color: var(--white);
@@ -115,6 +116,7 @@ select {
     font-weight: var(--medium);
     margin: 4px auto;
     padding: 0 8px;
+    color: var(--medium-grey);
 }
 select:focus {
     background-color: var(--white);
@@ -143,7 +145,7 @@ select:focus {
     border: 2px solid var(--accent-colour);
 }
 .unit-symbol {
-    font-size: 20px;
+    font-size: 16px;
     margin: 0 12px;
     font-weight: var(--medium);
     color: var(--medium-grey);
@@ -152,7 +154,7 @@ select:focus {
     margin: 0 12px 0 6px;
     font-weight: var(--medium);
     color: var(--medium-grey);
-    font-size: 20px;
+    font-size: 16px;
 }
 label {
     display: block;
@@ -349,17 +351,18 @@ button {
     font-size: 16px;
     border: none;
     cursor: pointer;
+    width: 100%;
+    max-width: 160px;
+    height: 40px;
+    margin: 16px auto;
 }
-button:disabled {
-    background-color: #bebebe;
+#add_feature_button:disabled {
+    background-color: #bebebe !important;
     border-radius: 8px;
     color: var(--medium-grey);
     font-size: 16px;
     border: none;
     cursor: not-allowed;
-}
-button:hover:disabled {
-    background-color: #bebebe;
 }
 #add_feature_button {
     font-size: 16px;
@@ -373,10 +376,10 @@ button:hover:disabled {
     background-color: var(--accent-colour-dark);
 }
 button:hover {
-    background-color: var(--accent-colour);
+    background-color: var(--accent-colour-dark);
     border-radius: 8px;
-    color: var(--whiite);
-    font-size: 24px;
+    color: var(--white);
+    font-size: 16px;
 }
 #feature-flex-list {
     width: 100%;
@@ -443,4 +446,33 @@ button:hover {
     text-align: center;
     font-size: 16px;
     color: var(--light-text-grey);
+}
+#category-cont {
+    width: 100%;
+    display: flex;
+    justify-items: center;
+    flex-direction: column;
+}
+#clp {
+    display: none;
+}
+#cls {
+    display: none;
+}
+#category_list_power {
+    display: none;
+}
+#category_list_sail {
+    display: none;
+}
+input[type="file"] {
+    margin: 0 auto 8px auto;
+    padding: 16px;
+    background-color: var(--form-field-bg-inactive);
+    border-radius: 8px;
+    border: 1px solid var(--form-field-border-inactive);
+    box-sizing: border-box;
+    max-width: 340px;
+    display: flex;
+    width: 100%;
 }
