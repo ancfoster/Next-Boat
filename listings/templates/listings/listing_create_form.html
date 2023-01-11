@@ -11,12 +11,12 @@
     {% csrf_token %}
     {{ listing_create_form.condition }}
     {{ listing_create_form.boat_feature_list }}
-
+    {{ listing_create_form.category }}
     {{ listing_create_form.type }}
     {{ listing_create_form.tax_paid }}
     <h2>What kind of boat are you selling?</h2>
     <div class="form-section-cont">
-      <h3>Boat Type</h3>
+      <label>Boat Type</label>
       <div class="radio-cont-2">
         <label for="power-radio">
           <input type="radio" class="hidden-radio" id="power-radio" value="P" checked name="type_field">
@@ -27,11 +27,27 @@
           <div class="radio-div-2">Sail</div>
         </label>
       </div>
+      <label id="clp" for="category_list_power">Category</label>
+      <div id="category-cont">
+        <select id="category_list_power">
+          <option value="PC">Planing Cruiser</option>
+          <option value="DC">Displacement Cruiser</option>
+          <option value="S">Sport</option>
+          <option value="F">Fishing</option>
+          <option value="RT">RIB/Tender</option>
+          <option value="NC">Narrow/Canal</option>
+        </select>
+        <label id="cls" for="category_list_sail">Category</label>
+        <select id="category_list_sail">
+          <option value="C">Cruiser</option>
+          <option value="DS">Day Sailer</option>
+          <option value="DI">Dinghy</option>
+          <option value="RA">Racing</option>
+        </select>
+      </div>
       <label for="id_hull_configuration">Hull Configuration</label>
       {{ listing_create_form.hull_configuration }}
-      <label for="id_hull_category">Category</label>
-      {{ listing_create_form.category }}
-      <h3>Condition</h3>
+      <label>Condition</label>
       <div class="radio-cont-2">
         <label for="used-radio">
           <input type="radio" class="hidden-radio" id="used-radio" value="U" checked name="condition_field">
@@ -42,7 +58,6 @@
           <div class="radio-div-2">New</div>
         </label>
       </div>
-      <h3>What's the make & model?</h3>
       <label for="make">Make</label>
       {{ listing_create_form.make }}
       <label for="model">Model</label>
@@ -50,11 +65,11 @@
     </div>
     <h2>Price and Location</h2>
     <div class="form-section-cont">
-      <label for="id_price"><h3>Price</h3></label>
+      <label for="id_price">Price</label>
       <div class="num-input-cont">
         <span class="unit-symbol">£</span>{{listing_create_form.price}}
       </div>
-      <h3>Tax Status</h3>
+      <label>Tax Status</label>
       <div class="radio-cont-2">
         <label for="paid-radio">
           <input type="radio" class="hidden-radio" id="paid-radio" value="Y" checked name="tax_status_field">
@@ -69,11 +84,10 @@
         <image alt="" src="{% static 'images/information_icon.svg' %}"></image>
           <span>Has VAT been paid in the EU/UK when imported or originally sold?</span>
       </div>
-      <h3>Country</h3>
+      <label>Country</label>
         {{listing_create_form.country}}
-      <h3>Location</h3>
+      <label>Location</label>
         {{listing_create_form.location}}
-
     </div>
     <h2>Particulars</h2>
     <div class="form-section-cont">
@@ -194,7 +208,6 @@
     </div>
     <h2>Images</h2>
     <div class="form-section-cont">
-      {{ listing_create_form.category }}
       <label>Featured Image</label>
       {{ listing_create_form.featured_image }}
       <div class="form-tip">
@@ -208,7 +221,7 @@
           <span>Our users love lots of clear images. You can upload up to 20 images per listing.</span>
       </div>
     </div>
-    <button type="submit">Submit Form</button>
+    <button type="submit">Add to NextBoat</button>
   </form>
 </main>
 {% endblock %}
