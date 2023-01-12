@@ -69,6 +69,7 @@
       <div class="num-input-cont">
         <span class="unit-symbol">£</span>{{listing_create_form.price}}
       </div>
+      {{ listing_create_form.price.errors }}
       <label>Tax Status</label>
       <div class="radio-cont-2">
         <label for="paid-radio">
@@ -88,6 +89,7 @@
         {{listing_create_form.country}}
       <label>Location</label>
         {{listing_create_form.location}}
+        {{ listing_create_form.location.errors }}
     </div>
     <h2>Particulars</h2>
     <div class="form-section-cont">
@@ -97,24 +99,28 @@
           <div class="num-input-cont">
             {{listing_create_form.length}}<span class="unit-symbol">m</span>
           </div>
+          {{ listing_create_form.length.errors }}
         </div>
         <div class="particular-half-col">
           <label for="id_beam">Beam</label>
           <div class="num-input-cont">
             {{listing_create_form.beam}}<span class="unit-symbol">m</span>
           </div>
+          {{ listing_create_form.beam.errors }}
         </div>
         <div class="particular-half-col">
           <label for="id_draft">Draft</label>
           <div class="num-input-cont">
             {{listing_create_form.draft}}<span class="unit-symbol">m</span>
           </div>
+          {{ listing_create_form.draft.errors }}
         </div>
         <div class="particular-half-col">
           <label for="id_weight">Weight</label>
           <div class="num-input-cont">
             {{listing_create_form.weight}}<span class="two-digit-unit">kg</span>
           </div>
+          {{ listing_create_form.weight.errors }}
         </div>
       </div>
     
@@ -129,24 +135,28 @@
           <div class="num-input-cont">
             {{listing_create_form.number_of_engines }}
           </div>
+          {{ listing_create_form.number_of_engines.errors }}
         </div>
         <div class="particular-half-col">
           <label for="id_total_hp">Total HP</label>
           <div class="num-input-cont">
             {{listing_create_form.total_hp }}<span class="two-digit-unit">hp</span>
           </div>
+          {{ listing_create_form.total_hp.errors }}
         </div>
         <div class="particular-half-col">
           <label for="id_maximum_speed">Maximum Speed</label>
           <div class="num-input-cont">
             {{listing_create_form.maximum_speed}}<span class="two-digit-unit">Kn</span>
           </div>
+          {{ listing_create_form.maximum_speed.errors }}
         </div>
         <div class="particular-half-col">
           <label for="id_crusing_speed">Cruising Speed</label>
           <div class="num-input-cont">
             {{listing_create_form.cruising_speed}}<span class="two-digit-unit">Kn</span>
           </div>
+          {{ listing_create_form.cruising_speed.errors }}
         </div>
       </div>
       <label for="id_fuel">Fuel</label>
@@ -161,18 +171,21 @@
           <div class="num-input-cont">
             {{listing_create_form.cabins }}
           </div>
+          {{ listing_create_form.cabinsh.errors }}
         </div>
         <div class="particular-half-col">
           <label for="id_berths">Berths</label>
           <div class="num-input-cont">
             {{listing_create_form.berths }}
           </div>
+          {{ listing_create_form.berths.errors }}
         </div>
         <div class="particular-half-col">
           <label for="id_heads">Heads</label>
           <div class="num-input-cont">
             {{listing_create_form.heads}}
           </div>
+          {{ listing_create_form.heads.errors }}
         </div>
       </div>
     </div>
@@ -181,6 +194,7 @@
       <label for="id_listing_excerpt">Short excerpt</label>
       {{listing_create_form.listing_excerpt}}
       <div class="field-char-count" id="excerpt-length"></div>
+      {{ listing_create_form.listing_excerpt.errors }}
       <div class="form-tip">
         <image alt="" src="{% static 'images/information_icon.svg' %}"></image>
           <span>The excerpt is a short description that appears in search results.          </span>
@@ -188,6 +202,7 @@
       <label for="id_listing_description">Description</label>
       {{listing_create_form.listing_description}}
       <div class="field-char-count" id="description-length"></div>
+      {{ listing_create_form.listing_description.errors }}
       <div class="form-tip">
         <image alt="" src="{% static 'images/information_icon.svg' %}"></image>
           <span>Buyers love a detailed description. A well written and informative description can lead to a better sale price and more potential buyers.</span>
@@ -210,12 +225,15 @@
     <div class="form-section-cont">
       <label>Featured Image</label>
       {{ listing_create_form.featured_image }}
+      {{ listing_create_form.featured_image.errors }}
       <div class="form-tip">
         <image alt="" src="{% static 'images/information_icon.svg' %}"></image>
           <span>This image will appear in search results, pick the best image of your boat and make a great first impression.</span>
       </div>
+      
       <label>Images</label>
       {{ listing_media_form.image }}
+      {{ listing_media_form.image.errors }}
       <div class="form-tip">
         <image alt="" src="{% static 'images/information_icon.svg' %}"></image>
           <span>Our users love lots of clear images. You can upload up to 20 images per listing.</span>
