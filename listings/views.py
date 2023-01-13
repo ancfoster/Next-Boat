@@ -13,6 +13,8 @@ from .models import Listings, ListingMedia
 from django.db.models import Q
 from io import BytesIO
 from django.core.files.uploadedfile import InMemoryUploadedFile
+from django.core.files.storage import FileSystemStorage
+from datetime import datetime
 
 
 # Create your views here.
@@ -47,6 +49,14 @@ def createListing(request):
         if listing_create_form.is_valid() and listing_media_form.is_valid():
             listing_create_form.instance.listing_status = 'A'
             listing_create_form.instance.created_by = request.user
+            featured_image = listing_create_form.cleaned_data['featured_image']
+            getMake = listing_create_form.cleaned_data['make']
+            getModel = listing_create_form.cleaned_data['model']
+            now = datetime.now()
+            info_string = f"{getMake}-{getModel}-{now.year}-{now.month}-{now.day}-{now.hour}-{now.minute}-{now.second}"
+            compressed_featured_image = compress_featured_image(featured_image)
+            listing_create_form.instance.featured_image = compressed_featured_image
+            listing_create_form.instance.featured_image.field.upload_to = info_string+'/'
             form = listing_create_form.save()
             form.save()
             new_listing_id = form.pk
@@ -55,6 +65,7 @@ def createListing(request):
                 listing_name = f"{listing_create_form.instance.make}_{listing_create_form.instance.model}_{listing_create_form.instance.pk}"
                 compressed_image = compress_uploaded_images(image_uploaded, listing_name)
                 image_instance = ListingMedia.objects.create(listing=form, image=compressed_image)
+                image_instance.image.field.upload_to = info_string+'/'
                 image_instance.save()
             return redirect('boat_listings')
     else:
@@ -67,12 +78,23 @@ def createListing(request):
 def home(request):
     return render(request, 'listings/index.html')
 
-
+#This function take an image and string as an argument and then compressed using PILLOW library
 def compress_uploaded_images(image, listing_name):
     image = Image.open(image)
+    #.thumbnail method resizes the uploaded images, values are max height & width
+    image.thumbnail((1024, 1024))
     image_io = BytesIO()
-    image.save(image_io, format='JPEG', quality=60)
+    image.save(image_io, format='JPEG', quality=70)
+    #listing name consist of listing create form, make + model + pk fields
     image_file = InMemoryUploadedFile(image_io, None, f"{listing_name}.jpeg", 'image/jpeg', image_io.tell(), None)
-    print(listing_name)
     return image_file
 
+def compress_featured_image(image):
+    image = Image.open(image)
+    #.thumbnail method resizes the uploaded images, values are max height & width
+    image.thumbnail((1024, 1024))
+    image_io = BytesIO()
+    image.save(image_io, format='JPEG', quality=65)
+    #listing name consist of listing create form, make + model + pk fields
+    image_file = InMemoryUploadedFile(image_io, None, 'featured_image.jpeg', 'image/jpeg', image_io.tell(), None)
+    return image_file
