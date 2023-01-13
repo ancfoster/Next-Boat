@@ -2,6 +2,7 @@
 {% load static %}
 {% block head %}
 <link rel="stylesheet" href="{% static 'css/create.css' %}"> </link>
+<title>Hello</title>
 {% endblock %}
 {% block content %}
 
@@ -58,10 +59,14 @@
           <div class="radio-div-2">New</div>
         </label>
       </div>
-      <label for="make">Make</label>
+      <label for="id_make">Make</label>
       {{ listing_create_form.make }}
-      <label for="model">Model</label>
+      <label for="id_model">Model</label>
       {{ listing_create_form.model }}
+      {{ listing_create_form.model.errors }}
+      <label for="id_year_construction">Year of construction</label>
+      {{ listing_create_form.year_construction }}
+      {{ listing_create_form.year_construction.errors }}
     </div>
     <h2>Price and Location</h2>
     <div class="form-section-cont">
