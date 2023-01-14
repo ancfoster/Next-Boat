@@ -1,0 +1,22 @@
+{% extends "listings/base.html" %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/create.css' %}"> </link>
+<title>{{ user.get_username }} Listings - NextBoat</title>
+{% endblock %}
+
+{% load humanize %}
+{% block content %}
+<h1>
+    Boats for Sale
+</h1>
+{% if listings_list %}
+    <ul>
+        {% for listing in listings_list %}
+            <li>{{ listing.make }} {{ listing.model }}</li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No results found.</p>
+{% endif %}
+{% endblock %}
