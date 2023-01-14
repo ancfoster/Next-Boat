@@ -24,6 +24,13 @@ class ListingsList(generic.ListView):
     template_name = "listings/listings.html"
 
 
+class MyListings(generic.ListView):
+    model = Listings
+    template_name = 'listings/my_listings.html'
+    def get_queryset(self):
+        return Listings.objects.filter(created_by=self.request.user)
+
+
 class ListingDetails(View):
     def get(self, request, id, *args, **kwargs):
         queryset = Listings.objects.all()
