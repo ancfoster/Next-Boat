@@ -37,7 +37,7 @@
             <li><a href="#"><span id="message-centre-text">Message Centre</span></a></li>
             <li><a href="#"><span id="favourite-text">Favourites</span></a></li>
             <li><a href="#"><span id="your-listings-text">Your Listings</span></a></li>
-            <li><a href="#"><span id="new-listing-text">New Listing</span></a></li>
+            <li><a href="{% url 'listing_create' %}"><span id="new-listing-text">New Listing</span></a></li>
             {% else %}
             <li><a href="{% url 'account_login' %}"><span id="login-text">Login</span></a></li>
             <li><a href="{% url 'account_signup' %}"><span id="signup-text">Create account</span></a></li>
