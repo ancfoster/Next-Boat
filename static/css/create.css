@@ -27,24 +27,6 @@
     --bold: 700;
 }
 /* Heading styles */
-main {
-    width: 100%;
-    max-width: 960px;
-    -webkit-box-sizing: border-box;
-            box-sizing: border-box;
-    margin: 56px auto 24px auto;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    padding: 0 16px;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-}
 form {
     display: -webkit-box;
     display: -ms-flexbox;
