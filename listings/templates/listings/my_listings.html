@@ -1,8 +1,8 @@
 {% extends "listings/base.html" %}
 {% load static %}
 {% block head %}
-<link rel="stylesheet" href="{% static 'css/create.css' %}"> </link>
-<title>{{ user.get_username }} Listings - NextBoat</title>
+<link rel="stylesheet" href="{% static 'css/my_listings.css' %}"> </link>
+<title>My Listings - NextBoat</title>
 {% endblock %}
 
 {% load humanize %}
@@ -19,4 +19,16 @@
 {% else %}
     <p>No results found.</p>
 {% endif %}
+
+<main>
+    <h1>My Listings</h1>
+    <div id="no-listings-cont">
+        <img src="{% static 'images/binoculars.svg' %}">
+        <span>You have no listings,<br>why not create one?</span>
+    </div>
+    <a id="create-a" href="{% url 'listing_create' %}">
+        <div id="create-button" role="button">Create a listing</div>
+    </a>
+
+</main>
 {% endblock %}

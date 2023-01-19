@@ -1,0 +1,68 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: last 4 version
+*/
+
+/* Variables */
+:root {
+    /* Colours */
+    --accent-colour: #33CCCC;
+    --white: #ffffff;
+    --light-bg-grey: #fafafa;
+    --light-mid-bg-grey: #EBEBEB;
+    --light-text-grey: #666666;
+    --medium-grey: #484848;
+    --off-black: #333333;
+    --dark-black: #222222;
+    --form-field-bg-hover: #d5d5d5;
+    --form-field-bg-inactive: #fbfbfb;
+    --form-field-border-inactive: #d9d9d9;
+    --accent-colour-dark: #20AFAF;
+    /* Font weights */
+    --regular: 400;
+    --medium: 500;
+    --semibold: 600;
+    --bold: 700;
+}
+/* Content styles styles */
+#no-listings-cont {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 16px 0;
+}
+#no-listings-cont img {
+    width: 160px;
+    height: auto;
+    margin: 24px auto;
+}
+#no-listings-cont span {
+    font-size: 24px;
+    font-weight: var(--medium);
+    color: var(--medium-grey);
+    display: inline-block;
+    margin: 8px auto;
+    line-height: 28px;
+}
+#create-button {
+    width: auto;
+    padding: 12px 16px;
+    margin: 8px auto;
+    color: white;
+    background-color: var(--accent-colour);
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: var(--semibold);
+    line-height: 16px;
+    cursor: pointer;
+}
+#create-button:hover {
+    background-color: var(--accent-colour-dark);
+}
+#create-a {
+    margin: auto;
+    text-decoration: none;
+    color: var(--white);
+}
