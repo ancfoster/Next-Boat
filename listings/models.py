@@ -638,7 +638,7 @@ class Listings(models.Model):
     last_modified = models.DateTimeField(auto_now=True)
     make = models.CharField(choices=BOAT_MODELS_LIST, max_length=5, verbose_name="Boat Make")
     model = models.CharField(max_length=25, verbose_name="Boat Model")
-    price = models.PositiveIntegerField(verbose_name="Price", validators[MinValueValidator(400)])
+    price = models.PositiveIntegerField(verbose_name="Price", validators=[MinValueValidator(400)])
     tax_paid = models.CharField(choices=TAX_PAID_CHOICES, max_length=1, default='Y', verbose_name="Tax Status")
     condition = models.CharField(choices=CONDITION_CHOICES, max_length=1, default='U', verbose_name="Condition")
     country = models.CharField(choices=COUNTRIES, max_length=2, default='UK', verbose_name="Country")
