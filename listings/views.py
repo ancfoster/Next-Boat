@@ -9,6 +9,7 @@ from PIL import Image
 from django.views import generic, View
 from django.views.generic import DetailView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
+from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Listings, ListingMedia
 from django.db.models import Q
 from io import BytesIO
@@ -27,7 +28,7 @@ class ListingsList(generic.ListView):
     template_name = "listings/listings.html"
 
 
-class MyListings(generic.ListView):
+class MyListings(LoginRequiredMixin, generic.ListView):
     model = Listings
     template_name = 'listings/my_listings.html'
     def get_queryset(self):
@@ -52,7 +53,7 @@ class ListingDetails(View):
 
 
 #This view deletes listings
-class ListingDelete(DeleteView):
+class ListingDelete(LoginRequiredMixin, DeleteView):
     template_name = 'listings/listing_delete.html'
     def get_object(self):
         id_= self.kwargs.get("id")
