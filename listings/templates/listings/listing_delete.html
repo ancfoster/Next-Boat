@@ -1,16 +1,28 @@
 {% extends "listings/base.html" %}
 {% load static %}
 {% block head %}
-<link rel="stylesheet" href="{% static 'css/my_listings.css' %}"> </link>
+<link rel="stylesheet" href="{% static 'css/delete_listing.css' %}"> </link>
 <title>My Listings - NextBoat</title>
 {% endblock %}
 {% block content %}
 <main>
     {% if object.created_by|stringformat:"s" == user.username %}
-        user can delete
+    <h1>Delete Listing</h1>
+    <img id="delete-img" alt="Warning" src="{% static 'images/warning.svg' %}">
+    <div id="warning-text">
+        Are you sure you want to delete the listing for your {{ object.get_make_display }} {{ object.model }}?
+        <br><br>This cannot be undone.
+        <form method="post" action="">
+            {% csrf_token %}
+            <input type="submit" value="Yes" class="delete-button">
+            <a href="{% url 'my_listings' %}">
+                <button type="button" id="cancel-button">Cancel</button>
+            </a>
+        </form>
+    </div>
     {% else %}
         <div id="del-no-permission">
-            <img>
+
             <span>You do not have permission.</span>
         </div>
 
