@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    {% load humanize %}
+    <link rel="stylesheet" href="{% static 'css/base.css' %}"> </link>
+    <link rel="stylesheet" href="https://use.typekit.net/vrz6cku.css">
+    {% block head %}
+    {% endblock %}
+</head>
+<body>
+<div id="nav-bar-container">
+    <div id="nav-bar">
+        <nav id="buy-sell-nav">
+            <a href="{% url 'boat_listings' %}" id="buy-nav">Buy</a>
+            <div id="nav-divider"></div>
+            <a href="#" id="sell-nav">Sell</a>
+        </nav>
+        <a href="{% url 'home' %}" id="logo-nav">
+            <image id="nav-logo" src="{% static 'images/logo.svg' %}" alt="Next Boat Logo">
+        </a>
+        <div role="button" role="button" id="menu-button">
+            <img id="menu-button-icon" alt="" src="{% static 'images/user_menu_icon_484848.svg' %}">
+            <img id="menu-button-icon-close" alt="" src="{% static 'images/menu_close_icon_484848.svg' %}">
+        </div>
+    </div>
+</div> 
+<div id="menu-spacer">
+    <div id="menu-container">
+        <ul>
+            {% if user.is_authenticated %}
+            <li><a href="{% url 'account_logout' %}"><span id="logout-text">Logout</span></a></li>
+            <li><a href="#"><span id="message-centre-text">Message Centre</span></a></li>
+            <li><a href="#"><span id="favourite-text">Favourites</span></a></li>
+            <li><a href="{% url 'my_listings' %}"><span id="your-listings-text">My Listings</span></a></li>
+            <li><a href="{% url 'listing_create' %}"><span id="new-listing-text">New Listing</span></a></li>
+            {% else %}
+            <li><a href="{% url 'account_login' %}"><span id="login-text">Login</span></a></li>
+            <li><a href="{% url 'account_signup' %}"><span id="signup-text">Create account</span></a></li>
+            {% endif %}
+        </ul>
+    </div>
+</div>   
+{% block content %}
+{% endblock %}
+
+<footer>
+
+</footer>
+<script src="{% static 'javascript/base.js' %}"></script>
+{% block footerscripts %}
+{% endblock %}
+</body>
+</html>
