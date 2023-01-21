@@ -1,4 +1,4 @@
-{% extends 'listings/base.html' %}
+{% extends 'base.html' %}
 {% load humanize %}
 {% block content %}
 <h1>
@@ -28,7 +28,7 @@ Listings Template
                     Short description
                 </td>
                 <td>
-                    {{ listing.listing_excerpt }}
+                    {{ listing.listing_excerpt }} {{ listing.created_by }}
                 </td>
             </tr>
             <tr>
