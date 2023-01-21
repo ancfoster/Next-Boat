@@ -27,6 +27,7 @@
     --bold: 700;
 }
 /* Content styles styles */
+    /* Styles for when there are no listings */
 #no-listings-cont {
     width: 100%;
     display: flex;
@@ -65,4 +66,108 @@
     margin: auto;
     text-decoration: none;
     color: var(--white);
+}
+    /* Styles for when there are listings */
+.listing-item-cont {
+    width: 100%;
+    margin: 8px auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    padding: 24px;
+    border-radius: 8px;
+    background-color: var(--white);
+    box-sizing: border-box;
+}
+.listing-item-f-image {
+    height: 96px;
+    width: 96px;
+    border-radius: 48px;
+    object-fit: cover;
+}
+.my-make-model {
+    font-size: 20px;
+    font-weight: var(--semibold);
+    color: var(--dark-black);
+    margin: 0px;
+    box-sizing: border-box;
+    text-align: left;
+    width: 100%;
+    line-height: 20px;
+}
+.listing-status {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    font-weight: var(--regular);
+    color: var(--medium-grey);
+    margin: 4px 0px;
+    width: 100%;
+}
+.listing-status span {
+    margin-left: 6px;
+}
+.listing-actions-flex {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    width: 100%;
+}
+/* These styles correspond to a listing status color a = available, p pending, s = sold, n = not listed */
+.A {
+    color: var(--accent-colour);
+}
+.P {
+    color: rgb(224, 142, 0);
+}
+.S {
+    color: rgb(186, 0, 228);
+}
+.N {
+    color: #f64949;
+}
+.my-listing-actions {
+    color: var(--medium-grey);
+    text-decoration: none;
+    margin: 4px 0;
+}
+.my-listing-actions:hover span {
+    color: var(--off-black);
+    text-decoration: underline;
+}
+.my-listing-actions-icons {
+    display: inline-block;
+    height: 32px;
+    width: 32px;
+    margin-right: 4px;
+}
+.action-flex {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+}
+.my-col-left {
+    width: 80px;
+    display: flex;
+    align-items:flex-start;
+    justify-content: center;
+    margin-right: 24px;
+}
+.my-col-right {
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+#my-new-listing-text {
+    font-size: 16px;
+    font-weight: var(--medium);
+    color: var(--medium-grey);
+    width: 100%;
+    text-align: center;
+    margin: 24px auto;
+    line-height: 16px;
 }
