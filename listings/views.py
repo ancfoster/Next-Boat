@@ -1,10 +1,10 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.forms import modelformset_factory
 from django.contrib.auth.decorators import login_required
+from django.urls import reverse
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.http import HttpResponseRedirect, HttpResponse
-from .forms import ListingCreateForm, ListingMediaForm
 from PIL import Image
 from django.views import generic, View
 from django.views.generic import DetailView
@@ -15,6 +15,9 @@ from io import BytesIO
 from django.core.files.uploadedfile import InMemoryUploadedFile
 from django.core.files.storage import FileSystemStorage
 from datetime import datetime
+
+from .models import Listings
+from .forms import ListingCreateForm, ListingMediaForm
 
 
 # Create your views here.
@@ -48,6 +51,18 @@ class ListingDetails(View):
         )
 
 
+#This view deletes listings
+class ListingDelete(DeleteView):
+    template_name = 'listings/listing_delete.html'
+    def get_object(self):
+        id_= self.kwargs.get("id")
+        return get_object_or_404(Listings, id=id_)
+
+    def get_success_url(self):
+        return reverse('my_listings')
+
+
+#This view creates a new listing
 @login_required
 def createListing(request):
     if request.method == 'POST':
