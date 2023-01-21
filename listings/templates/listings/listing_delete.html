@@ -1,0 +1,19 @@
+{% extends "listings/base.html" %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/my_listings.css' %}"> </link>
+<title>My Listings - NextBoat</title>
+{% endblock %}
+{% block content %}
+<main>
+    {% if object.created_by|stringformat:"s" == user.username %}
+        user can delete
+    {% else %}
+        <div id="del-no-permission">
+            <img>
+            <span>You do not have permission.</span>
+        </div>
+
+    {% endif %}
+</main>
+{% endblock %}

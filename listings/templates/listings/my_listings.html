@@ -19,7 +19,7 @@
                 <div class="listing-actions-flex">
                     <a href="#" class="my-listing-actions"><div class="action-flex"><img class="my-listing-actions-icons" src="{% static 'images/my_listings_edit.svg' %}"><span>Edit Listing</span></div></a>
                     <a href="#" class="my-listing-actions"><div class="action-flex"><img class="my-listing-actions-icons" src="{% static 'images/my_listings_images.svg' %}"><span>Edit Images</span></div></a>
-                    <a href="#" class="my-listing-actions"><div class="action-flex"><img class="my-listing-actions-icons" src="{% static 'images/my_listings_delete.svg' %}"><span>Delete Listing</span></div></a>
+                    <a href="{% url 'listing_delete' listing.pk %}" class="my-listing-actions"><div class="action-flex"><img class="my-listing-actions-icons" src="{% static 'images/my_listings_delete.svg' %}"><span>Delete Listing</span></div></a>
                 </div>
             </div>
         </div>
