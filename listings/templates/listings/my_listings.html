@@ -4,28 +4,34 @@
 <link rel="stylesheet" href="{% static 'css/my_listings.css' %}"> </link>
 <title>My Listings - NextBoat</title>
 {% endblock %}
-
-{% load humanize %}
 {% block content %}
-<h1>
-    Boats for Sale
-</h1>
-{% if listings_list %}
-    <ul>
-        {% for listing in listings_list %}
-            <li>{{ listing.make }} {{ listing.model }}</li>
-        {% endfor %}
-    </ul>
-{% else %}
-    <p>No results found.</p>
-{% endif %}
-
 <main>
     <h1>My Listings</h1>
-    <div id="no-listings-cont">
-        <img src="{% static 'images/binoculars.svg' %}">
-        <span>You have no listings,<br>why not create one?</span>
-    </div>
+    {% if listings_list %}
+        {% for listing in listings_list %}
+        <div class="listing-item-cont">
+            <div class="my-col-left">
+                <img class="listing-item-f-image" alt="{{ listing.get_make_display }} {{ listing.model }}" src="{{ listing.featured_image.url }}">
+            </div>
+            <div class="my-col-right">
+                <div class="my-make-model">{{ listing.get_make_display }} {{ listing.model }}</div>
+                <div class="listing-status">Status: <span class="{{ listing.listing_status }}">{{ listing.get_listing_status_display }}</span></div>
+                <div class="listing-actions-flex">
+                    <a href="#" class="my-listing-actions"><div class="action-flex"><img class="my-listing-actions-icons" src="{% static 'images/my_listings_edit.svg' %}"><span>Edit Listing</span></div></a>
+                    <a href="#" class="my-listing-actions"><div class="action-flex"><img class="my-listing-actions-icons" src="{% static 'images/my_listings_images.svg' %}"><span>Edit Images</span></div></a>
+                    <a href="#" class="my-listing-actions"><div class="action-flex"><img class="my-listing-actions-icons" src="{% static 'images/my_listings_delete.svg' %}"><span>Delete Listing</span></div></a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        <div id="my-new-listing-text">Want to create a new listing?</div>
+        {% else %}
+        <div id="no-listings-cont">
+            <img src="{% static 'images/binoculars.svg' %}">
+            <span>You have no listings,<br>why not create one?</span>
+        </div>
+        {% endif %}
+   
     <a id="create-a" href="{% url 'listing_create' %}">
         <div id="create-button" role="button">Create a listing</div>
     </a>
