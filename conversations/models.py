@@ -8,14 +8,14 @@ class Conversations(models.Model):
     conversation_boat = models.ForeignKey(Listings, on_delete=models.DO_NOTHING, related_name='conversation_boat')
     conversation_buyer = models.ForeignKey(User, on_delete=models.DO_NOTHING, related_name='conversation_buyer')
     conversation_seller = models.ForeignKey(User, on_delete=models.DO_NOTHING, related_name='conversation_seller')
-    conversation_thumbnail = models.ImageField(verbose_name='Convßersation Image')
+    conversation_thumbnail = models.ImageField(verbose_name='Conversation Image')
     conversation_title = models.CharField(max_length=200, verbose_name="Conversation Title")
     last_message_date = models.DateTimeField
 
     class Meta:
         verbose_name = "Conversation"
     def __str__(self):
-        return f"{self.conversation}"
+        return f"{self.conversation_title}"
 
 class ConversationMessages(models.Model):
     message_conversation = models.ForeignKey(Conversations, on_delete=models.CASCADE, related_name='message_conversation')
