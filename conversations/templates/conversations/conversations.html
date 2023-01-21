@@ -5,5 +5,17 @@
 <title>My Listings - NextBoat</title>
 {% endblock %}
 {% block content %}
+{% if conversations_list %}
+    {% for conversation in conversations_list %}
 
+    {{ conversation.conversation_title }}
+    {{ conversation.conversation_boat.model }}
+    {{ conversation.conversation_seller }}
+    {{ conversation.conversation_buyer }}
+    {% endfor %}
+
+{% else %}
+    No conversations to show
+
+{% endif %}
 {% endblock %}
