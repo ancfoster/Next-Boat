@@ -33,10 +33,9 @@
         <ul>
             {% if user.is_authenticated %}
             <li><a href="{% url 'account_logout' %}"><span id="logout-text">Logout</span></a></li>
-            <li><a href="#"><span id="account-text">Account Settings</span></a></li>
             <li><a href="#"><span id="message-centre-text">Message Centre</span></a></li>
             <li><a href="#"><span id="favourite-text">Favourites</span></a></li>
-            <li><a href="#"><span id="your-listings-text">Your Listings</span></a></li>
+            <li><a href="{% url 'my_listings' %}"><span id="your-listings-text">My Listings</span></a></li>
             <li><a href="{% url 'listing_create' %}"><span id="new-listing-text">New Listing</span></a></li>
             {% else %}
             <li><a href="{% url 'account_login' %}"><span id="login-text">Login</span></a></li>
