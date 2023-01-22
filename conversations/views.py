@@ -15,9 +15,9 @@ from io import BytesIO
 from django.core.files.uploadedfile import InMemoryUploadedFile
 from django.core.files.storage import FileSystemStorage
 from datetime import datetime
-
 from .models import Conversations, ConversationMessages
 from listings.models import Listings
+from .forms import ConversationMessageForm
 
 
 # Shows a list of conversation and filters based on logged in user
@@ -40,5 +40,7 @@ class ConversationMessageList(View):
             id = self.kwargs['id']
             message_list = ConversationMessages.objects.filter(message_conversation=id)
             conversation = Conversations.objects.get(pk=id)
-            context = {'message_list':message_list, 'conversation':conversation}
+            conversation_message_form = ConversationMessageForm()
+            context = {'message_list':message_list, 'conversation':conversation, 'conversation_message_form':conversation_message_form}
             return render(request, 'conversations/display_conversation.html', context)
+
