@@ -16,7 +16,7 @@ from django.core.files.uploadedfile import InMemoryUploadedFile
 from django.core.files.storage import FileSystemStorage
 from datetime import datetime
 
-from .models import Conversations
+from .models import Conversations, ConversationMessages
 from listings.models import Listings
 
 
@@ -28,7 +28,15 @@ from listings.models import Listings
 #         return Conversations.objects.filter(conversation_seller=self.request.user)
 
 class ConversationsList(LoginRequiredMixin, generic.ListView):
-    model = Conversations
+    model = (Conversations, ConversationMessages)
     template_name = 'conversations/conversations.html'
     def get_queryset(self):
         return Conversations.objects.filter(Q(conversation_seller=self.request.user) | Q(conversation_buyer=self.request.user))
+
+
+class ConversationMessageList(View):
+    def get(self, request, id, *args, **kwargs):
+        id = self.kwargs['id']
+        message_list = ConversationMessages.objects.filter(message_conversation=id)
+        context = {'message_list':message_list}
+        return render(request, 'conversations/display_conversation.html', context)
