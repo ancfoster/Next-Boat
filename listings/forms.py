@@ -16,7 +16,6 @@ class ListingCreateForm(forms.ModelForm):
             "tax_paid": forms.HiddenInput(),
             "category": forms.HiddenInput(),
         }
-        test = forms.FloatField( widget=forms.HiddenInput(attrs={'id':'some-custom-test-id'}))
         fields = "__all__"
         exclude = ("created_by", "created_on", "last_modified", "listing_status", )
 
