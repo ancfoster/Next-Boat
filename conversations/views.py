@@ -36,7 +36,9 @@ class ConversationsList(LoginRequiredMixin, generic.ListView):
 
 class ConversationMessageList(View):
     def get(self, request, id, *args, **kwargs):
-        id = self.kwargs['id']
-        message_list = ConversationMessages.objects.filter(message_conversation=id)
-        context = {'message_list':message_list}
-        return render(request, 'conversations/display_conversation.html', context)
+        if request.method == 'GET':
+            id = self.kwargs['id']
+            message_list = ConversationMessages.objects.filter(message_conversation=id)
+            conversation = Conversations.objects.get(pk=id)
+            context = {'message_list':message_list, 'conversation':conversation}
+            return render(request, 'conversations/display_conversation.html', context)
