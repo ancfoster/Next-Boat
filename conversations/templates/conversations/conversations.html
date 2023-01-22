@@ -32,7 +32,7 @@
             <div class="conversation-boat-name">
                 {{ conversation.conversation_boat.get_make_display }} {{ conversation.conversation_boat.model }}
             </div>
-            <div class="conversation-date"> {{ conversation.last_message_date }}</div>
+            <div class="conversation-date"> {{ conversation.last_message_date }} <a href="{% url 'conversation_messages' conversation.pk %}">link</a></div>
         </div>
     </div>
     {% endfor %}
