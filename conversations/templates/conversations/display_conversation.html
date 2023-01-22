@@ -1,52 +1,71 @@
 {% extends "base.html" %}
 {% load static %}
 {% block head %}
-<link rel="stylesheet" href="{% static 'css/delete_listing.css' %}"> </link>
 <link rel="stylesheet" href="{% static 'css/messages.css' %}"> </link>
-<title>Messages - NextBoat </title>
+<title>
+    {# This code checks who is trying to view the conversation and display the appropriate message. #}
+    {# If a user not in the conversation tries to view the message they cannot see any conversation information #}
+    {% if conversation.conversation_seller|stringformat:"s" == user.get_username %}
+                    Conversation with {{ conversation.conversation_buyer }} about {{ conversation.conversation_boat.get_make_display }} {{ conversation.conversation_boat.model }}
+    {% elif conversation.conversation_buyer|stringformat:"s" == user.get_username  %}
+                    Conversation with {{ conversation.conversation_seller}} about {{ conversation.conversation_boat.get_make_display }} {{ conversation.conversation_boat.model }}
+    {% else %}
+    You do not have permission | NextBoat
+    {% endif %}
+</title>
 {% endblock %}
 {% block content %}
-<main id="messages-main">
-    <div>Back to messages</div>
-    <div class="conversation-cont">
-        <div class="conversation-bubbles">
-            <div class="bubble-username">
-                <!-- {% if conversation.conversation_seller|stringformat:"s" == user.get_username %}
-                    {{ conversation.conversation_buyer|stringformat:"s"|slice:":1" }}
-                {% else %}
-                    {{ conversation.conversation_seller|stringformat:"s"|slice:":1" }}
-                {% endif %} -->
-            </div>
-            <img class="bubble-featured-image" src="{{ conversation.conversation_thumbnail.url }}">
-        </div>
-        <div class="conversation-text-flex">
-            <div class="conversation-username">
-                <!-- {% if conversation.conversation_seller|stringformat:"s" == user.get_username %}
-                    {{ conversation.conversation_buyer }}
-                 {% else %}
-                    {{ conversation.conversation_seller }}
-                {% endif %} -->
-            </div>
-            <div class="conversation-boat-name">
-                <!-- {{ conversation.conversation_boat.get_make_display }} {{ conversation.conversation_boat.model }} -->
-            </div>
-            <div class="conversation-date"> Last date</div>
-        </div>
-    </div>
+
+{# If a user not in the conversation tries to view the message they cannot see any conversation information #}
+{% if user.get_username == conversation.conversation_seller or conversation.conversation_buyer %}
+<main>
+    <a href="{% url 'conversations_list' %}" id="message-back"><img src="{% static 'images/return_icon.svg' %}" alt="Back to messages" >Messages</a>
     <div class="message-flex">
-        <div class="message-cont">
-            
+        <!--Conversation cont is a section at the top of the conversation showing an avatar of the other conversation particiapant
+        and the boat that the conversation is about.
+        -->
+        <div class="conversation-cont">
+            <div class="conversation-bubbles">
+                <div class="bubble-username">
+                    {% if conversation.conversation_seller|stringformat:"s" == user.get_username %}
+                        {{ conversation.conversation_buyer|stringformat:"s"|slice:":1" }}
+                    {% else %}
+                        {{ conversation.conversation_seller|stringformat:"s"|slice:":1" }}
+                    {% endif %}
+                </div>
+                <img class="bubble-featured-image" src="{{ conversation.conversation_thumbnail.url }}">
+            </div>
+            <div class="conversation-text-flex">
+                <div class="conversation-username">
+                    {% if conversation.conversation_seller|stringformat:"s" == user.get_username %}
+                        Your conversation with {{ conversation.conversation_buyer }}
+                     {% else %}
+                        Your conversation with {{ conversation.conversation_seller }}
+                    {% endif %}
+                </div>
+                <div class="conversation-boat-name">
+                    about {{ conversation.conversation_boat.get_make_display }} {{ conversation.conversation_boat.model }}
+                </div>
+            </div>
         </div>
+        {% for message in message_list %}
+            {# This if statement is used to style the message bubbles based on who sent them #}
+            {% if message.message_from|stringformat:"s" == user.get_username %}
+                <div class="message-bubble this">
+                    {{ message.message_contents }}
+                </div>
+            {% else %}
+                <div class="message-bubble other">
+                {{ message.message_contents }}
+                </div>
+            {% endif %}
+        {% endfor %}
     </div>
-{% for message in message_list %}
- {{ message.message_from }}
- {{ message.message_to }}
- {{ message.message_contents }}
- {{ message.message_sent }}
- message conversation:
- {{ message.message_conversation }}
- {{ message.message_conversation.conversation_boat.get_make_display }}
- <br>
-{% endfor %}
 </main>
+{% else %}
+<main>
+    <h2>You do not have permission to view this.</h2>
+</main>
+{% endif %}
+
 {% endblock %}
