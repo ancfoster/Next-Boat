@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/delete_listing.css' %}"> </link>
+<link rel="stylesheet" href="{% static 'css/messages.css' %}"> </link>
+<title>Messages - NextBoat </title>
+{% endblock %}
+{% block content %}
+<main id="messages-main">
+    <div>Back to messages</div>
+    <div class="conversation-cont">
+        <div class="conversation-bubbles">
+            <div class="bubble-username">
+                <!-- {% if conversation.conversation_seller|stringformat:"s" == user.get_username %}
+                    {{ conversation.conversation_buyer|stringformat:"s"|slice:":1" }}
+                {% else %}
+                    {{ conversation.conversation_seller|stringformat:"s"|slice:":1" }}
+                {% endif %} -->
+            </div>
+            <img class="bubble-featured-image" src="{{ conversation.conversation_thumbnail.url }}">
+        </div>
+        <div class="conversation-text-flex">
+            <div class="conversation-username">
+                <!-- {% if conversation.conversation_seller|stringformat:"s" == user.get_username %}
+                    {{ conversation.conversation_buyer }}
+                 {% else %}
+                    {{ conversation.conversation_seller }}
+                {% endif %} -->
+            </div>
+            <div class="conversation-boat-name">
+                <!-- {{ conversation.conversation_boat.get_make_display }} {{ conversation.conversation_boat.model }} -->
+            </div>
+            <div class="conversation-date"> Last date</div>
+        </div>
+    </div>
+    <div class="message-flex">
+        <div class="message-cont">
+            
+        </div>
+    </div>
+{% for message in message_list %}
+ {{ message.message_from }}
+ {{ message.message_to }}
+ {{ message.message_contents }}
+ {{ message.message_sent }}
+ message conversation:
+ {{ message.message_conversation }}
+ {{ message.message_conversation.conversation_boat.get_make_display }}
+ <br>
+{% endfor %}
+</main>
+{% endblock %}
