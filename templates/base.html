@@ -33,7 +33,7 @@
         <ul>
             {% if user.is_authenticated %}
             <li><a href="{% url 'account_logout' %}"><span id="logout-text">Logout</span></a></li>
-            <li><a href="{% url 'conversation_list' %}"><span id="message-centre-text">Messages</span></a></li>
+            <li><a href="{% url 'conversations_list' %}"><span id="message-centre-text">Messages</span></a></li>
             <li><a href="#"><span id="favourite-text">Favourites</span></a></li>
             <li><a href="{% url 'my_listings' %}"><span id="your-listings-text">My Listings</span></a></li>
             <li><a href="{% url 'listing_create' %}"><span id="new-listing-text">New Listing</span></a></li>
