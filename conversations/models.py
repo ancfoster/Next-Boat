@@ -2,6 +2,7 @@ from django.db import models
 from listings.models import Listings
 from django.contrib.auth.models import User
 from django.core.validators import MaxValueValidator, MinValueValidator, MaxLengthValidator, MinLengthValidator
+from django.utils import timezone
 
 
 # Create your models here.
@@ -11,7 +12,7 @@ class Conversations(models.Model):
     conversation_seller = models.ForeignKey(User, on_delete=models.DO_NOTHING, related_name='conversation_seller')
     conversation_thumbnail = models.ImageField(verbose_name='Conversation Image')
     conversation_title = models.CharField(max_length=200, verbose_name="Conversation Title")
-    last_message_date = models.DateTimeField
+    last_message_date = models.DateTimeField(verbose_name="Last message date", blank=True, default=timezone.now)
 
     class Meta:
         verbose_name = "Conversation"
