@@ -135,4 +135,16 @@
         </div>
     </div>
 </main>
+<div id="gallery-cont" class="gallery-cont">
+    <div id="close-row">
+        <div id="gallery-close-button" role="button">
+        </div>
+    </div>
+        {% for gallery_image in gallery_images %}
+        <img class="gallery_images" src="{{ gallery_image.image.url }}">
+        {% endfor %}
+
+</div>
+<script src="{% static 'javascript/gallery.js' %}">
+</script>
 {% endblock %}
