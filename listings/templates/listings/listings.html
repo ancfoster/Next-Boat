@@ -1,9 +1,14 @@
 {% extends 'base.html' %}
 {% load humanize %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/listings.css' %}"> </link>
+<title>Explore power and sail boats for sale | NextBoat</title>
+{% endblock %}
 {% block content %}
-<h1>
-    Boats for Sale
-</h1>
+<main>
+Listings Template
+
+</main>
 Listings Template
     {% for listing in listings_list %}
         <table>
