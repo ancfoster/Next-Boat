@@ -13,7 +13,7 @@
     box-sizing: border-box;
 }
 .conversation-cont:hover {
-    background-color: var(--form-field-bg-hover);
+    background-color: var(--light-mid-bg-grey);
 }
 .conversation-bubbles {
     position: relative;
