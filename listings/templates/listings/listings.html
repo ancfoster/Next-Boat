@@ -1,4 +1,5 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
+{% load static %}
 {% load humanize %}
 {% block head %}
 <link rel="stylesheet" href="{% static 'css/listings.css' %}"> </link>
@@ -6,69 +7,34 @@
 {% endblock %}
 {% block content %}
 <main>
-Listings Template
-
-</main>
-Listings Template
+<div class="listing-grid">
     {% for listing in listings_list %}
-        <table>
-            <tr>
-                <th>
-                    Description
-                </th>
-                <th>
-                    Value
-                </th>
-            </tr>
-            <tr>
-                <td>
-                    Make + Model
-                </td>
-                <td>
-                    {{ listing.make }} {{ listing.model }}
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Short description
-                </td>
-                <td>
-                    {{ listing.listing_excerpt }} {{ listing.created_by }}
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Country
-                </td>
-                <td>
-                    {{ listing.country }}
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Listing Year
-                </td>
-                <td>
-                    {{ listing.year }}
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Price
-                </td>
-                <td>
-                    {{ listing.price|intcomma }}
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    View listing
-                </td>
-                <td>
-                    <a href="{% url 'boat_listing_details' listing.pk %}">Click here to view</a>
-                </td>
-            </tr>
-        </table>
+    <div class="boat-listing-cont">
+        <a href="#">
+            <div class="boat-listing-item">
+                <img class="listing-picture" alt="Picture of boat {{ listing.get_make_display }} {{ listing.model }}" src="{{ listing.featured_image.url }}">
+                <div class="listing-text-flex">
+                    <span class="listing-title">{{ listing.get_make_display }} {{ listing.model }}</span>
+                    <div class="listing-description">
+                        {{ listing.listing_excerpt }}
+                    </div>
+                    <div class="year-loc-flex">
+                        <div class="year">
+                            <img class="year-icon" alt="" src="{% static 'images/cake_icon.svg' %}">{{ listing.year_construction }}
+                        </div>
+                        <div class="location">
+                            <img class="location-icon" alt="" src="{% static 'images/location_icon.svg' %}">{{ listing.location }}
+                        </div>
+                    </div>
+                    <div class="price">
+                        £ {{ listing.price|intcomma }}
+                    </div>
+    
+                </div>
+            </div>
+        </a>
+    </div>
     {% endfor %}
-
+</div>
+</main>
 {% endblock %}
