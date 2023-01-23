@@ -60,5 +60,5 @@ class ConversationMessageList(LoginRequiredMixin, View):
             print('form save')
             form = conversation_message_form.save()
             form.save()
-        return redirect('boat_listings')
+        return redirect(request.path)
 
