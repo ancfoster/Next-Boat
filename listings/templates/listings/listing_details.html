@@ -7,14 +7,14 @@
 <title>{{ listing.get_make_display }} {{ listing.model }} {{ listing.category }} for sale | NextBoat - buy and sell boats online</title>
 {% endblock %}
 {% block content %}
-
 <main id="listing-detail-main">
-    <div id="listings-return"><a href="/boats">Search results</a></div>
+    <div id="listings-return"><a href="/boats">All Boats</a></div>
     <h1 class="listing-detail-h1">{{ listing.get_make_display }} {{ listing.model }}</h1> 
     <div id="listing-pictures-cont">
-        <div id="gallery-launch_button" role="button">
+        <div id="gallery-launch-button" role="button">
+            <img alt="" class="gallery-icon" src="{% static 'images/gallery_icon.svg' %}">
             <span>
-                All pictures
+                All Pictures
             </span>
         </div>
         <div id="main-listing-picture">
@@ -22,18 +22,25 @@
         </div>
         <div id="listing-picture-grid">
             {% for preview_image in preview_images %}
-
-               <img src="{{ preview_image.image.url }}">
+               <img class="preview-images" src="{{ preview_image.image.url }}">
             {% endfor %}
         </div>
+    </div>
+    <div id="all-images-cont">
+        {% for gallery_image in gallery_images %}
+        <img class="gallery-images" src="{{ gallery_image.image.url }}">
+        {% endfor %}
     </div>
     <div id="interested-cont">
         <div id="favourite-button" role="button"></div>
         <div id="contact-seller-cont">
+            {% if listing.created_by|stringformat:"s" == user.get_username %}
+            <a href="#" id="contact-button-a"><div id="edit-listing-button" class="action"><span>Edit Listing</span></div></a> 
+            {% else %}
             <span id="contact-seller-label">Interested in this boat?</span>
-            <a href="#" id="contact-button-a"><div id="contact-seller-button"><span>Contact Seller</span></div></a>
+            <a href="#" id="contact-button-a"><div id="contact-seller-button" class="action"><span>Contact Seller</span></div></a>
+            {% endif %}
         </div>
-        <div id="share-button" role="button"></div>
     </div>
     <div id="listing-details-flex">
         <div id="listing-particulars-col">
@@ -135,16 +142,6 @@
         </div>
     </div>
 </main>
-<div id="gallery-cont" class="gallery-cont">
-    <div id="close-row">
-        <div id="gallery-close-button" role="button">
-        </div>
-    </div>
-        {% for gallery_image in gallery_images %}
-        <img class="gallery_images" src="{{ gallery_image.image.url }}">
-        {% endfor %}
-
-</div>
 <script src="{% static 'javascript/gallery.js' %}">
 </script>
 {% endblock %}
