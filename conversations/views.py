@@ -44,21 +44,20 @@ class ConversationMessageList(LoginRequiredMixin, View):
         return render(request, 'conversations/display_conversation.html', context)
 
     def post(self, request, id, *args, **kwargs):
-        print('post')
         id = self.kwargs['id']
         conversation = Conversations.objects.get(pk=id)
         conversation_buyer = conversation.conversation_buyer
         conversation_message_form = ConversationMessageForm(request.POST)
         if conversation_message_form.is_valid():
-            print('form valid')
             conversation_message_form.instance.message_conversation = conversation
             conversation_message_form.instance.message_from = request.user
             if request.user == conversation_buyer:
                 conversation_message_form.instance.message_to = conversation_seller
             else:
                 conversation_message_form.instance.message_to = conversation_buyer
-            print('form save')
             form = conversation_message_form.save()
             form.save()
+            conversation.last_message_date = datetime.now()
+            conversation.save()
         return redirect(request.path)
 
