@@ -72,7 +72,9 @@
                     <span class="particulars-descriptor">Draft</span>
                     <span class="particulars-detail"> {{ listing.draft }} m</span>
                     <span class="particulars-descriptor">Type</span>
-                    <span class="particulars-detail"> {{ listing.type }}</span>
+                    <span class="particulars-detail"> {{ listing.get_type_display }}</span>
+                    <span class="particulars-descriptor">Category</span>
+                    <span class="particulars-detail"> {{ listing.get_category_display }}</span>
                 </div>
                 <div class="particulars-card-col-right">
                     <span class="particulars-descriptor">Beam</span>
@@ -87,15 +89,15 @@
             <div class="particulars-card">
                 <div class="particulars-card-col-left">
                     <span class="particulars-descriptor">Number of engines</span>
-                    <span class="particulars-detail">{{ listing.number_of_engines }} m</span>
+                    <span class="particulars-detail">{{ listing.number_of_engines }}</span>
                     <span class="particulars-descriptor">Maximum Speed</span>
-                    <span class="particulars-detail"> {{ listing.speed }} knots</span>
-                    <span class="particulars-descriptor">Range</span>
-                    <span class="particulars-detail"> {{ listing.range }} NM</span>
+                    <span class="particulars-detail"> {{ listing.maximum_speed }} knots</span>
+                    <span class="particulars-descriptor">Total Horsepower</span>
+                    <span class="particulars-detail"> {{ listing.total_hp }} HP</span>
                 </div>
                 <div class="particulars-card-col-right">
                     <span class="particulars-descriptor">Fuel</span>
-                    <span class="particulars-detail"> {{ listing.get_fuel_display }} m</span>
+                    <span class="particulars-detail"> {{ listing.get_fuel_display }}</span>
                     <span class="particulars-descriptor">Cruising Speed</span>
                     <span class="particulars-detail"> {{ listing.cruising_speed }} knots</span>
                 </div>
@@ -111,8 +113,6 @@
                 <div class="particulars-card-col-right">
                     <span class="particulars-descriptor">Berths</span>
                     <span class="particulars-detail"> {{ listing.berths }}&nbsp;</span>
-                    <span class="particulars-descriptor">Cabin Headroom</span>
-                    <span class="particulars-detail"> {{ listing.cabin_headroom }}&nbsp;</span>
                 </div>
             </div>
         </div>
