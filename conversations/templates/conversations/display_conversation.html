@@ -60,6 +60,11 @@
                 </div>
             {% endif %}
         {% endfor %}
+        <form method="POST" action="">
+            {% csrf_token %}
+            {{ conversation_message_form.message_contents }}
+            <button type="submit" disabled="disabled" id="message-submit"><img alt="Send Message" id="submit-icon" src="{% static 'images/send_icon.svg' %}"></button>
+        </form>
     </div>
 </main>
 {% else %}
@@ -67,5 +72,5 @@
     <h2>You do not have permission to view this.</h2>
 </main>
 {% endif %}
-
+<script src="{% static 'javascript/message.js' %}"></script>
 {% endblock %}
