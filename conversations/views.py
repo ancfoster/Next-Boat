@@ -34,13 +34,31 @@ class ConversationsList(LoginRequiredMixin, generic.ListView):
         return Conversations.objects.filter(Q(conversation_seller=self.request.user) | Q(conversation_buyer=self.request.user))
 
 
-class ConversationMessageList(View):
+class ConversationMessageList(LoginRequiredMixin, View):
     def get(self, request, id, *args, **kwargs):
-        if request.method == 'GET':
-            id = self.kwargs['id']
-            message_list = ConversationMessages.objects.filter(message_conversation=id)
-            conversation = Conversations.objects.get(pk=id)
-            conversation_message_form = ConversationMessageForm()
-            context = {'message_list':message_list, 'conversation':conversation, 'conversation_message_form':conversation_message_form}
-            return render(request, 'conversations/display_conversation.html', context)
+        conv_id = self.kwargs['id']
+        message_list = ConversationMessages.objects.filter(message_conversation=conv_id)
+        conversation = Conversations.objects.get(pk=conv_id)
+        conversation_message_form = ConversationMessageForm()
+        context = {'message_list':message_list, 'conversation':conversation, 'conversation_message_form':conversation_message_form}
+        return render(request, 'conversations/display_conversation.html', context)
+
+    def post(self, request, id, *args, **kwargs):
+        print('post')
+        id = self.kwargs['id']
+        conversation = Conversations.objects.get(pk=id)
+        conversation_buyer = conversation.conversation_buyer
+        conversation_message_form = ConversationMessageForm(request.POST)
+        if conversation_message_form.is_valid():
+            print('form valid')
+            conversation_message_form.instance.message_conversation = conversation
+            conversation_message_form.instance.message_from = request.user
+            if request.user == conversation_buyer:
+                conversation_message_form.instance.message_to = conversation_seller
+            else:
+                conversation_message_form.instance.message_to = conversation_buyer
+            print('form save')
+            form = conversation_message_form.save()
+            form.save()
+        return redirect('boat_listings')
 
