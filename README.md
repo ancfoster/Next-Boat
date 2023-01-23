@@ -99,5 +99,7 @@ Alternatively, if using Gitpod, you can click below to create your own workspace
 
 - Code snippet from Stackoverflow user [artem](https://stackoverflow.com/questions/8317537/django-templates-split-string-to-array) to convert a string into an array with a custom Django template filter
 
+- [Code snippet](https://stackoverflow.com/questions/48248405/cannot-write-mode-rgba-as-jpeg) from Stackoverflow user [Prahlad Yeri](https://stackoverflow.com/users/849365/prahlad-yeri) Using PILLOW to convert an uploaded image if it is a PNG with alpha channel, which would otherwise cause an error when converting the upload file to .JPG format. 
+
 ### Acknowledgements
 I would like to thank my Code Institute mentor Tim Nelson for providing invaluable guidance duirng the development of this project
