@@ -10,6 +10,7 @@
     <h1>Messages</h1>
     {% if conversations_list %}
     {% for conversation in conversations_list %}
+    <a href="{% url 'conversation_messages' conversation.pk %}" class="cont-a">
     <div class="conversation-cont">
         <div class="conversation-bubbles">
             <div class="bubble-username">
@@ -32,9 +33,10 @@
             <div class="conversation-boat-name">
                 {{ conversation.conversation_boat.get_make_display }} {{ conversation.conversation_boat.model }}
             </div>
-            <div class="conversation-date"> {{ conversation.last_message_date }} <a href="{% url 'conversation_messages' conversation.pk %}">link</a></div>
+            <div class="conversation-date">Last message: {{ conversation.last_message_date|date:"d / m / y H:i" }}</div>
         </div>
     </div>
+    </a>
     {% endfor %}
 {% else %}
     <div id="no-messages">You have no messages.</div>

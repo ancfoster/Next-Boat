@@ -1,3 +1,6 @@
+.cont-a {
+    text-decoration: none;
+}
 .conversation-cont {
     width: 100%;
     display: flex;
@@ -8,6 +11,9 @@
     margin: 8px 0;
     background-color: var(--white);
     box-sizing: border-box;
+}
+.conversation-cont:hover {
+    background-color: var(--form-field-bg-hover);
 }
 .conversation-bubbles {
     position: relative;
