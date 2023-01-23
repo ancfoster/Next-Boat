@@ -1,1 +1,120 @@
 /* This stylesheet styles listings.html, which shows the available boats on the site */
+.listing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-auto-rows: auto;
+    grid-row-gap: 12px;
+    margin-top: 16px;
+    place-items: center;
+}
+.boat-listing-cont {
+    width: 100%;
+    max-width: 304px;
+    min-width: 280px;
+    position: relative;
+    margin: 8px;
+    background-color: var(--white);
+    border-radius: 16px;
+    box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.16);
+    -webkit-box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.16);
+    box-sizing: border-box;
+}
+.boat-listing-cont a {
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+}
+.boat-listing-item {
+    width: 100%;
+    max-width: 304px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+}
+.listing-picture {
+    width: 100%;
+    height: 180px;
+    border-radius: 16px 16px 0px 0px;
+    object-fit: cover;
+    background-color: var(--light-bg-grey);
+}
+.listing-text-flex {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+.listing-title {
+    display: inline-block;
+    font-size: 16px;
+    font-weight: var(--semibold);
+    color: var(--dark-black);
+    line-height: 18px;
+    margin-bottom: 8px;
+}
+.listing-description {
+    width: 100%;
+    height: 32px;
+    font-size: 14px;
+    line-height: 14px;
+    color: #444444;
+    text-align: left;
+    font-weight: var(--regular);
+    margin-bottom: 8px;
+}
+.year-loc-flex {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    margin-bottom: 8px;
+}
+.year {
+    width: 60px;
+    margin-bottom: 8px;
+    display: flex;
+    flex: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: flex-start;
+    color: #555555;
+    font-size: 16px;
+    line-height: 16px;
+}
+.year-icon {
+    height: 16px;
+    width: auto;
+    margin-right: 4px;
+}
+.location {
+    width: calc(100% - 68px);
+    margin-left: 8px;
+    margin-bottom: 8px;
+    display: flex;
+    flex: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: flex-start;
+    color: #555555;
+    font-size: 16px;
+    line-height: 16px;
+}
+.location-icon {
+    height: 16px;
+    width: auto;
+    margin-right: 4px;
+}
+.price {
+    width: 100%;
+    text-align: left;
+    font-size: 20px;
+    font-weight: var(--semibold);
+    color: var(--off-black);
+    line-height: 20px;
+}
