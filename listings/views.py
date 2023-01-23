@@ -16,8 +16,6 @@ from io import BytesIO
 from django.core.files.uploadedfile import InMemoryUploadedFile
 from django.core.files.storage import FileSystemStorage
 from datetime import datetime
-
-from .models import Listings
 from .forms import ListingCreateForm, ListingMediaForm
 
 
