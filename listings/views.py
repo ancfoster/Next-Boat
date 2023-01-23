@@ -102,6 +102,9 @@ def home(request):
 #This function take an image and string as an argument and then compressed using PILLOW library
 def compress_uploaded_images(image, listing_name):
     image = Image.open(image)
+    #Code snippet by Prahlad Yeri
+    if image.mode in ("RGBA", "P"):
+        image = image.convert('RGB')
     #.thumbnail method resizes the uploaded images, values are max height & width
     image.thumbnail((1024, 1024))
     image_io = BytesIO()
@@ -112,6 +115,9 @@ def compress_uploaded_images(image, listing_name):
 
 def compress_featured_image(image):
     image = Image.open(image)
+    #Code snippet by Prahlad Yeri
+    if image.mode in ("RGBA", "P"):
+        image = image.convert('RGB')
     #.thumbnail method resizes the uploaded images, values are max height & width
     image.thumbnail((1024, 1024))
     image_io = BytesIO()
