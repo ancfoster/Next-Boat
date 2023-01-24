@@ -1,16 +1,16 @@
+/* jshint esversion: 11 */
 // Init variables
 const excerptField = document.getElementById("id_listing_excerpt");
 const descriptionField = document.getElementById("id_listing_description");
 const editForm = document.getElementById("edit-form");
 const descriptionLengthDiv = document.getElementById("description-length");
 const excerptLengthDiv = document.getElementById("excerpt-length");
-const categoryCont = document.getElementById("category-cont");
 // Hidden field variables
-const idCondition = document.getElementById('id_condition')
-const idBoatFeatureList = document.getElementById('id_boat_feature_list')
-const idCategory = document.getElementById('id_category')
-const idType = document.getElementById('id_type')
-const idTaxPaid = document.getElementById('id_tax_paid')
+const idCondition = document.getElementById('id_condition');
+const idBoatFeatureList = document.getElementById('id_boat_feature_list');
+const idCategory = document.getElementById('id_category');
+const idType = document.getElementById('id_type');
+const idTaxPaid = document.getElementById('id_tax_paid');
 // Feature list variables
 let featureArray = [];
 const addFeatureField = document.getElementById('add_feature_text');
@@ -37,7 +37,7 @@ function loadState(){
         let idBoatFeatureListString = idBoatFeatureList.value;
         featureArray = idBoatFeatureListString.split('^^');
         featureFlex.innerHTML = '';
-        for(i = 0; i < featureArray.length; i++){
+        for(let i = 0; i < featureArray.length; i++){
             featureFlex.innerHTML = featureFlex.innerHTML + `
             <div class="feature-item">
             <span>${featureArray[i]}</span><div class="delete_list_item" role="button">
@@ -46,15 +46,15 @@ function loadState(){
         }
     }
 }
-function boatCategoryLoad() {
+function boatCategoryLoad(){
     if(idType.value == "P") {
         categoryListPowerLabel.style.display = 'block';
         categoryListPower.style.display = 'block';
     } else {
         categoryListSailLabel.style.display = 'block';
         categoryListSail.style.display = 'block';
-        document.getElementById('sail-radio').checked = true;
-    };
+      document.getElementById('sail-radio').checked = true;
+    }
     switch (idCategory.value)
     {
         case 'C':
@@ -93,10 +93,10 @@ function boatCategoryLoad() {
 // When an option from either power or sail category lists is selected, the value is forwarded to the hidden from field
 categoryListPower.addEventListener('change', function() {
     idCategory.value = categoryListPower.value;
-})
+});
 categoryListSail.addEventListener('change', function() {
     idCategory.value = categoryListSail.value;
-})
+});
 
 // If add feature field is less than two characters in length add button is disabled
 addFeatureField.addEventListener('input', checkFeatureField);
@@ -110,24 +110,24 @@ function checkFeatureField(e) {
 featureFlex.addEventListener('click', e => {
     if(e.target.classList.contains('delete_list_item')) {
         let itemDivToDelete = e.target.parentElement;
-        featureFlexNode = itemDivToDelete.parentNode;
+        let featureFlexNode = itemDivToDelete.parentNode;
         let itemIndex = Array.from(featureFlexNode.children).indexOf(itemDivToDelete);
         deleteFeature(itemIndex);
         itemDivToDelete.remove();
     }
-})
+});
 
 // This function deletes selected boat feature and updates the hidden form field.
 function deleteFeature(itemIndex) {
-    updatedItemIndex = itemIndex - 1;
-    featureArray.pop(updatedItemIndex)
-    tempFeatureList = '';
+    let updatedItemIndex = itemIndex - 1;
+    featureArray.pop(updatedItemIndex);
+    let tempFeatureList = '';
     if(featureArray.length === 0) {
         featureFlex.innerHTML = `
         <span id="add-feature-text">Begin by adding a feature.</span>`;
         idBoatFeatureList.value = '';
     } else {
-    for(i=0; i < featureArray.length; i++) {
+    for(let i=0; i < featureArray.length; i++) {
         if(i < featureArray.length - 1) {
             tempFeatureList = tempFeatureList + featureArray[i] + '^^';
         } else {
@@ -140,7 +140,7 @@ function deleteFeature(itemIndex) {
 
 // Adds a new feature item to the DOM and idBoatFeatureList hidden form field
 addfeatureButton.addEventListener('click', () => {
-    newItem = addFeatureField.value;
+    let newItem = addFeatureField.value;
     if( featureArray.length === 0) {
         featureArray.push(newItem);
         featureFlex.innerHTML = `
@@ -162,7 +162,7 @@ addfeatureButton.addEventListener('click', () => {
         idBoatFeatureList.value = idBoatFeatureList.value + "^^" + newItem;
     }
     addfeatureButton.disabled = true;
-} )
+});
 
 // These two functions count & display how many characters have been inputted into the excerpt & description form fields
 excerptField.addEventListener('input', updateExcerptLength);
@@ -178,11 +178,11 @@ function updateDescriptionLength(e) {
 // If it is pass it and its value to relayButtonValue function
 editForm.addEventListener('click', e => {
     if (e.target.tagName == 'INPUT') {
-        eValue = e.target.value;
-        eId = e.target.id;
-        relayRadioButtonValue(eId, eValue)
+        let eValue = e.target.value;
+        let eId = e.target.id;
+        relayRadioButtonValue(eId, eValue);
     }
-})
+});
 // Checks if clicked form item is radio button, if so take value and assign to corresponding hidden form field
 function relayRadioButtonValue(fieldId, fieldValue) {
     switch (fieldId)
