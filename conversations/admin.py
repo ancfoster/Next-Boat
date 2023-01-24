@@ -9,5 +9,5 @@ class ConversationAdmin(admin.ModelAdmin):
 
 @admin.register(ConversationMessages)
 class ConversationMessagesAdmin(admin.ModelAdmin):
-    list_display = ("message_conversation", "message_from", "message_to",)
+    list_display = ("message_from", "message_to")
 
