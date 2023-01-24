@@ -1,0 +1,248 @@
+{% extends "base.html" %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/create.css' %}"> </link>
+<title>Edit {{ listing_object.get_make_display }} {{ listing_object.model }} | NextBoat</title>
+{% endblock %}
+{% block content %}
+
+<main>
+{% if listing_object.created_by|stringformat:"s" == user.get_username %}
+  <h1>Edit: {{ listing_object.get_make_display }} {{ listing_object.model }}</h1>
+  <form method="post" id="edit-form" action="">
+    {% csrf_token %}
+    {{ listing_edit_form.condition }}
+    {{ listing_edit_form.boat_feature_list }}
+    {{ listing_edit_form.category }}
+    {{ listing_edit_form.type }}
+    {{ listing_edit_form.tax_paid }}
+    <div class="form-section-cont">
+        <label for="id_hull_configuration">Listing Status</label>
+        {{ listing_edit_form.listing_status }}
+        <div class="form-tip">
+            <image alt="" src="{% static 'images/information_icon.svg' %}"></image>
+              <span>Boats marked as pending sale will be displayed in results, whilst boats marked as sold or not available won't.</span>
+          </div>
+    </div>
+    <h2>What kind of boat are you selling?</h2>
+    <div class="form-section-cont">
+      <label>Boat Type</label>
+      <div class="radio-cont-2">
+        <label for="power-radio">
+          <input type="radio" class="hidden-radio" id="power-radio" value="P" checked name="type_field">
+          <div class="radio-div-2">Power</div>
+        </label>
+        <label for="sail-radio">
+          <input type="radio" class="hidden-radio" id="sail-radio" value="S" name="type_field">
+          <div class="radio-div-2">Sail</div>
+        </label>
+      </div>
+      <label id="clp" for="category_list_power">Category</label>
+      <div id="category-cont">
+        <select id="category_list_power">
+          <option value="PC">Planing Cruiser</option>
+          <option value="DC">Displacement Cruiser</option>
+          <option value="S">Sport</option>
+          <option value="F">Fishing</option>
+          <option value="RT">RIB/Tender</option>
+          <option value="NC">Narrow/Canal</option>
+        </select>
+        <label id="cls" for="category_list_sail">Category</label>
+        <select id="category_list_sail">
+          <option value="C">Cruiser</option>
+          <option value="DS">Day Sailer</option>
+          <option value="DI">Dinghy</option>
+          <option value="RA">Racing</option>
+        </select>
+      </div>
+      <label for="id_hull_configuration">Hull Configuration</label>
+      {{ listing_edit_form.hull_configuration }}
+      <label>Condition</label>
+      <div class="radio-cont-2">
+        <label for="used-radio">
+          <input type="radio" class="hidden-radio" id="used-radio" value="U" checked name="condition_field">
+          <div class="radio-div-2">Used</div>
+        </label>
+        <label for="new-radio">
+          <input type="radio" class="hidden-radio" id="new-radio" value="N" name="condition_field">
+          <div class="radio-div-2">New</div>
+        </label>
+      </div>
+      <label for="id_make">Make</label>
+      {{ listing_edit_form.make }}
+      <label for="id_model">Model</label>
+      {{ listing_edit_form.model }}
+      {{ listing_edit_form.model.errors }}
+      <label for="id_year_construction">Year of construction</label>
+      {{ listing_edit_form.year_construction }}
+      {{ listing_edit_form.year_construction.errors }}
+    </div>
+    <h2>Price and Location</h2>
+    <div class="form-section-cont">
+      <label for="id_price">Price</label>
+      <div class="num-input-cont">
+        <span class="unit-symbol">£</span>{{listing_edit_form.price}}
+      </div>
+      {{ listing_edit_form.price.errors }}
+      <label>Tax Status</label>
+      <div class="radio-cont-2">
+        <label for="paid-radio">
+          <input type="radio" class="hidden-radio" id="paid-radio" value="Y" checked name="tax_status_field">
+          <div class="radio-div-2">Paid</div>
+        </label>
+        <label for="unpaid-radio">
+          <input type="radio" class="hidden-radio" id="unpaid-radio" value="N" name="tax_status_field">
+          <div class="radio-div-2">Unpaid</div>
+        </label>
+      </div>
+      <div class="form-tip">
+        <image alt="" src="{% static 'images/information_icon.svg' %}"></image>
+          <span>Has VAT been paid in the EU/UK when imported or originally sold?</span>
+      </div>
+      <label>Country</label>
+        {{listing_edit_form.country}}
+      <label>Location</label>
+        {{listing_edit_form.location}}
+        {{ listing_edit_form.location.errors }}
+    </div>
+    <h2>Particulars</h2>
+    <div class="form-section-cont">
+      <div class="wrap-flex">
+        <div class="particular-half-col">
+          <label for="id_length">Length</label>
+          <div class="num-input-cont">
+            {{listing_edit_form.length}}<span class="unit-symbol">m</span>
+          </div>
+          {{ listing_edit_form.length.errors }}
+        </div>
+        <div class="particular-half-col">
+          <label for="id_beam">Beam</label>
+          <div class="num-input-cont">
+            {{listing_edit_form.beam}}<span class="unit-symbol">m</span>
+          </div>
+          {{ listing_edit_form.beam.errors }}
+        </div>
+        <div class="particular-half-col">
+          <label for="id_draft">Draft</label>
+          <div class="num-input-cont">
+            {{listing_edit_form.draft}}<span class="unit-symbol">m</span>
+          </div>
+          {{ listing_edit_form.draft.errors }}
+        </div>
+        <div class="particular-half-col">
+          <label for="id_weight">Weight</label>
+          <div class="num-input-cont">
+            {{listing_edit_form.weight}}<span class="two-digit-unit">kg</span>
+          </div>
+          {{ listing_edit_form.weight.errors }}
+        </div>
+      </div>
+    
+      <label for="id_hull_material">Hull Material</label>
+      {{ listing_edit_form.hull_material }}
+    </div>
+    <h2>Propulsion</h2>
+    <div class="form-section-cont">
+      <div class="wrap-flex">
+        <div class="particular-half-col">
+          <label for="id_number_of_engines">Number of engines</label>
+          <div class="num-input-cont">
+            {{listing_edit_form.number_of_engines }}
+          </div>
+          {{ listing_edit_form.number_of_engines.errors }}
+        </div>
+        <div class="particular-half-col">
+          <label for="id_total_hp">Total HP</label>
+          <div class="num-input-cont">
+            {{listing_edit_form.total_hp }}<span class="two-digit-unit">hp</span>
+          </div>
+          {{ listing_edit_form.total_hp.errors }}
+        </div>
+        <div class="particular-half-col">
+          <label for="id_maximum_speed">Maximum Speed</label>
+          <div class="num-input-cont">
+            {{listing_edit_form.maximum_speed}}<span class="two-digit-unit">Kn</span>
+          </div>
+          {{ listing_edit_form.maximum_speed.errors }}
+        </div>
+        <div class="particular-half-col">
+          <label for="id_crusing_speed">Cruising Speed</label>
+          <div class="num-input-cont">
+            {{listing_edit_form.cruising_speed}}<span class="two-digit-unit">Kn</span>
+          </div>
+          {{ listing_edit_form.cruising_speed.errors }}
+        </div>
+      </div>
+      <label for="id_fuel">Fuel</label>
+      {{ listing_edit_form.fuel }}
+    </div>
+    </div>
+    <h2>Accomodation</h2>
+    <div class="form-section-cont">
+      <div class="wrap-flex">
+        <div class="particular-half-col">
+          <label for="id_cabins">Cabins</label>
+          <div class="num-input-cont">
+            {{listing_edit_form.cabins }}
+          </div>
+          {{ listing_edit_form.cabinsh.errors }}
+        </div>
+        <div class="particular-half-col">
+          <label for="id_berths">Berths</label>
+          <div class="num-input-cont">
+            {{listing_edit_form.berths }}
+          </div>
+          {{ listing_edit_form.berths.errors }}
+        </div>
+        <div class="particular-half-col">
+          <label for="id_heads">Heads</label>
+          <div class="num-input-cont">
+            {{listing_edit_form.heads}}
+          </div>
+          {{ listing_edit_form.heads.errors }}
+        </div>
+      </div>
+    </div>
+    <h2>Description</h2>
+    <div class="form-section-cont">
+      <label for="id_listing_excerpt">Short excerpt</label>
+      {{listing_edit_form.listing_excerpt}}
+      <div class="field-char-count" id="excerpt-length"></div>
+      {{ listing_edit_form.listing_excerpt.errors }}
+      <div class="form-tip">
+        <image alt="" src="{% static 'images/information_icon.svg' %}"></image>
+          <span>The excerpt is a short description that appears in search results.          </span>
+      </div>
+      <label for="id_listing_description">Description</label>
+      {{listing_edit_form.listing_description}}
+      <div class="field-char-count" id="description-length"></div>
+      {{ listing_edit_form.listing_description.errors }}
+      <div class="form-tip">
+        <image alt="" src="{% static 'images/information_icon.svg' %}"></image>
+          <span>Buyers love a detailed description. A well written and informative description can lead to a better sale price and more potential buyers.</span>
+      </div>
+    </div>
+    <h2>Features</h2>
+    <div class="form-section-cont">
+      <label for="add_feature_text">Add a feature:</label>
+      <div id="feature-form-flex">
+        <input type="text" maxlength="40" id="add_feature_text"><button type="button" disabled="disabled" id="add_feature_button">Add</button>      </div>
+      <div id="feature-flex-list">
+          <span id="add-feature-text">Begin by adding a feature.</span>
+      </div>
+        <div class="form-tip">
+        <image alt="" src="{% static 'images/information_icon.svg' %}"></image>
+          <span>Add boat features to your listing e.g bow thruster, watermaker, radar</span>
+      </div>
+    </div>
+    </div>
+    <button type="submit">Save Listing</button>
+  </form>
+{% else %}
+<h3>You do not have permission.</h3>
+{% endif %}
+</main>
+{% endblock %}
+{% block footerscripts %}
+<script src="{% static 'javascript/edit_listing.js' %}"></script>
+{% endblock %}
