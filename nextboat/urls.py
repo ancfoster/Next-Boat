@@ -24,3 +24,6 @@ urlpatterns = [
     path('', include("conversations.urls"), name="conversation-urls"),
     path('accounts/', include('allauth.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
+handler404 = 'listings.views.view404'
