@@ -16,7 +16,7 @@ class Conversations(models.Model):
     class Meta:
         verbose_name = "Conversation"
     def __str__(self):
-        return f"{self.conversation_title}"
+        return f"{self.conversation_boat}"
 
 class ConversationMessages(models.Model):
     message_conversation = models.ForeignKey(Conversations, on_delete=models.CASCADE, related_name='message_conversation')
