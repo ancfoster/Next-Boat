@@ -26,10 +26,10 @@ const categoryListSailLabel = document.getElementById('cls');
 window.addEventListener("load", loadState);
 
 function loadState(){
-    if (idCondition == 'N') {
+    if (idCondition.value == 'N') {
         document.getElementById('new-radio').checked = true;
     }
-    if (idTaxPaid == 'N') {
+    if (idTaxPaid.value == 'N') {
         document.getElementById('unpaid-radio').checked = true;
     }
     boatCategoryLoad();
@@ -53,7 +53,41 @@ function boatCategoryLoad() {
     } else {
         categoryListSailLabel.style.display = 'block';
         categoryListSail.style.display = 'block';
+        document.getElementById('sail-radio').checked = true;
     };
+    switch (idCategory.value)
+    {
+        case 'C':
+            categoryListSail.value = 'C';
+            break;
+        case 'DS':
+            categoryListSail.value = 'DS';
+            break;
+        case 'DI':
+            categoryListSail.value = 'DI';
+            break;
+        case 'RA':
+            categoryListSail.value = 'RA';
+            break;
+        case 'PC':
+            categoryListPower.value = 'PC';
+            break;
+        case 'DC':
+            categoryListPower.value = 'DC';
+            break;
+        case 'S':
+            categoryListPower.value = 'S';
+            break;
+        case 'F':
+            categoryListPower.value = 'F';
+            break;
+        case 'RT':
+            categoryListPower.value = 'RT';
+            break;
+        case 'NC':
+            categoryListPower.value = 'NC';
+            break;
+    }
 }
 
 // When an option from either power or sail category lists is selected, the value is forwarded to the hidden from field
