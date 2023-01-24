@@ -153,6 +153,9 @@ def compress_featured_image(image):
     return image_file
 
 
-#404 view
+#404 & 500 view
 def error_404(request, exception):
-    return render(request,'listings/404.html', status = 404)
+    return render(request,'listings/404.html', status=404)
+
+def error_500(request, exception):
+    return render(request,'listings/500.html', status=500)

@@ -27,3 +27,4 @@ urlpatterns = [
 
 
 handler404 = 'listings.views.error_404'
+handler500 = 'listings.views.error_500'
