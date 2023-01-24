@@ -16,16 +16,18 @@ from io import BytesIO
 from django.core.files.uploadedfile import InMemoryUploadedFile
 from django.core.files.storage import FileSystemStorage
 from datetime import datetime
-from .forms import ListingCreateForm, ListingMediaForm
+from .forms import ListingCreateForm, ListingMediaForm, ListingEditForm
 
 
 # Create your views here.
+#This view outputs the boats listings with a status of available or pending.
 class ListingsList(generic.ListView):
     model = Listings
     queryset = Listings.objects.filter(Q(listing_status='A') | Q(listing_status='P'))
     template_name = "listings/listings.html"
 
 
+# This view shows a user any listings they have on the My Listings page
 class MyListings(LoginRequiredMixin, generic.ListView):
     model = Listings
     template_name = 'listings/my_listings.html'
@@ -33,6 +35,7 @@ class MyListings(LoginRequiredMixin, generic.ListView):
         return Listings.objects.filter(created_by=self.request.user)
 
 
+# This view shows a detailed view of a particular boat
 class ListingDetails(View):
     def get(self, request, id, *args, **kwargs):
         queryset = Listings.objects.all()
@@ -50,7 +53,7 @@ class ListingDetails(View):
         )
 
 
-#This view deletes listings
+#This view deletes a user's listing
 class ListingDelete(LoginRequiredMixin, DeleteView):
     template_name = 'listings/listing_delete.html'
     def get_object(self):
@@ -88,7 +91,7 @@ def createListing(request):
                 image_instance = ListingMedia.objects.create(listing=form, image=compressed_image)
                 image_instance.image.field.upload_to = info_string+'/'
                 image_instance.save()
-            return redirect('boat_listings')
+            return redirect('my_listings')
     else:
         listing_create_form = ListingCreateForm()
         listing_media_form = ListingMediaForm()
@@ -96,10 +99,27 @@ def createListing(request):
     return render(request, 'listings/listing_create_form.html', context)
 
 
+# This view allows a user to edit the details of a listing
+@login_required
+def EditListing(request, id):
+    listing_object = Listings.objects.get(pk=id)
+    listing_edit_form = ListingEditForm(request.POST, instance=listing_object)
+    if listing_edit_form.is_valid():
+        listing_edit_form.save()
+        return redirect('my_listings')
+    else:
+        listing_edit_form = ListingEditForm(instance=listing_object)
+    context = {'listing_edit_form': listing_edit_form, 'listing_object':listing_object }
+    return render(request, 'listings/listing_edit.html', context)
+
+
+# This view renders the home page
 def home(request):
     return render(request, 'listings/index.html')
 
-#This function take an image and string as an argument and then compressed using PILLOW library
+#These functions take an image and string as an argument,
+# and then compress the image using PILLOW library
+# PNGs with alpha channel are converted from 'RGBA' to 'RGB'
 def compress_uploaded_images(image, listing_name):
     image = Image.open(image)
     #Code snippet by Prahlad Yeri
@@ -112,6 +132,7 @@ def compress_uploaded_images(image, listing_name):
     #listing name consist of listing create form, make + model + pk fields
     image_file = InMemoryUploadedFile(image_io, None, f"{listing_name}.jpeg", 'image/jpeg', image_io.tell(), None)
     return image_file
+
 
 def compress_featured_image(image):
     image = Image.open(image)
