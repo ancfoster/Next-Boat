@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/messages.css' %}"> </link>
+<title>
+    Contact seller
+</title>
+{% endblock %}
+{% block content %}
+
+<main>
+    {% if user.get_username == listing.created_by|stringformat:"s" %}
+    <h2>You cannot message yourself.</h2>
+    {% else %}
+    <h2>Contact Seller</h2>
+    <div class="message-flex" id="create-message-flex">
+        <div class="conversation-cont" id="create-cont">
+            <div class="conversation-bubbles">
+                <div class="bubble-username">
+                    {{ listing.created_by|stringformat:"s"|slice:":1" }}
+                </div>
+                <img class="bubble-featured-image" src="{{ listing.featured_image.url }}">
+            </div>
+            <div class="conversation-text-flex">
+                <div class="conversation-username">
+                        Contact {{ listing.created_by }}
+                </div>
+                <div class="conversation-boat-name">
+                    about their {{ listing.get_make_display }} {{ listing.model }}
+                </div>
+            </div>
+        </div>
+        <form method="POST" action="">
+            {% csrf_token %}
+            {{ conversation_message_form.message_contents }}
+            <button type="submit" disabled="disabled" id="message-submit"><img alt="Send Message" id="submit-icon" src="{% static 'images/send_icon.svg' %}"></button>
+        </form>
+    </div>
+    {% endif %}
+</main>
+
+<script src="{% static 'javascript/message.js' %}"></script>
+{% endblock %}
