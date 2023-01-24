@@ -35,10 +35,10 @@
         <div id="favourite-button" role="button"></div>
         <div id="contact-seller-cont">
             {% if listing.created_by|stringformat:"s" == user.get_username %}
-            <a href="#" id="contact-button-a"><div id="edit-listing-button" class="action"><span>Edit Listing</span></div></a> 
+            <a href="{% url 'listing_edit' listing.pk %}" id="contact-button-a"><div id="edit-listing-button" class="action"><span>Edit Listing</span></div></a> 
             {% else %}
             <span id="contact-seller-label">Interested in this boat?</span>
-            <a href="#" id="contact-button-a"><div id="contact-seller-button" class="action"><span>Contact Seller</span></div></a>
+            <a href="{% url 'message_seller' listing.pk %}" id="contact-button-a"><div id="contact-seller-button" class="action"><span>Contact Seller</span></div></a>
             {% endif %}
         </div>
     </div>
@@ -57,6 +57,8 @@
                     <span class="particulars-detail"> {{ listing.country }}</span>
                     <span class="particulars-descriptor">Seller</span>
                     <span class="particulars-detail"> {{ listing.created_by }}</span>
+                    <span class="particulars-descriptor">Listing Status</span>
+                    <span class="particulars-detail"> {{ listing.get_listing_status_display }}</span>
                 </div>
                 <div class="particulars-card-col-right">
                     <span class="particulars-descriptor">Model</span>
