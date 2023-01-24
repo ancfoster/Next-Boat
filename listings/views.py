@@ -155,4 +155,4 @@ def compress_featured_image(image):
 
 #404 view
 def view404(request, exception):
-    return render(request, '404.html')
+    return render(request, 'listings/404.html')

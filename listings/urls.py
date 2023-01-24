@@ -10,5 +10,3 @@ urlpatterns = [
     path('', views.home, name="home"),
     path('create/', views.createListing, name='listing_create'),
 ]
-
-handler404 = 'listings.views.view404'
