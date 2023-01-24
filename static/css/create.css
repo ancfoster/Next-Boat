@@ -83,6 +83,7 @@ input[type=number] {
     margin: 4px auto;
     border-radius: 8px;
     color: var(--medium-grey);
+    box-sizing: border-box;
 }
 input[type=number]:focus {
     background-color: var(--white);
@@ -124,7 +125,7 @@ select:focus {
             box-sizing: border-box;
 }
 .num-input-cont input[type=number] {
-    width: calc(100% - 58px);
+    width: calc(100% - 42px);
     background-color: var(--form-field-bg-inactive);
     border: none !important;
     padding: 6px;
