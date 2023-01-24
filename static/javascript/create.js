@@ -26,15 +26,14 @@ const categoryListSailLabel = document.getElementById('cls');
 window.addEventListener("load", loadState);
 
 function loadState(){
-    if (idCondition == 'N') {
+    if (idCondition.value == 'N') {
         document.getElementById('new-radio').checked = true;
     }
-    if (idTaxPaid == 'N') {
+    if (idTaxPaid.value == 'N') {
         document.getElementById('unpaid-radio').checked = true;
     }
     boatCategoryLoad();
     if (idBoatFeatureList.value !== '') {
-        let newFeatureArray = [];
         let idBoatFeatureListString = idBoatFeatureList.value;
         featureArray = idBoatFeatureListString.split('^^');
         featureFlex.innerHTML = '';
@@ -120,7 +119,7 @@ addfeatureButton.addEventListener('click', () => {
     }
     else {
         featureArray.push(newItem);
-        featureFlex.innerHTML = featureFlex.innerHTML + `
+        featureFlex.innerHTML += `
         <div class="feature-item">
         <span>${newItem}</span><div class="delete_list_item" role="button">
         </div>
