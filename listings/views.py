@@ -112,6 +112,11 @@ def EditListing(request, id):
     context = {'listing_edit_form': listing_edit_form, 'listing_object':listing_object }
     return render(request, 'listings/listing_edit.html', context)
 
+@login_required
+def EditImages(request, id):
+    listing_object = Listings.object.get(pk-id)
+    listimg_images = ListingMedia.objects.get
+
 
 # This view renders the home page
 def home(request):
@@ -146,3 +151,8 @@ def compress_featured_image(image):
     #listing name consist of listing create form, make + model + pk fields
     image_file = InMemoryUploadedFile(image_io, None, 'featured_image.jpeg', 'image/jpeg', image_io.tell(), None)
     return image_file
+
+
+#404 view
+def view404(request, exception):
+    return render(request, '404.html')

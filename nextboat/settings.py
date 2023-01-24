@@ -144,4 +144,6 @@ DEFAULT_FILE_STORAGE = 'nextboat.storage_backends.PublicMediaStorage'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+handler404 = 'listings.views.view_404'
+
 
