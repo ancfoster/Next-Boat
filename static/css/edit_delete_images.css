@@ -1,0 +1,63 @@
+#existing-images-flex {
+    width: 100%;
+    background-color: var(--white);
+    box-sizing: border-box;
+    border-radius: 16px;
+    padding: 16px;
+    margin-bottom: 16px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.existing-image-cont {
+    width: 160px;
+    height: 120px;
+    margin: 12px;
+    position: relative;
+    box-sizing: border-box;
+    border-radius: 8px;
+}
+.existing-image-cont img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.delete-icon-button {
+    width: 32px;
+    height: 32px;
+    position: absolute;
+    border-radius: 16px;
+    top: -8px;
+    right: -8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--light-mid-bg-grey);
+    box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.44);
+-webkit-box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.44);
+}
+.delete-icon-button img {
+    width: 50%;
+    height: auto;
+    opacity: 1.0;
+    transition: 0.3s;
+}
+.existing-image-cont:hover .delete-icon-button {
+    background-color: var(--form-field-bg-hover);
+}
+.existing-image-cont:hover img {
+    opacity: 0.9;
+}
+
+#eform-cont {
+    width: 100%;
+    background-color: var(--white);
+    box-sizing: border-box;
+    border-radius: 16px;
+    padding: 16px;
+    margin-bottom: 16px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+}

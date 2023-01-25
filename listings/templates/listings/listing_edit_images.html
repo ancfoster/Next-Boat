@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/edit_delete_images.css' %}"> </link>
+<title>
+    Edit Images | NextBoat
+</title>
+{% endblock %}
+{% block content %}
+{% if listing.created_by|stringformat:"s" == user.username %}
+<main>
+    <h1>{{ listing.get_make_display }} {{ listing.model }} Images</h1>
+    <h3>Delete Images</h3>
+    <div id="existing-images-flex">
+        {% for image in listing_images %}
+        <a href="#">
+            <div class="existing-image-cont">
+                <img src="{{ image.image.url }}">
+                <div class="delete-icon-button">
+                    <img src="{% static 'images/delete.svg' %}" alt="">
+                </div>
+            </div>
+        </a>
+       {% endfor %} 
+    </div>
+    <h3>Add Additional Images</h3>
+</main>
+{% else %}
+<main>
+    <h3>You do not have permission.</h3>
+</main>
+{% endif %}
+{% endblock %}
