@@ -58,8 +58,8 @@ class ListingDetails(View):
 class ListingDelete(LoginRequiredMixin, DeleteView):
     template_name = 'listings/listing_delete.html'
     def get_object(self):
-        id_= self.kwargs.get("id")
-        return get_object_or_404(Listings, id=id_)
+        id= self.kwargs.get("id")
+        return get_object_or_404(Listings, id=id)
 
     def get_success_url(self):
         return reverse('my_listings')
@@ -103,7 +103,7 @@ def createListing(request):
 # This view allows a user to edit the details of a listing
 @login_required
 def EditListing(request, id):
-    listing_object = Listings.objects.get(pk=id)
+    listing_object = get_object_or_404(Listings, pk=id)
     listing_edit_form = ListingEditForm(request.POST, instance=listing_object)
     if listing_edit_form.is_valid():
         listing_edit_form.save()
@@ -113,11 +113,25 @@ def EditListing(request, id):
     context = {'listing_edit_form': listing_edit_form, 'listing_object':listing_object }
     return render(request, 'listings/listing_edit.html', context)
 
+# This view allows a user to upload additional images or start
+# the process to delete them
 @login_required
 def EditImages(request, id):
-    listing_object = Listings.object.get(pk-id)
-    listimg_images = ListingMedia.objects.get
+    listing = get_object_or_404(Listings, pk=id)
+    listing_images = listing.listing_media.all()
+    context = {'listing':listing, 'listing_images':listing_images}
+    return render(request, 'listings/listing_edit_images.html', context)
 
+
+#This view deletes an image
+class ImageDelete(LoginRequiredMixin, DeleteView):
+    template_name = 'listings/delete_image.html'
+    def get_object(self):
+        id = self.kwargs.get("id")
+        return get_object_or_404(Listings, pk=id)
+
+    def get_success_url(self):
+        return reverse('my_listings')
 
 # This view renders the home page
 def home(request):
