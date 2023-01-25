@@ -7,7 +7,7 @@
 {% endblock %}
 {% block content %}
 <main>
-<div class="listing-grid">
+<div class="listing-flex">
     {% for listing in listings_list %}
     <div class="boat-listing-cont">
         <a href="{% url 'boat_listing_details' listing.pk %}">
