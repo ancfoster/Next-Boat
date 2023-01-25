@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/delete_listing.css' %}"> </link>
+<link rel="stylesheet" href="{% static 'css/edit_delete_images.css' %}"> </link>
+<title>Delete Image - NextBoat</title>
+{% endblock %}
+{% block content %}
+{% if object.listing.created_by|stringformat:"s" == user.username %}
+<main>
+    <h1>Delete Image</h1>
+    <img id="delete-img" alt="Warning" src="{% static 'images/warning.svg' %}">
+    <div id="warning-text">
+        Are you sure you want to delete the image?
+        <br><br>
+        <img width="120px" height="auto" id="delete-preview-image" alt="Image of {{object.listing.get_make_display}} {{object.listing.model}}" src="{{ object.image.url }}">
+        <br>This cannot be undone. 
+        <form method="post" action="">
+            {% csrf_token %}
+            <input type="submit" value="Yes" class="delete-button">
+            <a href="{% url 'listing_images' object.listing.pk %}">
+                <button type="button" id="cancel-button">Cancel</button>
+            </a>
+        </form>
+    </div>
+</main>
+{% else %}
+<main>
+    <h3>You do not have permission.</h3>
+</main>
+{% endif %}
+{% endblock %}
