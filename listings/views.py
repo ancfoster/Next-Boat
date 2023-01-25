@@ -181,11 +181,3 @@ def compress_featured_image(image):
     #listing name consist of listing create form, make + model + pk fields
     image_file = InMemoryUploadedFile(image_io, None, 'featured_image.jpeg', 'image/jpeg', image_io.tell(), None)
     return image_file
-
-
-#404 & 500 view
-# def handler404(request, exception):
-#     return render(request,'listings/404.html', status=404)
-
-# def handler500(request):
-#     return render(request,'listings/500.html', status=500)
