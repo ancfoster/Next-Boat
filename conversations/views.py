@@ -38,7 +38,7 @@ class ConversationsList(LoginRequiredMixin, generic.ListView):
 #This view creates a new conversation, between a prospective buyer & seller
 @login_required
 def CreateConversation(request, id):
-    listing = Listings.objects.get(pk=id)
+    listing = get_object_or_404(Listings, pk=id)
     existing_conversation = Conversations.objects.filter(Q(conversation_boat=listing.pk) & Q(conversation_seller=listing.created_by))
     if existing_conversation.exists():
         print('conversation exists')
