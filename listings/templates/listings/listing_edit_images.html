@@ -12,6 +12,7 @@
     <h1>{{ listing.get_make_display }} {{ listing.model }} Images</h1>
     <h3>Delete Images</h3>
     <div id="existing-images-flex">
+        {% if listings_list %}
         {% for image in listing_images %}
         <a href="{% url 'delete_image' image.pk %}">
             <div class="existing-image-cont">
@@ -21,9 +22,12 @@
                 </div>
             </div>
         </a>
-       {% endfor %} 
+       {% endfor %}
+       {% else%}
+       <h3>There are no images to be deleted.</h3>
+       {% endif %}
     </div>
-    <h3>Add Additional Images</h3>
+    <h3>AddImages</h3>
 </main>
 {% else %}
 <main>
