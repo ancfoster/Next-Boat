@@ -12,5 +12,5 @@ urlpatterns = [
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
-error404 = 'listings.views.error_404'
-error500 = 'listings.views.error_500'
+handler404 = 'listings.views.handler400'
+handler500 = 'listings.views.handler500'
