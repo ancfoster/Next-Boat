@@ -16,8 +16,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = os.environ.get('DEBUG', False)
-DEBUG = False
+DEBUG = os.environ.get('DEBUG', False)
 
 ALLOWED_HOSTS = ['localhost', 'https://nextboat-ci.herokuapp.com', 'nextboat-ci.herokuapp.com', 'https://8000-ancfoster-nextboat-it0l4y6a3r7.ws-eu77.gitpod.io']
 
