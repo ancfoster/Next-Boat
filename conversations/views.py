@@ -41,7 +41,6 @@ def CreateConversation(request, id):
     listing = get_object_or_404(Listings, pk=id)
     existing_conversation = Conversations.objects.filter(Q(conversation_boat=listing.pk) & Q(conversation_seller=listing.created_by))
     if existing_conversation.exists():
-        print('conversation exists')
         return redirect('conversation_messages', id=existing_conversation.pk)
     else:
         conversation_message_form = ConversationMessageForm(request.POST)
@@ -60,7 +59,6 @@ def CreateConversation(request, id):
                 message_to = listing.created_by,
                 message_contents = conversation_message_form.cleaned_data['message_contents'])
             new_message.save()
-            print('save conv and message')
             return redirect('conversation_messages', id=new_conversation_id.id)
     context = {'listing': listing, 'conversation_message_form':conversation_message_form}
     return render(request, 'conversations/create_conversation.html', context)
