@@ -48,8 +48,8 @@
 .existing-image-cont:hover img {
     opacity: 0.9;
 }
-
-#eform-cont {
+/* Form styles */
+#form-cont {
     width: 100%;
     background-color: var(--white);
     box-sizing: border-box;
@@ -60,4 +60,77 @@
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: center;
+}
+input[type="file"] {
+    margin: 0 auto 8px auto;
+    padding: 16px;
+    background-color: var(--form-field-bg-inactive);
+    border-radius: 8px;
+    border: 1px solid var(--form-field-border-inactive);
+    box-sizing: border-box;
+    max-width: 340px;
+    display: flex;
+    width: 100%;
+}
+.errorlist {
+    list-style-type: none;
+    padding: 0;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 340px;
+}
+.errorlist li {
+    padding: 8px;
+    font-size: 16px;
+    line-height: 16px;
+    margin: 4px 0;
+    background-color: #ffe3e3;
+    border-radius: 8px;
+    font-size: 14px;
+    color: var(--light-text-grey);
+}
+.form-tip {
+    width: 100%;
+    max-width: 340px;
+    background-color: #e4f7f7;
+    border-radius: 8px;
+    font-size: 16px;
+    color: var(--light-text-grey);
+    margin: 8px auto;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    padding: 8px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+    line-height: 18px;
+}
+.form-tip img {
+    height: 24px;
+    width: 24px;
+    margin: 4px 8px 0 4px;
+}
+button {
+    background-color: var(--accent-colour);
+    border-radius: 8px;
+    color: var(--white);
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    max-width: 160px;
+    height: 40px;
+    margin: 16px auto;
+}
+button:hover {
+    background-color: var(--accent-colour-dark);
+    border-radius: 8px;
+    color: var(--white);
+    font-size: 16px;
 }

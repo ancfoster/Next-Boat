@@ -117,9 +117,20 @@ def EditListing(request, id):
 # the process to delete them
 @login_required
 def EditImages(request, id):
+    listing_media_form = ListingMediaForm(request.POST, request.FILES, )
     listing = get_object_or_404(Listings, pk=id)
     listing_images = listing.listing_media.all()
-    context = {'listing':listing, 'listing_images':listing_images}
+    if listing_media_form.is_valid():
+        for image_uploaded in request.FILES.getlist('image'):
+            listing_name = f"{listing.make}_{listing.model}_{listing.pk}"
+            compressed_image = compress_uploaded_images(image_uploaded, listing_name)
+            image_instance = ListingMedia.objects.create(listing=listing, image=compressed_image)
+            now = datetime.now()
+            info_string = f"{listing.make}-{listing.model}-{now.year}-{now.month}-{now.day}-{now.hour}-{now.minute}-{now.second}"
+            image_instance.image.field.upload_to = info_string+'/'
+            image_instance.save()
+        return redirect(request.path)
+    context = {'listing':listing, 'listing_images':listing_images, 'listing_media_form':listing_media_form}
     return render(request, 'listings/listing_edit_images.html', context)
 
 # This view deletes an image
