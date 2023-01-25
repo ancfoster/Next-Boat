@@ -13,7 +13,7 @@
     <h3>Delete Images</h3>
     <div id="existing-images-flex">
         {% for image in listing_images %}
-        <a href="#">
+        <a href="{% url 'delete_image' image.pk %}">
             <div class="existing-image-cont">
                 <img src="{{ image.image.url }}">
                 <div class="delete-icon-button">
