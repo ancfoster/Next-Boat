@@ -134,3 +134,21 @@ button:hover {
     color: var(--white);
     font-size: 16px;
 }
+#message-back {
+    margin-top: 16px;
+    font-size: 16px;
+    text-decoration: none;
+    color: var(--medium-grey);
+    line-height: 16px;
+    font-weight: var(--medium);
+}
+#message-back:hover {
+    color: var(--accent-colour);
+}
+#message-back img {
+    display: inline-block;
+    height: 14px;
+    width: auto;
+    margin-right: 6px;
+    transform: translateY(1px);
+}
