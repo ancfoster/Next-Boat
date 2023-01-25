@@ -8,7 +8,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include("listings.urls"), name="listings-urls"),
     path('', include("conversations.urls"), name="conversation-urls"),
+    path('', include("favourites.urls"), name="favourites-urls"),
     path('accounts/', include('allauth.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
-
