@@ -137,7 +137,7 @@ function updateExcerptLength(e) {
 }
 descriptionField.addEventListener('input', updateDescriptionLength);
 function updateDescriptionLength(e) {
-    descriptionLengthDiv.textContent = `${e.target.value.length} / 3500`;
+    descriptionLengthDiv.textContent = `${e.target.value.length} / 5000`;
 }
 
 // Check if clicked form item item is an INPUT
