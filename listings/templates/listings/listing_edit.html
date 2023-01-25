@@ -8,6 +8,7 @@
 
 <main>
 {% if listing_object.created_by|stringformat:"s" == user.get_username %}
+  <a href="{% url 'my_listings' %}" id="message-back"><img src="https://nextboat-ci-static.s3.eu-west-2.amazonaws.com/static/images/return_icon.svg" alt="Back to My Listings">My Listings</a>
   <h1>Edit: {{ listing_object.get_make_display }} {{ listing_object.model }}</h1>
   <form method="post" id="edit-form" action="">
     {% csrf_token %}
