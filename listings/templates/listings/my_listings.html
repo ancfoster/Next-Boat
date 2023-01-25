@@ -11,10 +11,10 @@
         {% for listing in listings_list %}
         <div class="listing-item-cont">
             <div class="my-col-left">
-                <img class="listing-item-f-image" alt="{{ listing.get_make_display }} {{ listing.model }}" src="{{ listing.featured_image.url }}">
+                <a href="{% url 'boat_listing_details' listing.pk %}"><img class="listing-item-f-image" alt="{{ listing.get_make_display }} {{ listing.model }}" src="{{ listing.featured_image.url }}"></a>
             </div>
             <div class="my-col-right">
-                <div class="my-make-model">{{ listing.get_make_display }} {{ listing.model }}</div>
+                <div class="my-make-model"><a href="{% url 'boat_listing_details' listing.pk %}">{{ listing.get_make_display }} {{ listing.model }}</a></div>
                 <div class="listing-status">Status: <span class="{{ listing.listing_status }}">{{ listing.get_listing_status_display }}</span></div>
                 <div class="listing-actions-flex">
                     <a href="{% url 'listing_edit' listing.pk %}" class="my-listing-actions"><div class="action-flex"><img class="my-listing-actions-icons" src="{% static 'images/my_listings_edit.svg' %}"><span>Edit Listing</span></div></a>

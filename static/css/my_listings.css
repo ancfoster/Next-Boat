@@ -96,6 +96,13 @@
     width: 100%;
     line-height: 20px;
 }
+.my-make-model a {
+    text-decoration: none;
+    color: var(--medium-grey);
+}
+.my-make-model a:hover  {
+    text-decoration: underline;
+}
 .listing-status {
     display: flex;
     align-items: center;
