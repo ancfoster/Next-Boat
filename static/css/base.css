@@ -118,12 +118,14 @@ h3 {
 }
 #logo-nav {
     text-decoration: none;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
 }
 #nav-logo {
     height: 24px;
     width: auto;
     margin-top: 4px;
-    margin-right: 12px;
 }
 #logo-nav:hover {
     text-decoration: none;
@@ -197,6 +199,9 @@ h3 {
     font-size: 16px;
     width: 100%;
     border-bottom: 1px solid #dddddd;
+}
+#menu-container ul li:hover {
+    background-color: var(--white);
 }
 #menu-container ul li a {
     width: 100%;
@@ -289,4 +294,12 @@ footer {
         transform: translateY(2px);
 
 
+}
+
+/* Media Queries */
+@media screen and (max-width: 500px) {
+    #menu-container {
+        width: 100%;
+    }
+    
 }
