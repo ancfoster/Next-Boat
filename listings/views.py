@@ -122,16 +122,20 @@ def EditImages(request, id):
     context = {'listing':listing, 'listing_images':listing_images}
     return render(request, 'listings/listing_edit_images.html', context)
 
-
-#This view deletes an image
-class ImageDelete(LoginRequiredMixin, DeleteView):
+# This view deletes an image
+class DeleteImage(LoginRequiredMixin, DeleteView):
     template_name = 'listings/delete_image.html'
+
     def get_object(self):
         id = self.kwargs.get("id")
-        return get_object_or_404(Listings, pk=id)
+        return get_object_or_404(ListingMedia, pk=id)
 
     def get_success_url(self):
-        return reverse('my_listings')
+        id=self.kwargs.get("id")
+        listing_image = get_object_or_404(ListingMedia, pk=id)
+        listing_pk = listing_image.listing.pk
+        return reverse('listing_images', kwargs={'id': self.object.listing.pk})
+
 
 # This view renders the home page
 def home(request):
