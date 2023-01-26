@@ -32,7 +32,11 @@
         {% endfor %}
     </div>
     <div id="interested-cont">
-        <div id="favourite-button" role="button"></div>
+        {% if listing_favourite %}
+        <div class="favourite-button" id="favourited" role="button"><a href="{% url 'favourite_toggle' listing.pk %}"><img alt="This boat has been added to your favourites" src="{% static 'images/heart_red.svg' %}"></a></div>
+        {% else %}
+        <div class="favourite-button" role="button"><a href="{% url 'favourite_toggle' listing.pk %}"><img alt="Add boat to favourites" src="{% static 'images/heart_icon.svg' %}"></a></div>
+        {% endif %}
         <div id="contact-seller-cont">
             {% if listing.created_by|stringformat:"s" == user.get_username %}
             <a href="{% url 'listing_edit' listing.pk %}" id="contact-button-a"><div id="edit-listing-button" class="action"><span>Edit Listing</span></div></a> 

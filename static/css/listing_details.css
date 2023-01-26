@@ -382,7 +382,7 @@
     color: var(--medium-grey);
     margin-right: 16px;
 }
-#favourite-button {
+.favourite-button {
     height: 32px;
     width: 32px;
     border-radius: 16px;
@@ -393,14 +393,27 @@
         -ms-transform: translateY(-50%);
             transform: translateY(-50%);
     background-color: var(--light-mid-bg-grey);
-    background-image: url(/static/images/heart_icon.svg);
-    background-size: auto 16px;
-    background-position: center;
-    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
     border: solid 1px var(--form-field-bg-hover);
 }
-#favourite-button:hover {
+#favourited {
+    background-color: #f9e5ed;
+}
+.favourite-button a {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.favourite-button img {
+    width: 50%;
+    height: auto;
+}
+.favourite-button:hover {
     background-color: var(--form-field-bg-hover);
 }
 #contact-button-a {
