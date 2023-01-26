@@ -11,7 +11,7 @@
   <a href="{% url 'home' %}"></a>
   <img id="logo" alt="NextBoat" src="{% static 'images/logo.svg' %}">
   <div class="form-cont">
-    <h1>{% trans "Sign In" %}</h1>
+    <h1>{% trans "Login" %}</h1>
     <form class="login" method="POST" action="{% url 'account_login' %}">
       {% csrf_token %}
       {{ form.as_p }}
