@@ -74,6 +74,10 @@ main {
     width: auto;
     margin: 4px auto 32px auto;
 }
+#logo-link {
+    width: 100%;
+    display: flex;
+}
 .form-cont {
     background-color: var(--white);
     border-radius: 16px;
@@ -125,4 +129,17 @@ button {
 }
 button:hover {
     background-color: var(--accent-colour-dark);
+}
+#create-account {
+    width: 100%;
+    margin: 4px 0;
+    text-align: center;
+    color: #484848;
+}
+#create-account a {
+    text-decoration: none;
+    color: var(--accent-colour);
+}
+#create-account a:hover {
+    text-decoration: underline;
 }

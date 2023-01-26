@@ -8,8 +8,7 @@
 {% block content %}
 
 <main>
-  <a href="{% url 'home' %}"></a>
-  <img id="logo" alt="NextBoat" src="{% static 'images/logo.svg' %}">
+  <a id="logo-link" href="{% url 'home' %}">  <img id="logo" alt="NextBoat" src="{% static 'images/logo.svg' %}">  </a>
   <div class="form-cont">
     <h1>{% trans "Login" %}</h1>
     <form class="login" method="POST" action="{% url 'account_login' %}">
@@ -20,6 +19,9 @@
       {% endif %}
       <button class="primaryAction" type="submit">{% trans "Sign In" %}</button>
     </form>
+    <div id="create-account">
+      Don't have an account? <a href="{% account_signup% }">Create one</a>
+    </div>
   </div> 
 </main>
 
