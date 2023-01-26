@@ -18,25 +18,52 @@ NextBoat is a classifieds listing website that connect buyers and sellers of boa
 
 - User stories were labelled, 'must have', 'should have', 'could have'.
 
-#### User Stories
+### User Stories
+
+- View Listings
 
 **Implemented user stories** | All user stories labelled as 'must have' or 'should have' were completed.
 
 - As a user I can browse boat listings so that I can see if there is a boat on NextBoat that I am interested in
 - 
 
-**Implemented user stories not implemented**
-As part of the agile process, user stories were 
+**User stories not implemented**
+
+These are stories, labelled as 'could have' that were not implemented in this iteration. As part of the agile process they will stay on the Kanban board for the next itertaion and their label reviewed as part of the iteratiob planning.
 
 ### Visual Design
 
 #### Colours
 
+![Colour swatch](readme_assets/colours.png)
+
+I've used CSS `:root` variables to easily update the global colour scheme by changing only one value, instead of everywhere in the CSS file.
+
+![CSS & Font root variables](readme_assets/css_vars.png)
 
 #### Fonts
 
+I've used CSS `:root` variables to easily update font-weights scheme by changing only one value, instead of everywhere in the CSS file.
+
+The nextboat project makes use of Adobe Fonts.
+
+Only one font (with multiple weights) is used in the project:
+
+- [Proxima Nova](https://fonts.adobe.com/fonts/proxima-nova)
+
+![Proxima Nova](readme_assets/font.png)
 
 #### Icons
+
+- [Google Font Icons](https://fonts.google.com/icons)
+
+Icons were used throughout the site to improve the user interface.
+
+- e.g My Listings - a trashcan icon is used to represent delete functionality, a pen to represent edit.
+
+- e.g Favourites - on a listing a user can add and remove the listing to their favourites by using a heart icon as a toggle button.
+
+- Icons are also used in the account dropdown menu.
 
 ## Features
 
