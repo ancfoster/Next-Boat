@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-gb">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,6 +8,7 @@
     {% load humanize %}
     <link rel="stylesheet" href="{% static 'css/base.css' %}"> </link>
     <link rel="stylesheet" href="https://use.typekit.net/vrz6cku.css">
+    <link rel="icon" type="image/x-icon" href="{% static 'images/favicon.png' %}"/>
     {% block head %}
     {% endblock %}
 </head>
@@ -34,7 +35,7 @@
             {% if user.is_authenticated %}
             <li><a href="{% url 'account_logout' %}"><span id="logout-text">Logout</span></a></li>
             <li><a href="{% url 'conversations_list' %}"><span id="message-centre-text">Messages</span></a></li>
-            <li><a href="#"><span id="favourite-text">Favourites</span></a></li>
+            <li><a href="{% url 'favourites_show' %}"><span id="favourite-text">Favourites</span></a></li>
             <li><a href="{% url 'my_listings' %}"><span id="your-listings-text">My Listings</span></a></li>
             <li><a href="{% url 'listing_create' %}"><span id="new-listing-text">New Listing</span></a></li>
             {% else %}
@@ -48,7 +49,7 @@
 {% endblock %}
 
 <footer>
-
+<img alt="NextBoat Logo" src="{% static 'images/logo.svg' %}"> <span> Created by <a href="https://github.com/ancfoster">Alexander Foster.</a> ©</span>
 </footer>
 <script src="{% static 'javascript/base.js' %}"></script>
 {% block footerscripts %}

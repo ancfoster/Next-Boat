@@ -289,11 +289,30 @@ h3 {
 footer {
     width: 100%;
     background-color: var(--light-mid-bg-grey);
-    padding: 24px 8px;
+    padding: 16px;
+    display: flex;
+    justify-content: center;
     box-sizing: border-box;
-        transform: translateY(2px);
-
-
+}
+footer span {
+    font-size: 16px;
+    color: var(--medium-grey);
+    font-weight: var(--medium);
+    border-left: 1px solid var(--off-black);
+    padding-left: 8px
+}
+footer img {
+    height: 16px;
+    width: auto;
+    margin-right: 8px;
+}
+footer span a {
+    color: var(--medium-grey);
+    text-decoration: none;
+}
+footer span a:hover {
+    color: var(--off-black);
+    text-decoration: underline;
 }
 
 /* Media Queries */
