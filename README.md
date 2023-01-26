@@ -9,9 +9,10 @@ NextBoat is a classifieds listing website that connect buyers and sellers of boa
 ### UX Design & Agile
 
 - In Agile software development, user stories are used to capture the requirements for a particular feature or piece of work. They are typically written from the perspective of an end user using the format:
-    - As a ** role ** I can ** capability ** so that ** benefit **
+    - As a **role** I can **functionality** so that **benefit**
 
 - For this project I used GitHub's built in Projects feature, to organise the Agile devlopment process. A Kanban board was created which featured three columns, Todo, In Progress & Done. 
+    - The project Kanban board can be viewed (here)[https://github.com/users/ancfoster/projects/2/views/1]
 
 - New User stories were created as Issues and placed in the Todo column. A user story being developed was placed in the 'In Progress' column, whilst completed user stories were placed in the 'Done' column. 
 
@@ -19,19 +20,27 @@ NextBoat is a classifieds listing website that connect buyers and sellers of boa
 
 #### User Stories
 
-** Implemented user stories ** | All user stories labelled as 'must have' or 'should have' were completed.
+**Implemented user stories** | All user stories labelled as 'must have' or 'should have' were completed.
 
 - As a user I can browse boat listings so that I can see if there is a boat on NextBoat that I am interested in
 - 
 
-** Implemented user stories not implemented **
+**Implemented user stories not implemented**
 As part of the agile process, user stories were 
 
-### UI Design
+### Visual Design
+
+#### Colours
+
+
+#### Fonts
+
+
+#### Icons
 
 ## Features
 
-### Current features
+## Database Schema 
 
 
 ### Features for future iterations/sprints
@@ -58,12 +67,13 @@ As part of the agile process, user stories were
 
 ### Front-End
 
-- HTML - hypertext markup language is the standard language for designing files to be displayed in a web browser like Chrome or Safari. 
+- HTML5 - hypertext markup language is the standard language for designing files to be displayed in a web browser like Chrome or Safari. 
 
-- CSS - cascading style sheets is a language used for styling a file written in a markup language like HTML.
+- CSS3 - cascading style sheets is a language used for styling a file written in a markup language like HTML.
 
 - JavaScript (ES11) is a scripting language and one of the main technologies of web development. In this project it was used on the client side for webpage behavior.
 
+### Back-End
 
 - [Django](https://www.djangoproject.com/) an open-source, Python-based web framework that follows the model–template–views (MTV) architectural pattern.
 
@@ -75,6 +85,32 @@ As part of the agile process, user stories were
 
 - [AWS S3](http://aws.amazon.com/s3/) was used for hosting the Django static files and user uploaded media. Amazon Simple Storage Service is a service offered by Amazon Web Services (AWS) that provides object storage through a web service interface.
 
+### Packages Used
+
+Further details on all Python packages used on this project can be found in the requirements.txt file.
+| Package | Version | Description |
+|---|---|---|
+| asgiref | 3.5.2 | ASGI is a standard for Python asynchronous web apps and servers to communicate with each other, and positioned as an asynchronous successor to WSGI. |
+| backports.zoneinfo | 0.2.1 | Backport of the standard library module zoneinfo |
+| boto3 | 1.26.12 | Boto3 is the Amazon Web Services (AWS) Software Development Kit (SDK) for Python, which allows Python developers to write software that makes use of services like Amazon S3 and Amazon EC2 |
+| botocore | 1.29.12 | A low-level interface to a growing number of Amazon Web Services. The botocore package is the foundation for the AWS CLI  |
+| dj-database-url | 1.0.0 | Allows you to utilize the 12factor inspired DATABASE_URL environment variable to configure your Django application. |
+| Django | 3.2.16 | Django is a high-level Python web framework that encourages rapid development and clean, pragmatic design. |
+| django-allauth | 0.51.0 | Integrated set of Django applications addressing authentication, registration, account management as well as 3rd party (social) account authentication. |
+| django-multiupload | 0.6.1 | Simple drop-in multi file upload field for django forms using HTML5's multiple attribute. |
+| django-storages | 1.13.1 | Adds support for storage backends in Django |
+| gunicorn | 20.1.0 | A Python WSGI HTTP Server for UNIX. |
+| jmespath | 1.0.1 | JSON Matching Expressions |
+| oauthlib | 3.2.2 | A generic, spec-compliant, thorough implementation of the OAuth request-signing logic |
+| Pillow | 9.3.0 | Python Imaging Library adds image processing capabilities |
+| psycopg2-binary | 2.9.5 | PostgreSQL database adapter for the Python programming language |
+| PyJWT | 2.6.0 | JSON Web Token implementation in Python |
+| python3-open-id | 3.2.0 | A set of Python packages to support use of the OpenID decentralized identity system |
+| pytz | 2022.7 | Accurate and cross platform timezone calculations |
+| requests-oauthlib | 1.3.1 | Provides OAuth library support for requests |
+| s3transfer | 0.6.0 | For managing Amazon S3 transfers |
+| sqlparse | 0.4.3 | A non-validating SQL parser. |
+
 
 ## Tools Used
 
@@ -84,7 +120,7 @@ As part of the agile process, user stories were
 
 - [GitHub](https://github.com) was also used as the agile project management tool. GitHub contains a Projects feature that allows for the creation of Kanban boards.
 
-- Adobe Illustrator was used to make site graphics. 
+- Adobe Illustrator was used to site graphics. 
 
 - [Figma](https://figma.com) was used to create wirefames, UX prototypes and mockups.
 
