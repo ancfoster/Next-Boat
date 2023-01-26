@@ -1,9 +1,37 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block head %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}"> </link>
 <title>NextBoat - the best way to find your next boat | Buy & sell all kinds of boats</title>
 {% endblock %}
 {% block content %}
-Index Template
-
-<a href="{% url 'boat_listings' %}">View boats</a>
+<main>
+    <div id="hero-flex">
+        <div id="hero-left">
+            <img src="{% static 'images/home_hero.jpeg' %}" alt="Boat">
+        </div>
+        <div id="hero-right">
+            <div>
+                <h1 id="hero-h1">Find your next boat</h1>
+                <div id="hero-text">Browse an extensive range of power & sailing boats</div>
+                <a href="{% url 'boat_listings' %}" id="hero-button"><div id="hero-button" role="button">For Sale</div></a>   
+            </div>
+        </div>
+    </div>
+    <div id="sell-flex">
+        <div id="sell-right">
+            <h2>Sell your boat the easy way</h2>
+            <span>NextBoat makes it easy for you to connect with boat buyers</span>
+            <ul>
+                <li>It's free to list your boat</li>
+                <li>Communicate with messages</li>
+                <li>Reach a new audience</li>
+            </ul>
+            <a href="{% url 'listing_create' %}" id="hero-button"><div id="hero-button" role="button">Sell</div></a>  
+        </div>
+        <div id="sell-left">
+            <img src="{% static 'images/sell.jpeg' %}">
+        </div>
+    </div>
+</main>
 {% endblock %}
