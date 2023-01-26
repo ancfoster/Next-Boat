@@ -20,14 +20,44 @@ NextBoat is a classifieds listing website that connect buyers and sellers of boa
 
 ### User Stories
 
-- View Listings
-
 **Implemented user stories** | All user stories labelled as 'must have' or 'should have' were completed.
 
-- As a user I can browse boat listings so that I can see if there is a boat on NextBoat that I am interested in
-- 
+- View Listings
+    - As a user I can browse boat listings so that I can see if there is a boat on NextBoat that I am interested in
+
+- View detailed information about a boat
+    - As a user I can see a detailed view of a listing so that I can learn as much information about a boat and see a gallery of images of that boat
+
+- Create a listing
+    - As a user I can create a boat listing so that I can allow other users to see my boat is for sale and view the boat particulars, price and photos
+
+- Edit Listing
+    - As a user I can edit a listing so that I can update listing information and listing images
+
+- Delete Listing
+    - As a user I can delete a listing so that I can remove my boat from the site if I no longer wish it to be on there.
+
+- Send a message
+     - As a user I can initiate a message chat with a boat owner so that so that I can express interest in a boat on NextBoat and/or ask the owner questions about this boat
+     - As a user I can respond to a potential buyer's message so that I can communicate with them
+
+- View Messages
+    - As a user I can view sent & received messages so that I can communicate with other NextBoat users and see past messages in a message exchange
+
+- Favourite Listings
+    - As a user I can **mark listings as a 'favorite' ** so that I can save boats I like the look of as I browse the site, so that I can then view them another time without having to find them in the listings again.
+
+- Compress Uploaded Image Files
+    - As a site owner the site will automatically compress and resize uploaded images so that I can reduce cloud storage and bandwidth costs
+    - As a user the site will automatically compress and resize uploaded images so that pages will load quickly, improving the overall user experience.
 
 **User stories not implemented**
+
+- Filter Listings
+    - As a user I can filter listings so that I can only see boat listings that meet my criteria
+
+- Share Boat
+    - As a user I can open a share modal so that share a boat listing on popular services like WhatsApp, Facebook and by email
 
 These are stories, labelled as 'could have' that were not implemented in this iteration. As part of the agile process they will stay on the Kanban board for the next itertaion and their label reviewed as part of the iteratiob planning.
 
