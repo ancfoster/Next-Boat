@@ -1,11 +1,14 @@
 {% extends "base.html" %}
 {% load static %}
 {% block head %}
-<title>Error couldn't be found</title>
+<title>500 Error | NextBoat</title>
 {% endblock %}
 
 {% block content %}
 <main>
-    <h1>500</h1>
+    <h1>An Internal Server Error has occured (Error 500)</h1>
+    <br>
+    <img src="{% static 'images/warning.svg' %}" alt="Binoculars" width="72px" height="auto">
+    <br>
 </main>
 {% endblock %}

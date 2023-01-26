@@ -1,11 +1,16 @@
 {% extends "base.html" %}
 {% load static %}
 {% block head %}
-<title>404 couldn't be found</title>
+<title>404 couldn't be found | NextBoat</title>
 {% endblock %}
 
 {% block content %}
 <main>
-    <h1>404</h1>
+    <h1>Couldn't be found (404)</h1>
+    <br>
+    <img src="{% static 'images/binoculars.svg' %}" alt="Binoculars" width="120px" height="auto">
+    <br>
+    <h3>The page you were looking for couldn't be found.</h3>
+    <br>
 </main>
 {% endblock %}
