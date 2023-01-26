@@ -33,3 +33,10 @@ def CreateDeleteFavourite(request, id):
         new_favourite.save()
         return redirect('boat_listing_details', id=id)
     return render(request, 'favourites/favourite_toggle.html')
+
+# This view shows a user any boats htye have favourited
+class ShowFavourites(LoginRequiredMixin, generic.ListView):
+    model = Favourites
+    template_name = 'favourites/favourites.html'
+    def get_queryset(self):
+        return Favourites.objects.filter(favourite_created_by=self.request.user)
