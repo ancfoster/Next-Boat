@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.conf.urls import handler404, handler500
 from django.forms import modelformset_factory
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import authenticate, login as auth_login
 from django.urls import reverse
 from django.contrib.auth.models import User
 from django.contrib import messages
@@ -42,7 +43,10 @@ class ListingDetails(View):
     def get(self, request, id, *args, **kwargs):
         queryset = Listings.objects.all()
         listing = get_object_or_404(queryset, id=id)
-        listing_favourite = Favourites.objects.filter(Q(favourite_created_by=request.user) & Q(listing=listing))
+        listing_favourite = {}
+        if request.user.is_authenticated:
+            listing_favourite = Favourites.objects.filter(Q(favourite_created_by=request.user) & Q(listing=listing))       
+
         gallery_images = listing.listing_media.all()
         preview_images = listing.listing_media.all()[:4]        
         return render(
