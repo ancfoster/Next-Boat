@@ -12,7 +12,7 @@ NextBoat is a classifieds listing website that connect buyers and sellers of boa
     - As a **role** I can **functionality** so that **benefit**
 
 - For this project I used GitHub's built in Projects feature, to organise the Agile devlopment process. A Kanban board was created which featured three columns, Todo, In Progress & Done. 
-    - The project Kanban board can be viewed (here)[https://github.com/users/ancfoster/projects/2/views/1]
+    - The project Kanban board can be viewed [here](https://github.com/users/ancfoster/projects/2/views/1)
 
 - New User stories were created as Issues and placed in the Todo column. A user story being developed was placed in the 'In Progress' column, whilst completed user stories were placed in the 'Done' column. 
 
@@ -53,13 +53,13 @@ NextBoat is a classifieds listing website that connect buyers and sellers of boa
 
 **User stories not implemented**
 
+These user stories, all labelled as 'could have' were not implemented in this iteration. As part of the agile process they will stay on the Kanban board for the next itertaion and their label will be reviewed as part of the next iteration's planning.
+
 - Filter Listings
     - As a user I can filter listings so that I can only see boat listings that meet my criteria
 
 - Share Boat
     - As a user I can open a share modal so that share a boat listing on popular services like WhatsApp, Facebook and by email
-
-These are stories, labelled as 'could have' that were not implemented in this iteration. As part of the agile process they will stay on the Kanban board for the next itertaion and their label reviewed as part of the iteratiob planning.
 
 ### Visual Design
 
@@ -97,10 +97,8 @@ Icons were used throughout the site to improve the user interface.
 
 ## Features
 
-## Database Schema 
 
-
-### Features for future iterations/sprints
+### Features for future iterations
 
 - Email integration
     - Email sent upon account creation
@@ -120,7 +118,9 @@ Icons were used throughout the site to improve the user interface.
 
 - An analytics system to track the listing prices of different kinds of boats over time. 
 
-## Technologies Used
+## Database Schema 
+
+## Technologies & Tools Used
 
 ### Front-End
 
@@ -169,7 +169,7 @@ Further details on all Python packages used on this project can be found in the 
 | sqlparse | 0.4.3 | A non-validating SQL parser. |
 
 
-## Tools Used
+### Tools Used
 
 - For writing the project code, [GitPod](https://gitpod.io) a cloud based version of Visual Studio code was used,
 
@@ -179,25 +179,199 @@ Further details on all Python packages used on this project can be found in the 
 
 - Adobe Illustrator was used to site graphics. 
 
+- [Git](https://git-scm.com) used for version control. (`git add`, `git commit`, `git push`)
+
 - [Figma](https://figma.com) was used to create wirefames, UX prototypes and mockups.
 
 ## Testing
 
 - For all testing, please refer to the [TESTING.md](TESTING.md) file.
 
-
 ## Deployment
 
-- The NextBoat application was deployed on [Heroku](https://heroku.com) a cloud platform as a service.
+The live deployed application can be found deployed on [Heroku](https://nextboat-ci.herokuapp.com).
 
-- [AWS S3](http://aws.amazon.com/s3/) was used for hosting the Django static files and user uploaded media. Amazon Simple Storage Service is a service offered by Amazon Web Services (AWS) that provides object storage through a web service interface.
 
-### Heroku deployment steps
+### Heroku Deployment
 
+This project uses [Heroku](https://www.heroku.com), a platform as a service (PaaS) that enables developers to build, run, and operate applications entirely in the cloud.
+
+Deployment steps are as follows, after account setup:
+
+- Select **New** in the top-right corner of your Heroku Dashboard, and select **Create new app** from the dropdown menu.
+- Your app name must be unique, and then choose a region closest to you (EU or USA), and finally, select **Create App**.
+- From the new app **Settings**, click **Reveal Config Vars**, and set your environment variables.
+
+| Key | Value |
+| --- | --- |
+| `AWS_ACCESS_KEY_ID` | insert your own AWS Access Key ID key here |
+| `AWS_SECRET_ACCESS_KEY` | insert your own AWS Secret Access key here |
+| `DATABASE_URL` | Insert Heroku database url here (setting up Heroku database is in next step) |
+| `SECRET_KEY` | this can be any random secret key |
+
+Heroku needs two additional files in order to deploy properly.
+- requirements.txt
+- Procfile
+
+You can install this project's **requirements** (where applicable) using:
+- `pip3 install -r requirements.txt`
+
+If you have your own packages that have been installed, then the requirements file needs updated using:
+- `pip3 freeze --local > requirements.txt`
+
+The **Procfile** can be created with the following command:
+- `echo web: gunicorn app_name.wsgi > Procfile`
+- *replace **app_name** with the name of your primary Django app name; the folder where settings.py is located*
+
+For Heroku deployment, follow these steps to connect your own GitHub repository to the newly created app:
+
+Either:
+- Select **Automatic Deployment** from the Heroku app.
+
+Or:
+- In the Terminal/CLI, connect to Heroku using this command: `heroku login -i`
+- Set the remote for Heroku: `heroku git:remote -a app_name` (replace *app_name* with your app name)
+- After performing the standard Git `add`, `commit`, and `push` to GitHub, you can now type:
+	- `git push heroku main`
+
+### PostgreSQL database
+
+This project uses a Heroku PostgreSQL Databse.
+
+- Visit Heroku dashboard
+- Under project dashboard, go to the Resources tab.
+- Click on add ons.
+- Under Data Stores, select Heroku Postgres.
+- You will then be asked to pick a plan. The Mini plan is fine for development and light usage purposes. A detailed guide on the differences between the plans is available on the Heorku site.
+- Then search for the Heroku app in the 'App to provison to' box.
+- Select 'nextboat-ci'.
+- Heroku will then provision the database.
+- As part of the provisioning process, a DATABASE_URL config var is added to your app’s configuration. DATABASE_URL contains the URL your app uses to access the database.
+- Go back to the resources tab and you will see the Postgres database.
+- Add the databse url to the `env.py` file.
+
+| `DATABASE_URL` | Insert Heroku database url here |
 
 ### AWS S3 configuration steps
 
+#### S3 Bucket
 
+- Search for **S3**.
+- Create a new bucket, give it a name (matching your Heroku app name), and choose the region closest to you.
+- Uncheck **Block all public access**, and acknowledge that the bucket will be public (required for it to work on Heroku).
+- From **Object Ownership**, make sure to have **ACLs enabled**, and **Bucket owner preferred** selected.
+- From the **Properties** tab, turn on static website hosting, and type `index.html` and `error.html` in their respective fields, then click **Save**.
+- From the **Permissions** tab, paste in the following CORS configuration:
+
+	```shell
+	[
+		{
+			"AllowedHeaders": [
+				"Authorization"
+			],
+			"AllowedMethods": [
+				"GET"
+			],
+			"AllowedOrigins": [
+				"*"
+			],
+			"ExposeHeaders": []
+		}
+	]
+	```
+
+- Copy your **ARN** string.
+- From the **Bucket Policy** tab, select the **Policy Generator** link, and use the following steps:
+	- Policy Type: **S3 Bucket Policy**
+	- Effect: **Allow**
+	- Principal: `*`
+	- Actions: **GetObject**
+	- Amazon Resource Name (ARN): **paste-your-ARN-here**
+	- Click **Add Statement**
+	- Click **Generate Policy**
+	- Copy the entire Policy, and paste it into the **Bucket Policy Editor**
+
+		```shell
+		{
+			"Id": "Policy1234567890",
+			"Version": "2012-10-17",
+			"Statement": [
+				{
+					"Sid": "Stmt1234567890",
+					"Action": [
+						"s3:GetObject"
+					],
+					"Effect": "Allow",
+					"Resource": "arn:aws:s3:::your-bucket-name/*"
+					"Principal": "*",
+				}
+			]
+		}
+		```
+
+	- Before you click "Save", add `/*` to the end of the Resource key in the Bucket Policy Editor (like above).
+	- Click **Save**.
+- From the **Access Control List (ACL)** section, click "Edit" and enable **List** for **Everyone (public access)**, and accept the warning box.
+	- If the edit button is disabled, you need to change the **Object Ownership** section above to **ACLs enabled** (mentioned above).
+
+#### IAM
+
+Back on the AWS Services Menu, search for and open **IAM** (Identity and Access Management).
+Once on the IAM page, follow these steps:
+
+- From **User Groups**, click **Create New Group**.
+	- Suggested Name: `group-Next-Boat-LOWER` (group + the project name)
+- Tags are optional, but you must click it to get to the **review policy** page.
+- From **User Groups**, select your newly created group, and go to the **Permissions** tab.
+- Open the **Add Permissions** dropdown, and click **Attach Policies**.
+- Select the policy, then click **Add Permissions** at the bottom when finished.
+- From the **JSON** tab, select the **Import Managed Policy** link.
+	- Search for **S3**, select the `AmazonS3FullAccess` policy, and then **Import**.
+	- You'll need your ARN from the S3 Bucket copied again, which is pasted into "Resources" key on the Policy.
+
+		```shell
+		{
+			"Version": "2012-10-17",
+			"Statement": [
+				{
+					"Effect": "Allow",
+					"Action": "s3:*",
+					"Resource": [
+						"arn:aws:s3:::your-bucket-name",
+						"arn:aws:s3:::your-bucket-name/*"
+					]
+				}
+			]
+		}
+		```
+	
+	- Click **Review Policy**.
+	- Suggested Name: `policy-Next-Boat-LOWER` (policy + the project name)
+	- Provide a description:
+		- "Access to S3 Bucket for Next-Boat-LOWER static files."
+	- Click **Create Policy**.
+- From **User Groups**, click your "group-Next-Boat-LOWER".
+- Click **Attach Policy**.
+- Search for the policy you've just created ("policy-Next-Boat-LOWER") and select it, then **Attach Policy**.
+- From **User Groups**, click **Add User**.
+	- Suggested Name: `user-Next-Boat-LOWER` (user + the project name)
+- For "Select AWS Access Type", select **Programmatic Access**.
+- Select the group to add your new user to: `group-Next-Boat-LOWER`
+- Tags are optional, but you must click it to get to the **review user** page.
+- Click **Create User** once done.
+- You should see a button to **Download .csv**, so click it to save a copy on your system.
+	- **IMPORTANT**: once you pass this page, you cannot come back to download it again, so do it immediately!
+	- This contains the user's **Access key ID** and **Secret access key**.
+	- `AWS_ACCESS_KEY_ID` = **Access key ID**
+	- `AWS_SECRET_ACCESS_KEY` = **Secret access key**
+
+#### Final AWS Setup
+
+- If Heroku Config Vars has `DISABLE_COLLECTSTATIC` still, this can be removed now, so that AWS will handle the static files.
+- Back within **S3**, create a new folder called: `media`.
+- Select any existing media images for your project to prepare them for being uploaded into the new folder.
+- Under **Manage Public Permissions**, select **Grant public read access to this object(s)**.
+- No further settings are required, so click **Upload**.
 
 ### Local deployment
 
