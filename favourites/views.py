@@ -34,9 +34,21 @@ def CreateDeleteFavourite(request, id):
         return redirect('boat_listing_details', id=id)
     return render(request, 'favourites/favourite_toggle.html')
 
+
 # This view shows a user any boats htye have favourited
 class ShowFavourites(LoginRequiredMixin, generic.ListView):
     model = Favourites
     template_name = 'favourites/favourites.html'
     def get_queryset(self):
         return Favourites.objects.filter(favourite_created_by=self.request.user)
+
+
+#This view deletes a user's listing from the favourites list
+class FavouriteDelete(LoginRequiredMixin, DeleteView):
+    template_name = 'favourites/favourite_delete.html'
+    def get_object(self):
+        id= self.kwargs.get("id")
+        return get_object_or_404(Favourites, id=id)
+
+    def get_success_url(self):
+        return reverse('favourites_show')
