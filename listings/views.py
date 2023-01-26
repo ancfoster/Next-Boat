@@ -11,12 +11,13 @@ from django.views import generic, View
 from django.views.generic import DetailView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .models import Listings, ListingMedia
 from django.db.models import Q
 from io import BytesIO
 from django.core.files.uploadedfile import InMemoryUploadedFile
 from django.core.files.storage import FileSystemStorage
 from datetime import datetime
+from .models import Listings, ListingMedia
+from favourites.models import Favourites
 from .forms import ListingCreateForm, ListingMediaForm, ListingEditForm
 
 
@@ -41,6 +42,7 @@ class ListingDetails(View):
     def get(self, request, id, *args, **kwargs):
         queryset = Listings.objects.all()
         listing = get_object_or_404(queryset, id=id)
+        listing_favourite = Favourites.objects.filter(Q(favourite_created_by=request.user) & Q(listing=listing))
         gallery_images = listing.listing_media.all()
         preview_images = listing.listing_media.all()[:4]        
         return render(
@@ -49,7 +51,8 @@ class ListingDetails(View):
             {
                 "listing": listing,
                 "gallery_images": gallery_images,
-                "preview_images": preview_images
+                "preview_images": preview_images,
+                "listing_favourite": listing_favourite,
             },
         )
 
