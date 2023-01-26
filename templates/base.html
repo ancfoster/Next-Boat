@@ -18,7 +18,7 @@
         <nav id="buy-sell-nav">
             <a href="{% url 'boat_listings' %}" id="buy-nav">Buy</a>
             <div id="nav-divider"></div>
-            <a href="#" id="sell-nav">Sell</a>
+            <a href="{% url 'listing_create' %}" id="sell-nav">Sell</a>
         </nav>
         <a href="{% url 'home' %}" id="logo-nav">
             <image id="nav-logo" src="{% static 'images/logo.svg' %}" alt="Next Boat Logo">
