@@ -186,7 +186,6 @@ h3 {
     padding: 0px;
     height: 0px;
     overflow: hidden;
-    display: hidden;
 }
 #menu-container ul {
     width: 100%;
@@ -313,6 +312,9 @@ footer span a {
 footer span a:hover {
     color: var(--off-black);
     text-decoration: underline;
+}
+#error-img {
+    margin: 24px auto;
 }
 
 /* Media Queries */
