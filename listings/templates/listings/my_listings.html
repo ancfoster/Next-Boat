@@ -7,6 +7,8 @@
 {% block content %}
 <main>
     <h1>My Listings</h1>
+
+    {# check if there are any listings #}
     {% if listings_list %}
         {% for listing in listings_list %}
         <div class="listing-item-cont">
@@ -17,6 +19,7 @@
                 <div class="my-make-model"><a href="{% url 'boat_listing_details' listing.pk %}">{{ listing.get_make_display }} {{ listing.model }}</a></div>
                 <div class="listing-status">Status: <span class="{{ listing.listing_status }}">{{ listing.get_listing_status_display }}</span></div>
                 <div class="listing-actions-flex">
+                    <!-- These are links to the different listing actions, edit, edit images, delete -->
                     <a href="{% url 'listing_edit' listing.pk %}" class="my-listing-actions"><div class="action-flex"><img alt="" class="my-listing-actions-icons" src="{% static 'images/my_listings_edit.svg' %}"><span>Edit Listing</span></div></a>
                     <a href="{% url 'listing_images' listing.pk %}" class="my-listing-actions"><div class="action-flex"><img alt="" class="my-listing-actions-icons" src="{% static 'images/my_listings_images.svg' %}"><span>Edit Images</span></div></a>
                     <a href="{% url 'listing_delete' listing.pk %}" class="my-listing-actions"><div class="action-flex"><img alt="" class="my-listing-actions-icons" src="{% static 'images/my_listings_delete.svg' %}"><span>Delete Listing</span></div></a>
@@ -24,6 +27,7 @@
             </div>
         </div>
         {% endfor %}
+        {% If there are not listings, ask if user wants to create a new one %} 
         <div id="my-new-listing-text">Want to create a new listing?</div>
         {% else %}
         <div id="no-listings-cont">
@@ -32,7 +36,7 @@
         </div>
         {% endif %}
    
-    <a id="create-a" alt="" href="{% url 'listing_create' %}">
+    <a id="create-a" href="{% url 'listing_create' %}">
         <div id="create-button" role="button">Create a listing</div>
     </a>
 
