@@ -41,14 +41,69 @@ As many pages require a user to be logged in validation was carried out by copyi
 Django forms generated HTML that did not pass validation. e.g `required` attribute not allowed on element `input`
 
 
-
-
-
 ### PEP8 Python Validation
 
 
 ## Browser Compatibility Testing
 
+Pages were tested in Chrome & Firefox to test for compatiblity between different browsers.
+Chrome and Firefox use different rendering engines, unlike Edge/Brave which also use Chromium.
+
+- conversations.html
+
+| Browser| Screenshot |
+|---|---|
+|![Chrome](testing_assets/chrome.png)|![](testing_assets/browser_screenshots/conversations_chrome.png)|
+|![Firefox](testing_assets/chrome.png)|![](testing_assets/browser_screenshots/conversations_firefox.png)|
+
+- display_conversations.html
+
+| Browser| Screenshot |
+|---|---|
+|![Chrome](testing_assets/chrome.png)|![](testing_assets/browser_screenshots/display_conversation_chrome.png)|
+|![Firefox](testing_assets/chrome.png)|![](testing_assets/browser_screenshots/display_conversations_firefox.png)|
+
+- favourites.html
+
+| Browser| Screenshot |
+|---|---|
+|![Chrome](testing_assets/chrome.png)|![](testing_assets/browser_screenshots/favourites_chrome.png)|
+|![Firefox](testing_assets/chrome.png)|![](testing_assets/browser_screenshots/favourites_firefox.png)|
+
+- index.html
+
+| Browser| Screenshot |
+|---|---|
+|![Chrome](testing_assets/chrome.png)|![](testing_assets/browser_screenshots/index_chrome.png)|
+|![Firefox](testing_assets/chrome.png)|![](testing_assets/browser_screenshots/index_firefox.png)|
+
+- listing_details.html
+
+| Browser| Screenshot |
+|---|---|
+|![Chrome](testing_assets/chrome.png)|![](testing_assets/browser_screenshots/listing_details_chrome.png)|
+|![Firefox](testing_assets/chrome.png)|![](testing_assets/browser_screenshots/display_conversations_firefox.png)|
+
+- listing_edit.html
+
+| Browser| Screenshot |
+|---|---|
+|![Chrome](testing_assets/chrome.png)|![](testing_assets/browser_screenshots/listing_edit_chrome.png)|
+|![Firefox](testing_assets/chrome.png)|![](testing_assets/browser_screenshots/listing_edit_firefox.png)|
+
+- listings.html
+
+| Browser| Screenshot |
+|---|---|
+|![Chrome](testing_assets/chrome.png)|![](testing_assets/browser_screenshots/listings_chrome.png)|
+|![Firefox](testing_assets/chrome.png)|![](testing_assets/browser_screenshots/listings_firefox.png)|
+
+- my_listings.html
+
+| Browser| Screenshot |
+|---|---|
+|![Chrome](testing_assets/chrome.png)|![](testing_assets/browser_screenshots/my_listings_chrome.png)|
+|![Firefox](testing_assets/chrome.png)|![](testing_assets/browser_screenshots/my_listings_firefox.png)|
 
 
 ## Responsiveness
