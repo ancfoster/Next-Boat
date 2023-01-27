@@ -33,6 +33,36 @@ CSS files were validated with the [W3C CSS Validation Service](https://jigsaw.w3
 | messages.css | ![messages.css](testing_assets/css/messages_css.png) |
 | my_listings.css | ![my_listings.css](testing_assets/css/my_listings_css.png) |
 
+### PEP8 Python Validation
+
+- Listings App
+
+|File|Screenshot|
+|---|---|
+|admin.py|![](testing_assets/pep8/listings_admin.png|
+|models.py|![](testing_assets/pep8/listings_models.png|
+|urls.py|![](testing_assets/pep8/listings_urls.png|
+|views.py|![](testing_assets/pep8/listings_views.png|
+|forms.py|![](testing_assets/pep8/listings_forms.png|
+
+- Conversations
+
+|File|Screenshot|
+|---|---|
+|admin.py|![](testing_assets/pep8/conversations_admin.png|
+|models.py|![](testing_assets/pep8/conversations_models.png|
+|urls.py|![](testing_assets/pep8/conversations_urls.png|
+|views.py|![](testing_assets/pep8/conversations_views.png|
+|forms.py|![](testing_assets/pep8/conversations_forms.png|
+
+- Favourites App
+
+|File|Screenshot|
+|---|---|
+|admin.py|![](testing_assets/pep8/favourites_admin.png|
+|models.py|![](testing_assets/pep8/favourites_models.png|
+|urls.py|![](testing_assets/pep8/favourites_urls.png|
+|views.py|![](testing_assets/pep8/favourites_views.png|
 
 ### HTML Validation
 
@@ -41,7 +71,7 @@ As many pages require a user to be logged in validation was carried out by copyi
 Django forms generated HTML that did not pass validation. e.g `required` attribute not allowed on element `input`
 
 
-### PEP8 Python Validation
+
 
 
 ## Browser Compatibility Testing
@@ -54,7 +84,7 @@ Chrome and Firefox use different rendering engines, unlike Edge/Brave which also
 | Browser| Screenshot |
 |---|---|
 |![Chrome](testing_assets/chrome.png)|![](testing_assets/browser_screenshots/conversations_chrome.png)|
-|![Firefox](testing_assets/chrome.png)|![](testing_assets/browser_screenshots/conversations_firefox.png)|
+|![Firefox](testing_assets/firefox.png)|![](testing_assets/browser_screenshots/conversations_firefox.png)|
 
 - display_conversations.html
 
@@ -68,42 +98,42 @@ Chrome and Firefox use different rendering engines, unlike Edge/Brave which also
 | Browser| Screenshot |
 |---|---|
 |![Chrome](testing_assets/chrome.png)|![](testing_assets/browser_screenshots/favourites_chrome.png)|
-|![Firefox](testing_assets/chrome.png)|![](testing_assets/browser_screenshots/favourites_firefox.png)|
+|![Firefox](testing_assets/firefox.png)|![](testing_assets/browser_screenshots/favourites_firefox.png)|
 
 - index.html
 
 | Browser| Screenshot |
 |---|---|
 |![Chrome](testing_assets/chrome.png)|![](testing_assets/browser_screenshots/index_chrome.png)|
-|![Firefox](testing_assets/chrome.png)|![](testing_assets/browser_screenshots/index_firefox.png)|
+|![Firefox](testing_assets/firefox.png)|![](testing_assets/browser_screenshots/index_firefox.png)|
 
 - listing_details.html
 
 | Browser| Screenshot |
 |---|---|
 |![Chrome](testing_assets/chrome.png)|![](testing_assets/browser_screenshots/listing_details_chrome.png)|
-|![Firefox](testing_assets/chrome.png)|![](testing_assets/browser_screenshots/display_conversations_firefox.png)|
+|![Firefox](testing_assets/firefox.png)|![](testing_assets/browser_screenshots/display_conversations_firefox.png)|
 
 - listing_edit.html
 
 | Browser| Screenshot |
 |---|---|
 |![Chrome](testing_assets/chrome.png)|![](testing_assets/browser_screenshots/listing_edit_chrome.png)|
-|![Firefox](testing_assets/chrome.png)|![](testing_assets/browser_screenshots/listing_edit_firefox.png)|
+|![Firefox](testing_assets/firefox.png)|![](testing_assets/browser_screenshots/listing_edit_firefox.png)|
 
 - listings.html
 
 | Browser| Screenshot |
 |---|---|
 |![Chrome](testing_assets/chrome.png)|![](testing_assets/browser_screenshots/listings_chrome.png)|
-|![Firefox](testing_assets/chrome.png)|![](testing_assets/browser_screenshots/listings_firefox.png)|
+|![Firefox](testing_assets/firefox.png)|![](testing_assets/browser_screenshots/listings_firefox.png)|
 
 - my_listings.html
 
 | Browser| Screenshot |
 |---|---|
 |![Chrome](testing_assets/chrome.png)|![](testing_assets/browser_screenshots/my_listings_chrome.png)|
-|![Firefox](testing_assets/chrome.png)|![](testing_assets/browser_screenshots/my_listings_firefox.png)|
+|![Firefox](testing_assets/firefox.png)|![](testing_assets/browser_screenshots/my_listings_firefox.png)|
 
 
 ## Responsiveness
