@@ -1,13 +1,14 @@
 {% extends "base.html" %}
 {% load static %}
 {% block head %}
-<link rel="stylesheet" href="{% static 'css/favourites.css' %}"> </link>
+<link rel="stylesheet" href="{% static 'css/favourites.css' %}">
 <title>Favourites | NextBoat</title>
 {% endblock %}
 {% block content %}
 <main>
     <h1>Favourites</h1>
     {% if favourites_list %}
+        <!-- This section lists all of a user's favourited boats-->
         {% for favourite in favourites_list %}
             <div class="favourite-item-cont">
                 <div class="favourite-text-img">
@@ -16,6 +17,7 @@
                     <span>{{ favourite.listing.get_make_display }} {{ favourite.listing.model }}</span> 
                     </a>   
                 </div>
+                <!-- Each listing item has a trash can icon button that goes to the delete view page-->
                 <div class="delete-cont">
                     <a href="{% url 'favourite_delete' favourite.pk %}">
                         <div class="fav-delete-button">
@@ -27,7 +29,7 @@
         {% endfor %}
         {% else %}
         <div id="no-favourites-cont">
-            <img src="{% static 'images/binoculars.svg' %}">
+            <img alt="Binoculars" src="{% static 'images/binoculars.svg' %}">
             <span>You have no favourites, you can add a favourite by pressing the heart icon on a boat listing.</span>
         </div>
         {% endif %}
