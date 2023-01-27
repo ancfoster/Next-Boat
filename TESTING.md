@@ -151,6 +151,16 @@ Chrome and Firefox use different rendering engines, unlike Edge/Brave which also
 
 ## Responsiveness
 
+| **Feature** | **iPhone** | **Desktop** |
+|---|---|---|
+| Home Page | ![](testing_assets/responsive/iphone_index.png) | ![Home Page](readme_assets/features/feature_homepage.jpeg) |
+| Listings | ![](testing_assets/responsive/iphone_listings.png)| ![Listings](readme_assets/features/feature_listings.jpeg) |
+| Listings Detail View | ![](testing_assets/responsive/iphone_listings_details.png) | ![Listings Detail View](readme_assets/features/feature_listings_details.jpeg) |
+| Create listing | ![](testing_assets/responsive/iphone_create_listing.png)  | ![Create listing](readme_assets/features/feature_create_listing.jpeg) |
+| My Listings | ![](testing_assets/responsive/iphone_my_listings.png) |
+| Delete listing | ![](testing_assets/responsive/delete_iphone.png) | ![Delete listing](readme_assets/features/feature-delete_listing.jpeg) |
+| Messages List | ![](testing_assets/responsive/iphone_conversations.png)  | ![messages list](readme_assets/features/feature_messages.jpeg) |
+| Favourites List | ![](testing_assets/responsive/iphone_favourites.png) | ![favourite list](readme_assets/features/feature_favourites_list.jpeg) |
 
 
 ## Manual Testing
