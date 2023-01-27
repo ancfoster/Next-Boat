@@ -21,46 +21,41 @@ from .forms import ConversationMessageForm
 
 
 # Shows a list of conversation and filters based on logged in user
-# class ConversationsList(LoginRequiredMixin, generic.ListView):
-#     model = Conversations
-#     template_name = 'conversations/conversations.html'
-#     def get_queryset(self):
-#         return Conversations.objects.filter(conversation_seller=self.request.user)
-
 # This view shows a user's conversations
 class ConversationsList(LoginRequiredMixin, generic.ListView):
     model = (Conversations, ConversationMessages)
     template_name = 'conversations/conversations.html'
+
     def get_queryset(self):
-        return Conversations.objects.filter(Q(conversation_seller=self.request.user) | Q(conversation_buyer=self.request.user))
+        return Conversations.objects.filter(Q(conversation_seller=self.request.user) | Q(conversation_buyer=self.request.user))  # noqa
 
 
-#This view creates a new conversation, between a prospective buyer & seller
+# This view creates a new conversation, between a prospective buyer & seller
 @login_required
 def CreateConversation(request, id):
     listing = get_object_or_404(Listings, pk=id)
-    existing_conversation = Conversations.objects.filter(Q(conversation_boat=listing.pk) & Q(conversation_seller=listing.created_by))
+    existing_conversation = Conversations.objects.filter(Q(conversation_boat=listing.pk) & Q(conversation_seller=listing.created_by))  # noqa
     if existing_conversation.exists():
         return redirect('conversation_messages', id=existing_conversation.pk)
     else:
         conversation_message_form = ConversationMessageForm(request.POST)
         if conversation_message_form.is_valid():
             new_conversation = Conversations(
-                conversation_boat = listing,
-                conversation_buyer = request.user,
-                conversation_seller = listing.created_by,
-                conversation_thumbnail = listing.featured_image,
-                last_message_date = datetime.now())
+                conversation_boat=listing,
+                conversation_buyer=request.user,
+                conversation_seller=listing.created_by,
+                conversation_thumbnail=listing.featured_image,
+                last_message_date=datetime.now())
             new_conversation.save()
             new_conversation_id = new_conversation
             new_message = ConversationMessages(
-                message_conversation = new_conversation_id,
-                message_from = request.user,
-                message_to = listing.created_by,
-                message_contents = conversation_message_form.cleaned_data['message_contents'])
+                message_conversation=new_conversation_id,
+                message_from=request.user,
+                message_to=listing.created_by,
+                message_contents=conversation_message_form.cleaned_data['message_contents'])  # noqa
             new_message.save()
             return redirect('conversation_messages', id=new_conversation_id.id)
-    context = {'listing': listing, 'conversation_message_form':conversation_message_form}
+    context = {'listing': listing, 'conversation_message_form': conversation_message_form}  # noqa
     return render(request, 'conversations/create_conversation.html', context)
 
 
@@ -69,11 +64,13 @@ def CreateConversation(request, id):
 class ConversationMessageList(LoginRequiredMixin, View):
     def get(self, request, id, *args, **kwargs):
         conv_id = self.kwargs['id']
-        message_list = ConversationMessages.objects.filter(message_conversation=conv_id)
+        message_list = ConversationMessages.objects.filter(message_conversation=conv_id)  # noqa
         conversation = Conversations.objects.get(pk=conv_id)
         conversation_message_form = ConversationMessageForm()
-        context = {'message_list':message_list, 'conversation':conversation, 'conversation_message_form':conversation_message_form}
-        return render(request, 'conversations/display_conversation.html', context)
+        context = {'message_list': message_list, 'conversation': conversation,
+                   'conversation_message_form': conversation_message_form}
+        return render(request, 'conversations/display_conversation.html',
+                      context)
 
     def post(self, request, id, *args, **kwargs):
         id = self.kwargs['id']
@@ -81,15 +78,14 @@ class ConversationMessageList(LoginRequiredMixin, View):
         conversation_buyer = conversation.conversation_buyer
         conversation_message_form = ConversationMessageForm(request.POST)
         if conversation_message_form.is_valid():
-            conversation_message_form.instance.message_conversation = conversation
+            conversation_message_form.instance.message_conversation = conversation  # noqa
             conversation_message_form.instance.message_from = request.user
             if request.user == conversation_buyer:
-                conversation_message_form.instance.message_to = conversation.conversation_seller
+                conversation_message_form.instance.message_to = conversation.conversation_seller  # noqa
             else:
-                conversation_message_form.instance.message_to = conversation.conversation_buyer
+                conversation_message_form.instance.message_to = conversation.conversation_buyer  # noqa
             form = conversation_message_form.save()
             form.save()
             conversation.last_message_date = datetime.now()
             conversation.save()
         return redirect(request.path)
-
