@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 {% block head %}
-<link rel="stylesheet" href="{% static 'css/my_listings.css' %}"> </link>
+<link rel="stylesheet" href="{% static 'css/my_listings.css' %}">
 <title>My Listings - NextBoat</title>
 {% endblock %}
 {% block content %}
@@ -17,9 +17,9 @@
                 <div class="my-make-model"><a href="{% url 'boat_listing_details' listing.pk %}">{{ listing.get_make_display }} {{ listing.model }}</a></div>
                 <div class="listing-status">Status: <span class="{{ listing.listing_status }}">{{ listing.get_listing_status_display }}</span></div>
                 <div class="listing-actions-flex">
-                    <a href="{% url 'listing_edit' listing.pk %}" class="my-listing-actions"><div class="action-flex"><img class="my-listing-actions-icons" src="{% static 'images/my_listings_edit.svg' %}"><span>Edit Listing</span></div></a>
-                    <a href="{% url 'listing_images' listing.pk %}" class="my-listing-actions"><div class="action-flex"><img class="my-listing-actions-icons" src="{% static 'images/my_listings_images.svg' %}"><span>Edit Images</span></div></a>
-                    <a href="{% url 'listing_delete' listing.pk %}" class="my-listing-actions"><div class="action-flex"><img class="my-listing-actions-icons" src="{% static 'images/my_listings_delete.svg' %}"><span>Delete Listing</span></div></a>
+                    <a href="{% url 'listing_edit' listing.pk %}" class="my-listing-actions"><div class="action-flex"><img alt="" class="my-listing-actions-icons" src="{% static 'images/my_listings_edit.svg' %}"><span>Edit Listing</span></div></a>
+                    <a href="{% url 'listing_images' listing.pk %}" class="my-listing-actions"><div class="action-flex"><img alt="" class="my-listing-actions-icons" src="{% static 'images/my_listings_images.svg' %}"><span>Edit Images</span></div></a>
+                    <a href="{% url 'listing_delete' listing.pk %}" class="my-listing-actions"><div class="action-flex"><img alt="" class="my-listing-actions-icons" src="{% static 'images/my_listings_delete.svg' %}"><span>Delete Listing</span></div></a>
                 </div>
             </div>
         </div>
@@ -27,12 +27,12 @@
         <div id="my-new-listing-text">Want to create a new listing?</div>
         {% else %}
         <div id="no-listings-cont">
-            <img src="{% static 'images/binoculars.svg' %}">
+            <img alt="" src="{% static 'images/binoculars.svg' %}">
             <span>You have no listings,<br>why not create one?</span>
         </div>
         {% endif %}
    
-    <a id="create-a" href="{% url 'listing_create' %}">
+    <a id="create-a" alt="" href="{% url 'listing_create' %}">
         <div id="create-button" role="button">Create a listing</div>
     </a>
 
