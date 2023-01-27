@@ -13,11 +13,11 @@
     <div id="warning-text">
         <!-- Confirmign whether the user wishes to proceed with the action-->
         Are you sure you want to remove the favourite for {{ object.listing.get_make_display }} {{ object.listing.model }}?
-        <form method="post" action="">
+        <form method="post">
             {% csrf_token %}
             <input type="submit" value="Yes" class="delete-button">
-            <a href="{% url 'favourites_show' %}">
-                <button type="button" id="cancel-button">Cancel</button>
+            <a id="cancel-a" href="{% url 'favourites_show' %}">
+                <div class="cancel-button">Cancel</div>
             </a>
         </form>
     </div>
