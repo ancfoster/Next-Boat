@@ -1,3 +1,4 @@
+/* jshint esversion: 11 */
 // Init variables
 const messageContents = document.getElementById("id_message_contents");
 const messageSubmit = document.getElementById("message-submit");
