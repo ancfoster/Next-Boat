@@ -34,15 +34,15 @@
     <!-- Form for uploading extra images to listing -->
     <form method="post" id="create-form" enctype="multipart/form-data">
         {% csrf_token %}
-        <label><h3>Add Images</h3></label>
+        <h3>Add Images</h3>
             <div id="form-cont">
             {{ listing_media_form.image }}
             <div class="form-tip">
-                <image alt="" src="{% static 'images/information_icon.svg' %}"></image>
-                <span>Our users love lots of clear images, generate more interest with more pictures.</span>
+                <img alt="" src="{% static 'images/information_icon.svg' %}">
+                <span>Our users love lots of clear images, generate more interest with more pictures.</span></div>
             </div>
             <button type="submit">Add Images</button>
-        </form>
+    </form>
 </main>
 {% else %}
 <main>
