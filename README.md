@@ -147,6 +147,8 @@ Wireframes were crated in Figma for desktop and mobile views.
 
 ### Diagram
 
+![Database diagram](readme_assets/database_diagram.jpg)
+
 ### Database Models
 
 NextBoat is made of three custom applications and 5 models, inaddition to the user model that comes with the Django admin/authentication system
