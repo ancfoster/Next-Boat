@@ -95,9 +95,11 @@ Icons were used throughout the site to improve the user interface.
 
 - Icons are also used in the account dropdown menu.
 
-### Wireframes
+### Wireframes & mockups
 
-Wireframes were crated in Figma for desktop and mobile views.
+Wireframes and several mockups were created in Figma.
+
+![](/readme_assets/mockup.png)
 
 ## Features
 
@@ -299,7 +301,9 @@ Further details on all Python packages used on this project can be found in the 
 
 - [Git](https://git-scm.com) used for version control. (`git add`, `git commit`, `git push`)
 
-- [Figma](https://figma.com) was used to create wirefames, UX prototypes and mockups.
+- [Figma](https://figma.com) was used to create wirefamesß
+
+- [Markdown Builder](https://traveltimn.github.io/readme-builder) used to help with the creation of the markdown files
 
 ## Testing
 
@@ -504,13 +508,15 @@ Alternatively, if using Gitpod, you can click below to create your own workspace
 
 ## Credits
 
+### Media credits
+
+- The two images used on the home page were obtained from [Shutterstock](https://shutterstock.com) as part of a stock image plan.
+
 ### Technical documentation and tutorials
 
 - I followed a tutorial created by [Michael Herman](https://testdriven.io/blog/storing-django-static-and-media-files-on-amazon-s3/) on how to configure a Django application to store static and media files on AWS S3.
 
 - Extensive use was made of the [Django project documentation](https://docs.djangoproject.com/en/4.1/)
-
-- 
 
 - Code snippet from Stackoverflow user [artem](https://stackoverflow.com/questions/8317537/django-templates-split-string-to-array) to convert a string into an array with a custom Django template filter
 
