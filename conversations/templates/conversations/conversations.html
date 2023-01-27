@@ -1,8 +1,8 @@
 {% extends "base.html" %}
 {% load static %}
 {% block head %}
-<link rel="stylesheet" href="{% static 'css/delete_listing.css' %}"> </link>
-<link rel="stylesheet" href="{% static 'css/conversation.css' %}"> </link>
+<link rel="stylesheet" href="{% static 'css/delete_listing.css' %}"> 
+<link rel="stylesheet" href="{% static 'css/conversation.css' %}"> 
 <title>Messages - NextBoat</title>
 {% endblock %}
 {% block content %}
@@ -20,7 +20,7 @@
                     {{ conversation.conversation_seller|stringformat:"s"|slice:":1" }}
                 {% endif %}
             </div>
-            <img class="bubble-featured-image" src="{{ conversation.conversation_thumbnail.url }}">
+            <img alt="" class="bubble-featured-image" src="{{ conversation.conversation_thumbnail.url }}">
         </div>
         <div class="conversation-text-flex">
             <div class="conversation-username">
