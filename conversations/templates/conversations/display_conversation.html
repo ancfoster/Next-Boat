@@ -37,6 +37,7 @@
             </div>
             <div class="conversation-text-flex">
                 <div class="conversation-username">
+                    <!-- This section displays who the logged in user is having a conversation with -->
                     {% if conversation.conversation_seller|stringformat:"s" == user.get_username %}
                         Your conversation with {{ conversation.conversation_buyer }}
                      {% else %}
@@ -44,6 +45,7 @@
                     {% endif %}
                 </div>
                 <div class="conversation-boat-name">
+                    <!-- This section displays the boat that has been listed by the seller -->
                     about {{ conversation.conversation_boat.get_make_display }} {{ conversation.conversation_boat.model }}
                 </div>
             </div>

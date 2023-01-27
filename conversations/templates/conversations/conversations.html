@@ -8,12 +8,16 @@
 {% block content %}
 <main>
     <h1>Messages</h1>
+    {# Checks if any conversations exist in the context dictionary #}
     {% if conversations_list %}
     {% for conversation in conversations_list %}
     <a href="{% url 'conversation_messages' conversation.pk %}" class="cont-a">
     <div class="conversation-cont">
+        <!--In this section two 'bubbles' are shown, one is of the boat being discussed, the other a 1 character bubble of either the buyer/seller depending who is logged in-->
         <div class="conversation-bubbles">
             <div class="bubble-username">
+                {#The slice tag is used to get the first name of the seller or buyer to create a profile 'bubble #}
+                {# Checks if the logged in user matches conversation_seller, if it does we want to get the character from the buyer's username #}
                 {% if conversation.conversation_seller|stringformat:"s" == user.get_username %}
                     {{ conversation.conversation_buyer|stringformat:"s"|slice:":1" }}
                 {% else %}
@@ -23,6 +27,7 @@
             <img alt="" class="bubble-featured-image" src="{{ conversation.conversation_thumbnail.url }}">
         </div>
         <div class="conversation-text-flex">
+            <!-- This section of the conversation UI element, shows who the conversation is with (username of buyer or seller), the boat make and model that is being discussed-->
             <div class="conversation-username">
                 {% if conversation.conversation_seller|stringformat:"s" == user.get_username %}
                     {{ conversation.conversation_buyer }}

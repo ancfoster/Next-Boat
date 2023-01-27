@@ -9,6 +9,8 @@
 {% block content %}
 
 <main>
+    {# This page is only shown when a user clicks on the 'Contact Seller' button and a conversation between buyer and seller doesn't already exist #}
+    {# Checks if the logged in user is the user who created the listing. A seller cannot message themselves #}
     {% if user.get_username == listing.created_by|stringformat:"s" %}
     <h2>You cannot message yourself.</h2>
     {% else %}
@@ -16,15 +18,17 @@
     <div class="message-flex" id="create-message-flex">
         <div class="conversation-cont" id="create-cont">
             <div class="conversation-bubbles">
+                <!-- This is a 'bubble' icon to represent the seller. It is made of a circle containing the first character of the seller's username -->
                 <div class="bubble-username">
                     {{ listing.created_by|stringformat:"s"|slice:":1" }}
                 </div>
-                <img class="bubble-featured-image" src="{{ listing.featured_image.url }}">
+                <img class="bubble-featured-image" alt="Boat" src="{{ listing.featured_image.url }}">
             </div>
             <div class="conversation-text-flex">
                 <div class="conversation-username">
                         Contact {{ listing.created_by }}
                 </div>
+                <!-- This section contains the make and model of the boat that is going to be discussed-->
                 <div class="conversation-boat-name">
                     about their {{ listing.get_make_display }} {{ listing.model }}
                 </div>
