@@ -25,6 +25,7 @@ const categoryListSailLabel = document.getElementById('cls');
 
 window.addEventListener("load", loadState);
 
+// This function takes the information from hidden fields and then adjusts the UI (e.g radio buttons) based on the values
 function loadState(){
     if (idCondition.value == 'N') {
         document.getElementById('new-radio').checked = true;
@@ -46,6 +47,7 @@ function loadState(){
         }
     }
 }
+// Assigns the value of the category drop down field
 function boatCategoryLoad(){
     if(idType.value == "P") {
         categoryListPowerLabel.style.display = 'block';
