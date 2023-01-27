@@ -55,7 +55,7 @@
     margin: 8px auto;
     display: flex;
     flex-direction: row;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     align-items: center;
     padding: 12px;
     border-radius: 16px;
@@ -98,7 +98,6 @@
     width: 32px;
     height: 32px;
     display: flex;
-    flex-wrap: no;
     align-items: center;
     justify-content: center;
     background-color: var(--light-bg-grey);

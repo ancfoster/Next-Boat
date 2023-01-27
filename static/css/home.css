@@ -44,13 +44,13 @@
     display: inline-block;
     font-weight: var(--regular);
 }
-#hero-button {
+.hero-button {
     color: var(--white);
     text-decoration: none;
     margin: 0 auto;
     width: 120px;
 }
-#hero-button div {
+.hero-button-div {
     width: 88px;
     font-size: 16px;
     line-height: 16px;
@@ -62,7 +62,7 @@
     text-align: center;
     border-radius: 8px;
 }
-#hero-button div:hover {
+.hero-button-div:hover {
     background-color: var(--accent-colour-dark);
 }
 /* Selling section styles */
