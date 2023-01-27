@@ -165,9 +165,21 @@ Chrome and Firefox use different rendering engines, unlike Edge/Brave which also
 
 ## Manual Testing
 
-
-
-
-## Automted Testing
-
-Using the built in Django library unittest I wrote a number series of unit tests to test the operation of key functions and classes.
+| Action | Expected Result | Actual Result |
+|---|---|---|
+| Create Account | Account created, redirected to home page | Account created, redirected to home page |
+| Click on 'Buy' | Site listings are presented | Site listings are presented |
+| Click on first listing | Taken to the detail view of that listing | Taken to the detail view of that listings |
+| Click on favorite icon | Icon turns red, indicating favorite created | Icon turns red, indicating favorite created |
+| Click again on favorite icon | Icon turns grey, indicating favorite has been deleted | Icon turns grey, indicating favorite has been deleted |
+| Click contact seller button | Taken to new conversation view | New conversation was created & message sent successfully |
+| Click contact seller button once a chat has been created | Taken to conversation view | Internal Server Error (500). A bug has been discovered. Instead of a PK, CreateConversation is returning an object as a string. I have spoken to tutor support and no ne has been able to understand why this is happening. COnversation can still be reached through the main messages interface. |
+| View conversations, by going to 'Messages' from the profile menu | List of conversations is shown | List of conversations was shown |
+| Click on a conversation | Conversation with its messages loaded | Conversation with its messages loaded |
+| Send a new message from conversation view | Upon writing and submitting a new message it will be added to the conversation | New message was added |
+| Create a listing | A new listing with all of the user inputs and file uploads is created | A new listing with all of the user inputs and file uploads is created |
+| Edit Listing, make a change to a field | The edit listing page appears, with pre-populated fields, when one of the values of these fields is changed and the form submitted, the change will be saved | Change to listing was saved on edit form submission |
+| Delete image form listing | A prompt is given, once confirmed, the image is deleted | Prompt was given, image was then deleted |
+| Add extra images to existing listing | Images will upload and appear in both the edit images view and on the listing details | Images uploaded correctly and were displayed |
+| Delete listing | When delete action button is pressed a confirmation form will show, then the listing will be deleted and the user redirected back to My Listings | Redirected back to My Listings and the desired listing was deleted successfully.  |
+| Logout | Asked to confirm log out, then taken to home page | Taken to home page after confirming that I want to log out |
