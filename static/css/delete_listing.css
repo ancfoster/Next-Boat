@@ -45,12 +45,24 @@ button {
 button:hover {
     background-color: #20AFAF;
 }
-#cancel-button {
+.cancel-button {
     background-color: var(--light-mid-bg-grey);
     color: var(--off-black);
     border: 1px solid var(--form-field-border-inactive);
     margin-left: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    width: auto;
+    height: 40px;
+    padding: 0 16px;
+    text-decoration: none!important;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
 }
-#cancel-button:hover {
+.cancel-button:hover {
     background-color: #cecece;
+}
+#cancel-a {
+    text-decoration: none;
 }

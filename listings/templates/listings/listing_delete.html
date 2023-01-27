@@ -12,11 +12,11 @@
     <div id="warning-text">
         Are you sure you want to delete the listing for your {{ object.get_make_display }} {{ object.model }}?
         <br><br>This cannot be undone.
-        <form method="post" action="">
+        <form method="post">
             {% csrf_token %}
             <input type="submit" value="Yes" class="delete-button">
-            <a href="{% url 'my_listings' %}">
-                <button type="button" id="cancel-button">Cancel</button>
+            <a id="cancel-a" href="{% url 'my_listings' %}">
+                <button class="cancel-button" id="cancel-button">Cancel</button>
             </a>
         </form>
     </div>
