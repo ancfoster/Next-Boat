@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 {% block head %}
-<link rel="stylesheet" href="{% static 'css/create.css' %}"> </link>
+<link rel="stylesheet" href="{% static 'css/create.css' %}">
 <title>Create a new listing | NextBoat</title>
 {% endblock %}
 {% block content %}
@@ -87,7 +87,7 @@
         </label>
       </div>
       <div class="form-tip">
-        <image alt="" src="{% static 'images/information_icon.svg' %}"></image>
+        <img alt="" src="{% static 'images/information_icon.svg' %}">
           <span>Has VAT been paid in the EU/UK when imported or originally sold?</span>
       </div>
       <label>Country</label>
@@ -167,7 +167,6 @@
       <label for="id_fuel">Fuel</label>
       {{ listing_create_form.fuel }}
     </div>
-    </div>
     <h2>Accomodation</h2>
     <div class="form-section-cont">
       <div class="wrap-flex">
@@ -201,7 +200,7 @@
       <div class="field-char-count" id="excerpt-length"></div>
       {{ listing_create_form.listing_excerpt.errors }}
       <div class="form-tip">
-        <image alt="" src="{% static 'images/information_icon.svg' %}"></image>
+        <img alt="" src="{% static 'images/information_icon.svg' %}">
           <span>The excerpt is a short description that appears in search results.          </span>
       </div>
       <label for="id_listing_description">Description</label>
@@ -209,7 +208,7 @@
       <div class="field-char-count" id="description-length"></div>
       {{ listing_create_form.listing_description.errors }}
       <div class="form-tip">
-        <image alt="" src="{% static 'images/information_icon.svg' %}"></image>
+        <img alt="" src="{% static 'images/information_icon.svg' %}">
           <span>Buyers love a detailed description. A well written and informative description can lead to a better sale price and more potential buyers.</span>
       </div>
     </div>
@@ -222,7 +221,7 @@
           <span id="add-feature-text">Begin by adding a feature.</span>
       </div>
         <div class="form-tip">
-        <image alt="" src="{% static 'images/information_icon.svg' %}"></image>
+        <img alt="" src="{% static 'images/information_icon.svg' %}">
           <span>Add boat features to your listing e.g bow thruster, watermaker, radar</span>
       </div>
     </div>
@@ -232,7 +231,7 @@
       {{ listing_create_form.featured_image }}
       {{ listing_create_form.featured_image.errors }}
       <div class="form-tip">
-        <image alt="" src="{% static 'images/information_icon.svg' %}"></image>
+        <img alt="" src="{% static 'images/information_icon.svg' %}">
           <span>This image will appear in search results, pick the best image of your boat and make a great first impression.</span>
       </div>
       
@@ -240,7 +239,7 @@
       {{ listing_media_form.image }}
       {{ listing_media_form.image.errors }}
       <div class="form-tip">
-        <image alt="" src="{% static 'images/information_icon.svg' %}"></image>
+        <img alt="" src="{% static 'images/information_icon.svg' %}">
           <span>Our users love lots of clear images, generate more interest with more pictures.</span>
       </div>
     </div>
