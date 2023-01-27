@@ -94,7 +94,7 @@ def createListing(request):
             form = listing_create_form.save()
             form.save()
             new_listing_id = form.pk
-            # loop over images to upload multiple
+            # loop over images to  upload multiple
             for image_uploaded in request.FILES.getlist('image'):
                 listing_name = f"{listing_create_form.instance.make}_{listing_create_form.instance.model}_{listing_create_form.instance.pk}"  # noqa
                 compressed_image = compress_uploaded_images(image_uploaded, listing_name)  # noqa
