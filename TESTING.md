@@ -39,39 +39,52 @@ CSS files were validated with the [W3C CSS Validation Service](https://jigsaw.w3
 
 |File|Screenshot|
 |---|---|
-|admin.py|![](testing_assets/pep8/listings_admin.png|
-|models.py|![](testing_assets/pep8/listings_models.png|
-|urls.py|![](testing_assets/pep8/listings_urls.png|
-|views.py|![](testing_assets/pep8/listings_views.png|
-|forms.py|![](testing_assets/pep8/listings_forms.png|
+|admin.py|![](testing_assets/pep8/listings_admin.png)|
+|models.py|![](testing_assets/pep8/listings_models.png)|
+|urls.py|![](testing_assets/pep8/listings_urls.png)|
+|views.py|![](testing_assets/pep8/listings_views.png)|
+|forms.py|![](testing_assets/pep8/listings_forms.png)|
 
 - Conversations
 
 |File|Screenshot|
 |---|---|
-|admin.py|![](testing_assets/pep8/conversations_admin.png|
-|models.py|![](testing_assets/pep8/conversations_models.png|
-|urls.py|![](testing_assets/pep8/conversations_urls.png|
-|views.py|![](testing_assets/pep8/conversations_views.png|
-|forms.py|![](testing_assets/pep8/conversations_forms.png|
+|admin.py|![](testing_assets/pep8/conversations_admin.png)|
+|models.py|![](testing_assets/pep8/conversations_models.png)|
+|urls.py|![](testing_assets/pep8/conversations_urls.png)|
+|views.py|![](testing_assets/pep8/conversations_views.png)|
+|forms.py|![](testing_assets/pep8/conversations_forms.png)|
 
 - Favourites App
 
 |File|Screenshot|
 |---|---|
-|admin.py|![](testing_assets/pep8/favourites_admin.png|
-|models.py|![](testing_assets/pep8/favourites_models.png|
-|urls.py|![](testing_assets/pep8/favourites_urls.png|
-|views.py|![](testing_assets/pep8/favourites_views.png|
+|admin.py|![](testing_assets/pep8/favourites_admin.png)|
+|models.py|![](testing_assets/pep8/favourites_models.png)|
+|urls.py|![](testing_assets/pep8/favourites_urls.png)|
+|views.py|![](testing_assets/pep8/favourites_views.png)|
 
 ### HTML Validation
 
 As many pages require a user to be logged in validation was carried out by copying the source code from the browser and pasting it into the W3 Nu HTML Validator.
 
-Django forms generated HTML that did not pass validation. e.g `required` attribute not allowed on element `input`
+Django forms generated HTML that did not pass validation in `create_listing_form.html` and `listing_edit.html`, the `required` attribute is not allowed on element `input`. As Django generated this I am unable to fix it.
 
+All other HTML validation tests were successful. 
 
-
+|File|Screenshot|
+|---|---|
+|index.html|![](testing_assets/html_validation/index_nu.jpeg)|
+|favourites.html|![](testing_assets/html_validation/favourites_nu.png)|
+|favourites_delete.html|![](testing_assets/html_validation/favourite_delete_nu.png)|
+|conversations.html|![](testing_assets/html_validation/conversations_nu.jpeg)|
+|display_conversations.html|![](testing_assets/html_validation/display_conversation_nu.jpeg)|
+|listings.html|![](testing_assets/html_validation/listings_nu.jpeg)|
+|listing_delete.html|![](testing_assets/html_validation/listing_delete.png)|
+|listing_edit_images.html|![](testing_assets/html_validation/listing_edit_images.png)|
+|my_listings.html|![](testing_assets/html_validation/my_listings_nu%20.jpeg)|
+|listing_create_form.html|![](testing_assets/html_validation/listing_create_form_nu.jpeg)|
+|listing_edit.html|![](testing_assets/html_validation/listing_edit.jpeg)|
 
 
 ## Browser Compatibility Testing
