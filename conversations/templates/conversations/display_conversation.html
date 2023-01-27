@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 {% block head %}
-<link rel="stylesheet" href="{% static 'css/messages.css' %}"> </link>
+<link rel="stylesheet" href="{% static 'css/messages.css' %}">
 <title>
     {# This code checks who is trying to view the conversation and display the appropriate message. #}
     {# If a user not in the conversation tries to view the message they cannot see any conversation information #}
@@ -33,7 +33,7 @@
                         {{ conversation.conversation_seller|stringformat:"s"|slice:":1" }}
                     {% endif %}
                 </div>
-                <img class="bubble-featured-image" src="{{ conversation.conversation_thumbnail.url }}">
+                <img alt="" class="bubble-featured-image" src="{{ conversation.conversation_thumbnail.url }}">
             </div>
             <div class="conversation-text-flex">
                 <div class="conversation-username">
@@ -60,7 +60,7 @@
                 </div>
             {% endif %}
         {% endfor %}
-        <form method="POST" action="">
+        <form method="POST">
             {% csrf_token %}
             {{ conversation_message_form.message_contents }}
             <button type="submit" disabled="disabled" id="message-submit"><img alt="Send Message" id="submit-icon" src="{% static 'images/send_icon.svg' %}"></button>
