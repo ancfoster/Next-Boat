@@ -96,7 +96,6 @@
     width: 100%;
     margin-bottom: 8px;
     display: flex;
-    flex: row;
     flex-wrap: nowrap;
     align-items: center;
     justify-content: flex-start;
