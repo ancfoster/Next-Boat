@@ -108,18 +108,20 @@ Wireframes were crated in Figma for desktop and mobile views.
 | Home Page | Explains the purpose of the site to new users. | ![Home Page](readme_assets/features/feature_homepage.jpeg) |
 | Listings | Shows a page consisting of cards of all the boats currently available on the site. | ![Listings](readme_assets/features/feature_listings.jpeg) |
 | Listings Detail View | Shows a detailed information. view of a particular boat listing. Also shows an expandable image gallery. | ![Listings Detail View](readme_assets/features/feature_listings_details.jpeg) |
-| Navigation Bar | Allows users to quickly navigate between key functionality. |  |
-| Profile Menu | This is a drop down menu. When a user isn't logged in it provides links to login and signup pages. WHen a user is logged it it provides full access to all account functionality. |  |
-| Create listing | A page showing a form that allows a user to list their own boat for sale.  |  |
-| My Listing | A page that shows a user all of the listings they have created. Provides links for editing, editing the associated images and deletion. |  |
-| Edit Listing | Displays a form that allows the user to update information about their boat listing. |  |
-| Edit Listing Images | This feature allows a user to delete images associated with their listing and upload new ones. |  |
-| Delete listing | This feature allows a user to delete a listing. |  |
-| Contact seller | On every listing there is a button that allows prospective buyers to contact the seller. When clicked this launches a new message view. |  |
-| Messages | This feature shows a list of conversations a user is having with other users about specific boats.  |  |
-| Conversation view | This feature shows messages between two users and allows a user to send additional messages via form. It is styled to look like popular messaging applications like iMessage or Facebook Messenger. |  |
-| Favourites List | This feature shows a list of favourite listings that a user has created. A delete icon allows indvidual favourites to be deleted. |  |
-| Favourite toggle button | On each listing details page. A logged in user can add a listing to their favourites list or remove it from their favourites list by clicking the heart icon. |  |
+| Navigation Bar | Allows users to quickly navigate between key functionality. | ![Navigation Bar](readme_assets/features/feature_nav_bar.jpeg) |
+| Profile Menu | This is a drop down menu. When a user isn't logged in it provides links to login and signup pages. WHen a user is logged it it provides full access to all account functionality. | [Profile Menu](readme_assets/features/feature_profile_menu.jpeg) |
+| Creat account | Allows a user to make an account | [Create account](readme_assets/features/feature_create_account.jpeg) |
+| Login | A form that allows a user to login | [Login](readme_assets/features/feature_login.jpeg) |
+| Create listing | A page showing a form that allows a user to list their own boat for sale.  | [Create listing](readme_assets/features/feature_create_listing.jpeg) |
+| My Listings | A page that shows a user all of the listings they have created. Provides links for editing, editing the associated images and deletion. | [My listings](readme_assets/features/feature_my_listings.jpeg) |
+| Edit Listing | Displays a form that allows the user to update information about their boat listing. | [Edit Listing](readme_assets/features/feature_edit_listing.jpeg) |
+| Edit Listing Images | This feature allows a user to delete images associated with their listing and upload new ones. | [Edit images](readme_assets/features/feature_edit_images.jpeg) |
+| Delete listing | This feature allows a user to delete a listing. | [Delete listing](readme_assets/features/feature-delete_listing.jpeg) |
+| Contact seller | On every listing there is a button that allows prospective buyers to contact the seller. When clicked this launches a new message view. | [Contact seller](readme_assets/features/feature_contact_seller.jpeg) |
+| Messages List | This feature shows a list of conversations a user is having with other users about specific boats.  | [messages list](readme_assets/features/feature_messages.jpeg) |
+| Conversation view | This feature shows messages between two users and allows a user to send additional messages via form. It is styled to look like popular messaging applications like iMessage or Facebook Messenger. | [conversation view](readme_assets/features/feature_conversation.jpeg) |
+| Favourites List | This feature shows a list of favourite listings that a user has created. A delete icon allows indvidual favourites to be deleted. | [favourite list](readme_assets/features/feature_favourites_list.jpeg) |
+| Favourite toggle button | On each listing details page. A logged in user can add a listing to their favourites list or remove it from their favourites list by clicking the heart icon. | [toggle favourite](readme_assets/features/feature_favourite_toggle1.jpeg) [favourited](readme_assets/features/feature_favourite_toggle2.jpeg) |
 
 ### Features for future iterations
 
