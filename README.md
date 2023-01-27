@@ -143,7 +143,98 @@ Wireframes were crated in Figma for desktop and mobile views.
 
 - An analytics system to track the listing prices of different kinds of boats over time. 
 
-## Database Schema 
+## Database Schema
+
+### Diagram
+
+### Database Models
+
+NextBoat is made of three custom applications and 5 models, inaddition to the user model that comes with the Django admin/authentication system
+
+#### Listings App
+
+**Listings model**
+
+This model contains all of the information needed for a boat listing
+
+- id = UUID
+- listing_status = models.CharField
+- created_by = models.ForeignKey(User
+- created_on = models.DateTimeField(auto)
+- last_modified = models.DateTimeField(auto)
+- make = models.CharField
+- model = models.CharField
+- price = models.PositiveIntegerField
+- tax_paid = models.CharField
+- condition = models.CharField
+- country = models.CharField
+- location = models.CharField
+- year_construction = models.PositiveSmallIntegerField
+- length = models.DecimalField
+- beam = models.DecimalField
+- draft = models.DecimalField
+- weight = models.PositiveIntegerField
+- type = models.CharField
+- category = models.CharField
+- hull_material = models.CharField
+- hull_configuration = models.CharField
+- fuel = models.CharField
+- number_of_engines = models.PositiveSmallIntegerField
+- maximum_speed = models.PositiveSmallIntegerField
+- cruising_speed = models.PositiveSmallIntegerField
+- total_hp = models.PositiveSmallIntegerField
+- cabins = models.PositiveSmallIntegerField
+- berths = models.PositiveSmallIntegerField
+- heads = models.PositiveSmallIntegerField
+- listing_excerpt = models.CharField
+- listing_description = models.TextField
+- boat_feature_list = models.CharField
+- featured_image = models.ImageField
+- featured_image_thumbnail = models.ImageField
+
+**ListingMedia model **
+
+This model is for gallery images associated with a listing.
+
+- id = UUID
+- listing = models.ForeignKey(Listings)
+- image = models.FileField
+
+#### Conversations App
+
+**Conversations model**
+
+This model contains particulars about a conversation.
+
+- id = UUID
+- conversation_boat = models.ForeignKey(Listings)
+- conversation_buyer = models.ForeignKey(User)
+- conversation_seller = models.ForeignKey(User)
+- conversation_thumbnail = models.ImageField
+- last_message_date = models.DateTimeField
+
+**ConversationMessages**
+
+This model is for messages that are associated with a conversation.
+
+- id = UUID
+- message_conversation = models.ForeignKey(Conversations)
+- message_sent = models.DateTimeField
+- message_from = models.ForeignKey(User)
+- message_to = models.ForeignKey(User)
+- message_contents = models.CharField
+
+##### Favourites App
+
+**Favourites model**
+
+This model contains information about favourites and contains the following fields.
+
+- id = UUID
+- listing = models.ForeignKey(Listings)
+- favourite_created_on = models.DateTimeField
+- favourite_created_by = models.ForeignKey(User)
+
 
 ## Technologies & Tools Used
 
