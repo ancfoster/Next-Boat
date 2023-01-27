@@ -8,14 +8,18 @@
 
 <main>
   <h1>Create a new listing</h1>
+  <!-- Displays fields from two forms -->
   <form method="post" id="create-form" enctype="multipart/form-data">
     {% csrf_token %}
+    <!-- Hidden fields used by create.js-->
+    <!-- Django will generate invalid HTML for hidden inputs, required attribute is not allowed-->
     {{ listing_create_form.condition }}
     {{ listing_create_form.boat_feature_list }}
     {{ listing_create_form.category }}
     {{ listing_create_form.type }}
     {{ listing_create_form.tax_paid }}
     <h2>What kind of boat are you selling?</h2>
+    <!-- Each section of the form is house in a flex box div-->
     <div class="form-section-cont">
       <label>Boat Type</label>
       <div class="radio-cont-2">
@@ -30,6 +34,7 @@
       </div>
       <label id="clp" for="category_list_power">Category</label>
       <div id="category-cont">
+        <!-- Only one select element wll be shown. This is determined whether power or sail has been selected by the user -->
         <select id="category_list_power">
           <option value="PC">Planing Cruiser</option>
           <option value="DC">Displacement Cruiser</option>
@@ -205,6 +210,7 @@
       </div>
       <label for="id_listing_description">Description</label>
       {{listing_create_form.listing_description}}
+      <!-- create.js will automatically count the number of characters inputted them and display them here -->
       <div class="field-char-count" id="description-length"></div>
       {{ listing_create_form.listing_description.errors }}
       <div class="form-tip">

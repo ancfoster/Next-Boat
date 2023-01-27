@@ -1,33 +1,37 @@
 {% extends "base.html" %}
 {% load static %}
 {% block head %}
-<link rel="stylesheet" href="{% static 'css/edit_delete_images.css' %}"> </link>
+<link rel="stylesheet" href="{% static 'css/edit_delete_images.css' %}"> 
 <title>
     Edit Images | NextBoat
 </title>
 {% endblock %}
 {% block content %}
+{# Checks to see if correct user is trying to access page #}
 {% if listing.created_by|stringformat:"s" == user.username %}
 <main>
+    <!-- Goes back to my listings -->
     <a href="{% url 'my_listings' %}" id="message-back"><img src="https://nextboat-ci-static.s3.eu-west-2.amazonaws.com/static/images/return_icon.svg" alt="Back to My Listings">My Listings</a>
     <h1>{{ listing.get_make_display }} {{ listing.model }} Images</h1>
     <h3>Delete Images</h3>
+    <!-- Displays a grid of the images that can be deleted-->
     <div id="existing-images-flex">
         {% if listing_images %}
         {% for image in listing_images %}
         <a href="{% url 'delete_image' image.pk %}">
             <div class="existing-image-cont">
-                <img src="{{ image.image.url }}">
+                <img alt="" src="{{ image.image.url }}">
                 <div class="delete-icon-button">
                     <img src="{% static 'images/delete.svg' %}" alt="">
                 </div>
             </div>
         </a>
        {% endfor %}
-       {% else%}
+       {% else %}
        <h3>There are no images to be deleted.</h3>
        {% endif %}
     </div>
+    <!-- Form for uploading extra images to listing -->
     <form method="post" id="create-form" enctype="multipart/form-data">
         {% csrf_token %}
         <label><h3>Add Images</h3></label>

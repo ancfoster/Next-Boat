@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 {% block head %}
-<link rel="stylesheet" href="{% static 'css/create.css' %}"> </link>
+<link rel="stylesheet" href="{% static 'css/create.css' %}">
 <title>Edit {{ listing_object.get_make_display }} {{ listing_object.model }} | NextBoat</title>
 {% endblock %}
 {% block content %}
@@ -10,18 +10,20 @@
 {% if listing_object.created_by|stringformat:"s" == user.get_username %}
   <a href="{% url 'my_listings' %}" id="message-back"><img src="https://nextboat-ci-static.s3.eu-west-2.amazonaws.com/static/images/return_icon.svg" alt="Back to My Listings">My Listings</a>
   <h1>Edit: {{ listing_object.get_make_display }} {{ listing_object.model }}</h1>
-  <form method="post" id="edit-form" action="">
+  <form method="post" id="edit-form">
+    <!-- Django will generate invalid HTML for hidden inputs, required attribute is not allowed-->
     {% csrf_token %}
     {{ listing_edit_form.condition }}
     {{ listing_edit_form.boat_feature_list }}
     {{ listing_edit_form.category }}
     {{ listing_edit_form.type }}
     {{ listing_edit_form.tax_paid }}
+    <!-- Each section of the form is contained in a flexbox div -->
     <div class="form-section-cont">
         <label for="id_hull_configuration">Listing Status</label>
         {{ listing_edit_form.listing_status }}
         <div class="form-tip">
-            <image alt="" src="{% static 'images/information_icon.svg' %}"></image>
+            <img alt="" src="{% static 'images/information_icon.svg' %}">
               <span>Boats marked as pending sale will be displayed in results, whilst boats marked as sold or not available won't.</span>
           </div>
     </div>
@@ -40,6 +42,8 @@
       </div>
       <label id="clp" for="category_list_power">Category</label>
       <div id="category-cont">
+        <!-- only one of these select boxes is shown at a time, this is controlled by edit_listing.js-->
+        <!-- edit_listing.js listens for when the select element value is changed and relays this to the hidden category field-->
         <select id="category_list_power">
           <option value="PC">Planing Cruiser</option>
           <option value="DC">Displacement Cruiser</option>
@@ -97,7 +101,7 @@
         </label>
       </div>
       <div class="form-tip">
-        <image alt="" src="{% static 'images/information_icon.svg' %}"></image>
+        <img alt="" src="{% static 'images/information_icon.svg' %}">
           <span>Has VAT been paid in the EU/UK when imported or originally sold?</span>
       </div>
       <label>Country</label>
@@ -177,7 +181,7 @@
       <label for="id_fuel">Fuel</label>
       {{ listing_edit_form.fuel }}
     </div>
-    </div>
+
     <h2>Accomodation</h2>
     <div class="form-section-cont">
       <div class="wrap-flex">
@@ -211,7 +215,7 @@
       <div class="field-char-count" id="excerpt-length"></div>
       {{ listing_edit_form.listing_excerpt.errors }}
       <div class="form-tip">
-        <image alt="" src="{% static 'images/information_icon.svg' %}"></image>
+        <img alt="" src="{% static 'images/information_icon.svg' %}">
           <span>The excerpt is a short description that appears in search results.          </span>
       </div>
       <label for="id_listing_description">Description</label>
@@ -219,7 +223,7 @@
       <div class="field-char-count" id="description-length"></div>
       {{ listing_edit_form.listing_description.errors }}
       <div class="form-tip">
-        <image alt="" src="{% static 'images/information_icon.svg' %}"></image>
+        <img alt="" src="{% static 'images/information_icon.svg' %}">
           <span>Buyers love a detailed description. A well written and informative description can lead to a better sale price and more potential buyers.</span>
       </div>
     </div>
@@ -227,12 +231,13 @@
     <div class="form-section-cont">
       <label for="add_feature_text">Add a feature:</label>
       <div id="feature-form-flex">
+        <!-- The input length is checked by listing_edit.js. A feature must at least be 3 characters long -->
         <input type="text" maxlength="40" id="add_feature_text"><button type="button" disabled="disabled" id="add_feature_button">Add</button>      </div>
       <div id="feature-flex-list">
           <span id="add-feature-text">Begin by adding a feature.</span>
       </div>
         <div class="form-tip">
-        <image alt="" src="{% static 'images/information_icon.svg' %}"></image>
+        <img alt="" src="{% static 'images/information_icon.svg' %}">
           <span>Add boat features to your listing e.g bow thruster, watermaker, radar</span>
       </div>
     </div>

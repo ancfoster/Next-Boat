@@ -3,11 +3,12 @@
 {% load listing_tags %}
 {% load static %}
 {% block head %}
-<link rel="stylesheet" href="{% static 'css/listing_details.css' %}"> </link>
+<link rel="stylesheet" href="{% static 'css/listing_details.css' %}">
 <title>{{ listing.get_make_display }} {{ listing.model }} {{ listing.category }} for sale | NextBoat - buy and sell boats online</title>
 {% endblock %}
 {% block content %}
 <main id="listing-detail-main">
+    <!-- Returns to all listings view-->
     <div id="listings-return"><a href="/boats">All Boats</a></div>
     <h1 class="listing-detail-h1">{{ listing.get_make_display }} {{ listing.model }}</h1> 
     <div id="listing-pictures-cont">
@@ -22,15 +23,17 @@
         </div>
         <div id="listing-picture-grid">
             {% for preview_image in preview_images %}
-               <img class="preview-images" src="{{ preview_image.image.url }}">
+               <img class="preview-images" alt="" src="{{ preview_image.image.url }}">
             {% endfor %}
         </div>
     </div>
+    <!-- This gallery remains hidden until 'All Pictures' button is clicked -->
     <div id="all-images-cont">
         {% for gallery_image in gallery_images %}
-        <img class="gallery-images" src="{{ gallery_image.image.url }}">
+        <img class="gallery-images" alt="" src="{{ gallery_image.image.url }}">
         {% endfor %}
     </div>
+    <!-- Displays either contact seller button or edit listing button depending if user is logged in and listing belongs to user-->
     <div id="interested-cont">
         {% if listing_favourite %}
         <div class="favourite-button" id="favourited" role="button"><a href="{% url 'favourite_toggle' listing.pk %}"><img alt="This boat has been added to your favourites" src="{% static 'images/heart_red.svg' %}"></a></div>
@@ -46,6 +49,7 @@
             {% endif %}
         </div>
     </div>
+    <!-- Listing details flex contains two cols, 1 is for particulars, the other is for the description and features list -->
     <div id="listing-details-flex">
         <div id="listing-particulars-col">
             <h3 class="listing-details-h3">Overview</h3>
@@ -138,6 +142,7 @@
             <div class="particulars-card">
                 <!--This code snippet is from Stackoverflow user artem https://stackoverflow.com/questions/8317537/django-templates-split-string-to-array-->
                 <div id="features-flex">
+                    {# ^^ is used to seperate features in the boat_feature_list field. These are then split using a custom tag template #}
                     {% with listing.boat_feature_list|split:"^^" as features %}
                         {% for feature in features %}
                         <span class="listing-details-feature">{{ feature }}</span>

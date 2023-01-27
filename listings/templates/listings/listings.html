@@ -7,9 +7,11 @@
 {% endblock %}
 {% block content %}
 <main>
+    <!-- The number of columns is controlled by CSS media queries -->
 <div class="listing-flex">
     {% for listing in listings_list %}
     <div class="boat-listing-cont">
+        <!-- The entire listing 'card' is wrapped in a link to go to the listing details page-->
         <a href="{% url 'boat_listing_details' listing.pk %}">
             <div class="boat-listing-item">
                 <img class="listing-picture" alt="Picture of boat {{ listing.get_make_display }} {{ listing.model }}" src="{{ listing.featured_image.url }}">
@@ -27,6 +29,7 @@
                         </div>
                     </div>
                     <div class="price">
+                        <!-- Price is formatted by Django humanize -->
                         £ {{ listing.price|intcomma }}
                     </div>
     
