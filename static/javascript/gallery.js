@@ -2,7 +2,7 @@
 // Init variables
 let allImagesCont = document.getElementById('all-images-cont');
 let galleryLaunchButton = document.getElementById('gallery-launch-button');
-let galleryStatus = 0
+let galleryStatus = 0;
 
 // This function opens and collapses the gallery of all the pictures
 galleryLaunchButton.addEventListener("click", () => {
@@ -25,4 +25,4 @@ galleryLaunchButton.addEventListener("click", () => {
             </span>
         `;
     }
-})
+});
